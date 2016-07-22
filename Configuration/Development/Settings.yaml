@@ -1,0 +1,12 @@
+#
+# Development Context Settings used for local docker
+#
+
+TYPO3:
+  Flow:
+    persistence:
+      backendOptions:
+        host: db
+        user: root
+        password: root
+        dbname: dockerflow
