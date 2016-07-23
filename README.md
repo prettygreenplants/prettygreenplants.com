@@ -59,6 +59,10 @@ Go into project directory:
 
 	cd ~/dev/sokly
 
+Check requirements by running the following command and you should get the message `- Everything looks good!`:
+
+	./check_setup.sh
+
 Install project dependencies:
 
 	composer install --prefer-dist
@@ -67,7 +71,22 @@ Start docker containers:
 
 	bin/dockerflow up -d
 
-Setup wizards: <http://0.0.0.0:8080/setup>
+Migrate database:
+
+	/bin/dockerflow run app ./flow doctrine:migrate
+
+Import site:
+
+	/bin/dockerflow run app ./flow site:import --package-key Neos.Demo
+
+Create admin backend user:
+
+	/bin/dockerflow run app ./flow user:create --roles=Administrator visay visay123 Visay Keo
+
+Verify:
+
+- Frontend: <http://0.0.0.0:8080>
+- Backend: <http://0.0.0.0:8080/neos>
 
 Deployment To Live
 ==================
