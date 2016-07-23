@@ -1,0 +1,66 @@
+---
+# tasks file for ansible/roles/app
+
+- name: Clone app repository into app root
+  git:
+    accept_hostkey=yes
+    dest='{{ app_root }}'
+    executable=/usr/local/cpanel/3rdparty/bin/git
+    force=yes
+    repo='{{ git_repo }}'
+    version=master
+
+- name: Install project dependencies
+  shell: '{{ composer_path }} install --prefer-dist --no-dev -n chdir={{ app_root }}'
+
+- name: Adjust .htaccess
+  replace:
+    dest='{{ app_root }}/Web/.htaccess'
+    regexp='{{ item.search }}'
+    replace='{{ item.replace }}'
+  with_items:
+    - { search: '^# SetEnv FLOW_CONTEXT(.*)$', replace: 'SetEnv FLOW_CONTEXT {{ project_context }}' }
+    - { search: '^# SetEnv FLOW_ROOTPATH(.*)$', replace: 'SetEnv FLOW_ROOTPATH {{ app_root }}/' }
+
+- name: Copy database connection file from remote to local
+  fetch:
+    dest=/tmp
+    src='{{ database_login_path }}/{{ inventory_hostname }}'
+
+- name: Setup database connection
+  template:
+    dest='{{ app_root }}/Configuration/{{ project_context }}/Settings.yaml'
+    src=Settings.yaml.j2
+
+- name: Clean up database connection file
+  local_action: file
+    path='/tmp/{{ inventory_hostname }}'
+    state=absent
+
+- name: Make sure directory for web root exists
+  file:
+    path='{{ web_root }}'
+    state=directory
+
+- name: Create symlink to web root
+  file:
+    path='{{ web_root }}/{{ item }}'
+    src='{{ app_root }}/Web/{{ item }}'
+    state=link
+  with_items: '{{ web_root_files }}'
+
+- name: Copy index.php to web root
+  copy:
+    dest='{{ web_root }}/index.php'
+    mode=0644
+    remote_src=True
+    src='{{ app_root }}/Web/index.php'
+
+- name: Flush the cache
+  shell: '{{ php_path }} ./flow {{ item }} chdir={{ app_root }}'
+  with_items:
+    - flow:cache:flush --force
+    - doctrine:migrate
+    - resource:publish
+    - resource:clean
+    - cache:warmup

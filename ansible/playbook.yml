@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+
+  environment:
+
+    FLOW_CONTEXT: '{{ project_context }}'
+
+  pre_tasks:
+
+    - name: Create directory for database login file
+      file:
+        path='{{ database_login_path }}'
+        state=directory
+
+  roles:
+    - role: db
+      tags: db
+    - role: app
+      tags: app

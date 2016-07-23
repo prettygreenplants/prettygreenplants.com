@@ -1,0 +1,12 @@
+#
+# {{ ansible_managed }}
+#
+
+TYPO3:
+  Flow:
+    persistence:
+      backendOptions:
+        host: localhost
+        user: {{ lookup('ini', 'user section=client file=/tmp/{{ inventory_hostname }}/{{ database_login_path }}/{{ inventory_hostname }}') }}
+        password: {{ lookup('ini', 'password section=client file=/tmp/{{ inventory_hostname }}/{{ database_login_path }}/{{ inventory_hostname }}') }}
+        dbname: {{ database_name }}
