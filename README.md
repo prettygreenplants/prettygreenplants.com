@@ -47,3 +47,41 @@ Verify with `docker-compose -v` and if not yet installed, run:
 	sudo curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 Refer to <https://docs.docker.com/compose/install/>
+
+Installation
+============
+
+Get the code:
+
+	git clone git@gitlab.com:visay/sokly.git ~/dev/sokly
+
+Go into project directory:
+
+	cd ~/dev/sokly
+
+Install project dependencies:
+
+	composer install --prefer-dist
+
+Start docker containers:
+
+	bin/dockerflow up -d
+
+Setup wizards: <http://0.0.0.0:8080/setup>
+
+Deployment To Live
+==================
+
+Ansible
+-------
+
+Verify with `ansible --v` and if it is lower than 2.0 or is not yet installed, run:
+
+	sudo add-apt-repository ppa:ansible/ansible -y
+	sudo apt-get update
+	sudo apt-get -y --force-yes install ansible=2.1.0.0-1ppa~trusty
+
+Release
+-------
+
+	./release.sh
