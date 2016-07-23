@@ -73,15 +73,15 @@ Start docker containers:
 
 Migrate database:
 
-	/bin/dockerflow run app ./flow doctrine:migrate
+	bin/dockerflow run app ./flow doctrine:migrate
 
 Import site:
 
-	/bin/dockerflow run app ./flow site:import --package-key Neos.Demo
+	bin/dockerflow run app ./flow site:import --package-key Neos.Demo
 
 Create admin backend user:
 
-	/bin/dockerflow run app ./flow user:create --roles=Administrator visay visay123 Visay Keo
+	bin/dockerflow run app ./flow user:create --roles=Administrator visay visay123 Visay Keo
 
 Verify:
 
