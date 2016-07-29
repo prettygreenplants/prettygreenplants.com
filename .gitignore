@@ -3,7 +3,8 @@
 /Build/
 /Configuration/
 /Data/
-/Packages/
+/Packages/*
+!/Packages/Sites/
 /Readme.rst
 /Upgrading.rst
 /Web/
