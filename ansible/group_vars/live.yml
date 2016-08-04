@@ -1,4 +1,5 @@
 ---
 
-database_name: ''
-web_root: '/home/visayinf/public_html/{{ inventory_hostname }}'
+domain_name: 'prettygreenplants.com'
+database_name: 'visayinf_prettygreenplants'
+web_root: '/home/visayinf/public_html/prettygreenplants.com'

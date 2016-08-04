@@ -94,11 +94,11 @@ Deployment To Live
 Ansible
 -------
 
-Verify with `ansible --v` and if it is lower than 2.0 or is not yet installed, run:
+Verify with `ansible --version` and if it is lower than 2.0 or is not yet installed, run:
 
 	sudo add-apt-repository ppa:ansible/ansible -y
 	sudo apt-get update
-	sudo apt-get -y --force-yes install ansible=2.1.0.0-1ppa~trusty
+	sudo apt-get -y --force-yes install ansible
 
 Release
 -------
