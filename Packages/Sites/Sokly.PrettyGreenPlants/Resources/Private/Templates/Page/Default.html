@@ -1,29 +1,170 @@
 <!DOCTYPE html>
 {namespace neos=TYPO3\Neos\ViewHelpers}
 {namespace ts=TYPO3\TypoScript\ViewHelpers}
-<html>
+<html lang="en"><!-- lang attribute here takes no effect - need to render by ts -->
+
+<!--
+	Default head data added by Neos
+	1. <meta charset="UTF-8" />
+	2. <title>Pretty Green Plants</title>
+	3. <meta name="robots" content="index,follow" />
+	4. <link rel="canonical" href="http://sokly:8080/" />
+-->
 <head>
+	<meta charset="utf-8"><!-- this line takes no effect - already by default -->
+
+	<!-- the followng 5 lines take no effect - need to render by ts -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>Landing Page - Start Bootstrap Theme</title>
+
 	<f:section name="stylesheets">
 		<!-- Put your stylesheet inclusions here, they will be included in your website by TypoScript -->
+		<!-- Bootstrap Core CSS -->
+		<link href="{f:uri.resource(path: 'css/bootstrap.min.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="{f:uri.resource(path: 'css/landing-page.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet">
+
+		<!-- Custom Fonts -->
+		<link href="{f:uri.resource(path: 'font-awesome/css/font-awesome.min.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet" type="text/css">
+		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 	</f:section>
 	<f:section name="headScripts">
 		<!-- Put your scripts inclusions for the head here, they will be included in your website by TypoScript -->
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
 	</f:section>
 </head>
 <body>
 <f:section name="body">
-	<nav class="menu">
-		{parts.menu -> f:format.raw()}
-	</nav>
-	<nav class="breadcrumb">
-		{parts.breadcrumb -> f:format.raw()}
-	</nav>
-	<div class="content">
-		{content.main -> f:format.raw()}
+
+	{parts.menu -> f:format.raw()}
+
+	<!-- Header -->
+	<a name="{parts.nav1.properties.title -> f:format.case(mode: 'lower')}"></a>
+	<div class="intro-header">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="intro-message">
+						<h1>Coming Soon</h1>
+						<h3>Pretty Green Plants</h3>
+						<hr class="intro-divider">
+						<ul class="list-inline intro-social-buttons">
+							<li>
+								<a href="https://www.facebook.com/prettygreenplants" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
+	<!-- Page Content -->
+	<a  name="{parts.nav2.properties.title -> f:format.case(mode: 'lower')}"></a>
+	<div class="content-section-a">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-sm-6">
+					<hr class="section-heading-spacer">
+					<div class="clearfix"></div>
+					<h2 class="section-heading">Use Plants To Bring Life</h2>
+					<p class="lead">There are some four million different kinds of animals and plants in the world. Four million different solutions to the problems of staying alive.</p>
+				</div>
+				<div class="col-lg-5 col-lg-offset-2 col-sm-6">
+					<img class="img-responsive" src="{f:uri.resource(path: 'img/ipad.png', package: 'Sokly.PrettyGreenPlants')}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content-section-b">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+					<hr class="section-heading-spacer">
+					<div class="clearfix"></div>
+					<h2 class="section-heading">Never Go To A Doctor<br>Whose Office Plants Have Died</h2>
+					<p class="lead">A garden requires patient labor and attention. Plants do not grow merely to satisfy ambitions or to fulfill good intentions. They thrive because someone expended effort on them.</p>
+				</div>
+				<div class="col-lg-5 col-sm-pull-6  col-sm-6">
+					<img class="img-responsive" src="{f:uri.resource(path: 'img/dog.png', package: 'Sokly.PrettyGreenPlants')}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="content-section-a">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5 col-sm-6">
+					<hr class="section-heading-spacer">
+					<div class="clearfix"></div>
+					<h2 class="section-heading">My Fake Plants Died Because<br>I Did Not Pretend To Water Them</h2>
+					<p class="lead">For many years, I hated nature. As a student, I refused to put a plant anywhere - a living plant, that is. Dead plants were OK.</p>
+				</div>
+				<div class="col-lg-5 col-lg-offset-2 col-sm-6">
+					<img class="img-responsive" src="{f:uri.resource(path: 'img/phones.png', package: 'Sokly.PrettyGreenPlants')}" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.content-section-a -->
+	<a name="{parts.nav3.properties.title -> f:format.case(mode: 'lower')}"></a>
+	<div class="banner">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<h2>Connect Pretty Green Plants:</h2>
+				</div>
+				<div class="col-lg-6">
+					<ul class="list-inline banner-social-buttons">
+						<li>
+							<a href="https://www.facebook.com/prettygreenplants" target="_blank" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Facebook</span></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<ul class="list-inline">
+						<li>
+							<a href="#">Home</a>
+						</li>
+
+						{parts.footerMenu -> f:format.raw()}
+
+					</ul>
+					<p class="copyright text-muted small">Copyright &copy; Pretty Green Plants 2016. All Rights Reserved</p>
+				</div>
+			</div>
+		</div>
+	</footer>
 </f:section>
+
 <f:section name="bodyScripts">
 	<!-- Put your scripts inclusions for the end of the body here, they will be included in your website by TypoScript -->
+	<!-- jQuery -->
+	<script src="{f:uri.resource(path: 'js/jquery.js', package: 'Sokly.PrettyGreenPlants')}"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="{f:uri.resource(path: 'js/bootstrap.min.js', package: 'Sokly.PrettyGreenPlants')}"></script>
 </f:section>
 </body>
 </html>

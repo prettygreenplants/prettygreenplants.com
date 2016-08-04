@@ -1,0 +1,25 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<f:if condition="{items -> f:count()}">
+	<f:then>
+		<f:for each="{items}" as="item">
+			<li class="footer-menu-divider">&sdot;</li>
+			<li>
+				<a href="#{item.label -> f:format.case(mode: 'lower')}">{item.label}</a>
+			</li>
+		</f:for>
+	</f:then>
+	<f:else>
+		<f:security.ifAccess privilegeTarget="TYPO3.Neos:Backend.GeneralAccess">
+			<f:if condition="{node.context.workspace.name} != 'live'">
+				<li class="footer-menu-divider">&sdot;</li>
+				<li><a href="#start">About</a></li>
+				<li class="footer-menu-divider">&sdot;</li>
+				<li><a href="#about">Services</a></li>
+				<li class="footer-menu-divider">&sdot;</li>
+				<li><a href="#connect">Contact</a></li>
+			</f:if>
+		</f:security.ifAccess>
+	</f:else>
+</f:if>
