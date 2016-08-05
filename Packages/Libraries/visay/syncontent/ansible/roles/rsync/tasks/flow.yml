@@ -1,0 +1,18 @@
+---
+# tasks file for rsync
+
+  - name: Make sure local temp directory exists
+    local_action: file path="/tmp/{{ ssh_user }}/{{ item }}" state=directory
+    with_items: "{{ data_dir.flow }}"
+
+  - name: Sync flow persistent data from remote server to local temp
+    synchronize: mode=pull
+                 src="{{ remote_path }}/{{ item }}"
+                 dest="/tmp/{{ ssh_user }}/{{ item }}"
+                 delete=yes
+    with_items: "{{ data_dir.flow }}"
+    when: not from_cache|bool
+
+  - name: Sync flow persistent data from local temp to working directory
+    local_action: shell rsync --delay-updates -F --compress --delete-after --archive --out-format='<<CHANGED>>%i %n%L' "/tmp/{{ ssh_user }}/{{ item }}" "{{ local_path }}/{{ item }}"
+    with_items: "{{ data_dir.flow }}"

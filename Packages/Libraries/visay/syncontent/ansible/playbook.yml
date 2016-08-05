@@ -1,0 +1,11 @@
+---
+
+- hosts: "remote"
+  remote_user: "{{ ssh_user }}"
+  roles:
+    - role: rsync
+      tags: rsync
+    - role: database
+      tags: db
+    - role: cleanup
+      tags: cleanup

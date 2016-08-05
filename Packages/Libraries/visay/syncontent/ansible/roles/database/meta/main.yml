@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Visay Keo
+  description: Dump database from remote machine to local
+  company: Web Essentials
+  license: MIT
+  min_ansible_version: 1.6
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+dependencies: []

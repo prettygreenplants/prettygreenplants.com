@@ -1,0 +1,8 @@
+---
+# tasks file for database
+
+- include: flow.yml
+  when: framework == "flow"
+
+- include: typo3.yml
+  when: framework ==  "typo3"

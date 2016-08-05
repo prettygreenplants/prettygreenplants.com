@@ -1,0 +1,12 @@
+---
+galaxy_info:
+  author: Visay Keo
+  description: Execute necessary cleanup commands to finalize the system setup
+  company: Web Essentials
+  license: MIT
+  min_ansible_version: 1.6
+  platforms:
+    - name: Ubuntu
+      versions:
+        - trusty
+dependencies: []

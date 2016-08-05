@@ -1,0 +1,22 @@
+---
+# tasks file for rsync
+
+  - name: Make sure local temp directory exists
+    local_action: file path="/tmp/{{ ssh_user }}/{{ item }}" state=directory
+    with_items: "{{ data_dir.typo3 }}"
+
+  - name: Sync typo3 data from remote server to local temp
+    synchronize: mode=pull
+                 src="{{ remote_path }}/{{ item }}"
+                 dest="/tmp/{{ ssh_user }}/{{ item }}"
+                 delete=yes
+                 rsync_opts="--exclude=.gitkeep --exclude=_temp_ --exclude=_processed_"
+    with_items: "{{ data_dir.typo3 }}"
+    when: not from_cache|bool
+
+  - name: Sync typo3 data from local temp to working directory
+    local_action: synchronize src="/tmp/{{ ssh_user }}/{{ item }}"
+                  dest="{{ local_path }}/{{ item }}"
+                  delete=yes
+                  rsync_opts="--exclude=.gitkeep --exclude=_temp_ --exclude=_processed_"
+    with_items: "{{ data_dir.typo3 }}"

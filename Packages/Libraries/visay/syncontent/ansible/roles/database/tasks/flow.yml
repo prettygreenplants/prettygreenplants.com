@@ -1,0 +1,22 @@
+---
+# tasks file for flow database
+
+  - include: flow_db_dump.yml
+    when: not from_cache|bool
+
+  - name: Check local database name
+    local_action: shell FLOW_CONTEXT={{ local_context }} {{ bin_path }}/dockerflow run -T app ./flow configuration:show --type Settings --path TYPO3.Flow.persistence.backendOptions | grep 'dbname' | cut -d ' ' -f2
+                  chdir="{{ local_path }}"
+    register: local_db_name
+
+  - name: Drop local database
+    local_action: shell {{ bin_path }}/dockerflow run db mysqladmin -h db -u root -proot drop {{ local_db_name.stdout }} -f
+                  chdir="{{ local_path }}"
+
+  - name: Re-create local database
+    local_action: shell {{ bin_path }}/dockerflow run db mysqladmin -h db -u root -proot create {{ local_db_name.stdout }} --default-character-set=utf8
+                  chdir="{{ local_path }}"
+
+  - name: Restore local database from remote dump
+    local_action: shell {{ bin_path }}/dockerflow run db mysql -h db -u root -proot {{ local_db_name.stdout }} < /tmp/{{ ssh_user }}/db_dump.sql
+                  chdir="{{ local_path }}"

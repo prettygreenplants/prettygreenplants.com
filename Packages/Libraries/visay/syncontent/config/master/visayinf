@@ -1,0 +1,4 @@
+--remote-host=209.188.15.185
+--remote-port=2006
+--remote-path=/home/visayinf/prettygreenplants-live-app
+--remote-php=/usr/local/bin/php

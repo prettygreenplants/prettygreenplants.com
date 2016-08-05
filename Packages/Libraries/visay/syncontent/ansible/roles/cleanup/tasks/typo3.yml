@@ -1,0 +1,21 @@
+---
+# tasks file for typo3 cleanup
+
+  - name: Remove temp caches directory
+    local_action: shell rm -rf web/typo3temp/Cache
+                  chdir="{{ local_path }}"
+
+  - name: Execute neccessary typo3 commands
+    local_action: shell TYPO3_CONTEXT={{ local_context }} {{ bin_path }}/dockertypo3 run app ./web/typo3cms {{ item }}
+                  chdir="{{ local_path }}"
+    with_items:
+      - cache:flush
+      - database:updateschema --schema-update-types=field.add
+      - database:updateschema --schema-update-types=field.change
+      - database:updateschema --schema-update-types=field.drop
+      - database:updateschema --schema-update-types=table.add
+      - database:updateschema --schema-update-types=table.change
+      - database:updateschema --schema-update-types=table.drop
+      - database:updateschema --schema-update-types=table.clear
+      - cleanup:updatereferenceindex
+      - cache:warmup

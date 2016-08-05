@@ -71,22 +71,14 @@ Start docker containers:
 
 	bin/dockerflow up -d
 
-Migrate database:
+Restore content from live to local:
 
-	bin/dockerflow run app ./flow doctrine:migrate
-
-Import site:
-
-	bin/dockerflow run app ./flow site:import --package-key Neos.Demo
-
-Create admin backend user:
-
-	bin/dockerflow run app ./flow user:create --roles=Administrator visay visay123 Visay Keo
+	bin/syncontent
 
 Verify:
 
-- Frontend: <http://0.0.0.0:8080>
-- Backend: <http://0.0.0.0:8080/neos>
+- Frontend: <http://sokly:8080>
+- Backend: <http://sokly:8080/neos>
 
 Deployment To Live
 ==================

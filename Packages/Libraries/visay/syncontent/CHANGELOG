@@ -1,0 +1,75 @@
+CHANGELOG
+=========
+
+3.0-dev
+-------
+
+  - [BUGFIX] Create tmp directory for local db storage
+
+3.0.9
+-----
+
+  - [TASK] Adjust data dir according to dockertypo3 change
+
+3.0.8
+-----
+
+  - [TASK] Allow search replace in db content for Neos
+
+3.0.7
+-----
+
+  - [FEATURE] Allow setting to search replace db content
+  - [IMP] Set data directory list to sync in variable
+
+3.0.6
+-----
+
+  - [FEATURE] Introduce --from-cache switch
+
+3.0.5
+-----
+
+  - [BUGFIX] Shell condition wildcard for Mac
+
+3.0.4
+-----
+
+  - [TASK] Add support for Mac
+
+3.0.3
+-----
+
+  - [BUGFIX] Remove suggest attribute in composer
+
+3.0.2
+-----
+
+  - [FEATURE] Add support for dockertypo3
+
+3.0.1
+-----
+
+  - [FEATURE] Allow setting of php path on remote
+  - [BUGFIX]  Use eval to execute shell from string
+  - [IMP]     Group ansible params into variable
+
+3.0.0
+-----
+
+  - [IMP]  Add more useful params with nicer message
+  - [TASK] Update example in README
+  - [IMP]  Add flow command resource:publish
+
+2.3.0
+-----
+
+  - [TASK]    Add changelog and versioning
+  - [IMP]     Allow setting of remote path through config
+  - [FEATURE] Add possibility to overwrite remote path
+  - [FEATURE] Add possibility to sync to any flow context
+  - [TASK]    Adjust to mariadb change on dockerflow project
+  - Revert    Change to internal dockerflow project
+  - [TASK]    Switch to use internal dockerflow dependency
+  - [TASK]    Use file name instead file content for the master
+  - [TASK]    Initial import
