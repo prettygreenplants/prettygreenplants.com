@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b287b7268c92f26776815ed53938887f",
-    "content-hash": "a1d66fa2ffc320c4ccf9b681d7df1645",
+    "hash": "8d72f1e776de3ffaf18967ce25c716cc",
+    "content-hash": "96a785b68d8e42fa7b8f992ec59eae3a",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1446,6 +1446,36 @@
             "description": "Flow Unicode Utilities",
             "homepage": "http://flow.typo3.org",
             "time": "2016-04-07 08:40:10"
+        },
+        {
+            "name": "networkteam/neos-mailobfuscator",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/networkteam/Networkteam.Neos.MailObfuscator.git",
+                "reference": "bd2e94111b5749074e00c18a5d37bd2fd9259a89"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/networkteam/Networkteam.Neos.MailObfuscator/zipball/bd2e94111b5749074e00c18a5d37bd2fd9259a89",
+                "reference": "bd2e94111b5749074e00c18a5d37bd2fd9259a89",
+                "shasum": ""
+            },
+            "require": {
+                "typo3/neos": "*"
+            },
+            "type": "typo3-flow-plugin",
+            "autoload": {
+                "psr-0": {
+                    "Networkteam\\Neos\\MailObfuscator": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "description": "A mail address and link obfuscation plugin for TYPO3 Neos",
+            "time": "2016-06-06 12:36:16"
         },
         {
             "name": "ocramius/proxy-manager",
