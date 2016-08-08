@@ -10,3 +10,15 @@ TYPO3:
         user: {{ lookup('ini', 'user section=client file=/tmp/{{ inventory_hostname }}/{{ database_login_path }}/{{ inventory_hostname }}') }}
         password: {{ lookup('ini', 'password section=client file=/tmp/{{ inventory_hostname }}/{{ database_login_path }}/{{ inventory_hostname }}') }}
         dbname: {{ database_name }}
+
+  Neos:
+    GoogleAnalytics:
+      authentication:
+        applicationName: 'Pretty Green Plants'
+        clientId: '880718627449-r7tnjjffsm6q8dc1lt9ivgkq5mj5n49p.apps.googleusercontent.com'
+        clientSecret: '-bA9nNYMXFnTBoljanY74DvX'
+        developerKey: 'AIzaSyBs9lJ-6gY15sJdN7-t791rjZ5GX0R0R7M'
+      sites:
+        prettygreenplants:
+          trackingId: 'UA-42523446-2'
+          profileId: '127214097'

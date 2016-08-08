@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8d72f1e776de3ffaf18967ce25c716cc",
-    "content-hash": "96a785b68d8e42fa7b8f992ec59eae3a",
+    "hash": "1649a199c36b5c27568820893448e5ed",
+    "content-hash": "264230158ec8c1cfa39abc8566523538",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -765,6 +765,49 @@
                 "uploadable"
             ],
             "time": "2015-02-24 21:41:37"
+        },
+        {
+            "name": "google/apiclient",
+            "version": "v1.1.8",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/google/google-api-php-client.git",
+                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/google/google-api-php-client/zipball/85309a3520bb5f53368d43e35fd24f43c9556323",
+                "reference": "85309a3520bb5f53368d43e35fd24f43c9556323",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-v1-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/Google/autoload.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "Client library for Google APIs",
+            "homepage": "http://developers.google.com/api-client-library/php",
+            "keywords": [
+                "google"
+            ],
+            "time": "2016-06-06 21:22:48"
         },
         {
             "name": "imagine/imagine",
@@ -2156,6 +2199,37 @@
             ],
             "description": "An open source Content Application Platform based on Flow. A set of core Content Management features is resting within a larger context that allows you to build a perfectly customized experience for your users.",
             "time": "2016-06-17 18:09:13"
+        },
+        {
+            "name": "typo3/neos-googleanalytics",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/neos-googleanalytics.git",
+                "reference": "9f223d220246fe2f46dfc79fac4af774b065d9ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/neos-googleanalytics/zipball/9f223d220246fe2f46dfc79fac4af774b065d9ab",
+                "reference": "9f223d220246fe2f46dfc79fac4af774b065d9ab",
+                "shasum": ""
+            },
+            "require": {
+                "google/apiclient": "1.1.*",
+                "typo3/neos": "~2.0"
+            },
+            "type": "typo3-flow-package",
+            "autoload": {
+                "psr-0": {
+                    "TYPO3\\Neos\\GoogleAnalytics": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "description": "Google Analytics integration for TYPO3 Neos",
+            "time": "2016-04-26 09:25:25"
         },
         {
             "name": "typo3/neos-nodetypes",
