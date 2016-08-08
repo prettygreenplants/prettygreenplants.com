@@ -8,6 +8,20 @@
 #                                                                        #
 
 ##
+# Neos Seo: XML Sitemap
+
+-
+  name: 'Neos Seo'
+  uriPattern: '<TYPO3NeosSeoSubroutes>'
+  subRoutes:
+    'TYPO3NeosSeoSubroutes':
+      package: 'TYPO3.Neos.Seo'
+      variables:
+        'xmlSitemapPath': 'sitemap.xml'
+
+
+
+##
 # TYPO3 Neos subroutes
 
 -
