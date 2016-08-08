@@ -53,11 +53,11 @@ Installation
 
 Get the code:
 
-	git clone git@gitlab.com:visay/sokly.git ~/dev/sokly
+	git clone git@gitlab.com:visay/prettygreenplants.git ~/dev/prettygreenplants.local
 
 Go into project directory:
 
-	cd ~/dev/sokly
+	cd ~/dev/prettygreenplants.local
 
 Check requirements by running the following command and you should get the message `- Everything looks good!`:
 
@@ -77,8 +77,8 @@ Restore content from live to local:
 
 Verify:
 
-- Frontend: <http://sokly:8080>
-- Backend: <http://sokly:8080/neos>
+- Frontend: <http://prettygreenplants.local:8080>
+- Backend: <http://prettygreenplants.local:8080/neos>
 
 Deployment To Live
 ==================
