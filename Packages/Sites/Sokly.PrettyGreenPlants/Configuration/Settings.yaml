@@ -1,5 +1,13 @@
+## Site Settings
 Sokly:
   PrettyGreenPlants:
     socialMedia:
       email: 'info@prettygreenplants.com'
       facebook: 'https://www.facebook.com/prettygreenplants'
+
+## Overwrite Global Settings
+TYPO3:
+  Neos:
+    userInterface:
+      backendLoginForm:
+        backgroundImage: 'resource://Sokly.PrettyGreenPlants/Public/img/wallpaper.jpg'
