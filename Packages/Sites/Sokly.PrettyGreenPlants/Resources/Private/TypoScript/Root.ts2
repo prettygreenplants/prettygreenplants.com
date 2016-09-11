@@ -23,12 +23,21 @@ page = Page {
 		templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/Page/Default.html'
 		sectionName = 'body'
 
+		toggleBeta = ${Configuration.setting('Sokly.PrettyGreenPlants.toggleBeta')}
+
 		parts {
+			mainMenu = Menu {
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/TypoScriptObjects/MainMenu.html'
+				siteTitle = ${q(node.context.currentSite).property('name')}
+				current.attributes.class = 'active'
+				normal.attributes.class = ''
+			}
+
 			socialMedia = TYPO3.Neos:Content {
 				emailText = "Email"
 				facebookText = "Facebook"
 
-				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/NodeTypes/SocialMedia.html'
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/TypoScriptObjects/SocialMedia.html'
 				email = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.email')}
 				facebookLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.facebook')}
 			}

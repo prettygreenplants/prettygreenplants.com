@@ -73,6 +73,11 @@
 <body>
 <f:section name="body">
 
+	<f:if condition="{toggleBeta}">
+		<!-- Navigation -->
+		{parts.mainMenu -> f:format.raw()}
+	</f:if>
+
 	<!-- Header -->
 	<a name="{parts.nav1.properties.title -> f:format.case(mode: 'lower')}"></a>
 	<div class="intro-header">

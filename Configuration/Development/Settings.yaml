@@ -1,6 +1,9 @@
 #
 # Development Context Settings used for local docker
 #
+Sokly:
+  PrettyGreenPlants:
+    toggleBeta: true
 
 TYPO3:
   Flow:
