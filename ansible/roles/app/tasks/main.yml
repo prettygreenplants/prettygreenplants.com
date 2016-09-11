@@ -62,11 +62,19 @@
     remote_src=True
     src='{{ app_root }}/Web/index.php'
 
-- name: Flush the cache
+- name: Clean up
   shell: '{{ php_path }} ./flow {{ item }} chdir={{ app_root }}'
   with_items:
     - flow:cache:flush --force
     - doctrine:migrate
     - resource:publish
     - resource:clean
+    - media:clearthumbnails
     - cache:warmup
+
+- name: Execute node:repair with auto answer yes
+  shell: 'echo y | {{ php_path }} ./flow node:repair chdir={{ app_root }}'
+  register: result
+  until: result.stdout.find('Node repair finished.') != -1
+  retries: 5
+  delay: 3
