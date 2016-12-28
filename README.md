@@ -96,3 +96,59 @@ Release
 -------
 
 	./release.sh
+
+Plugins
+=======
+
+Fronted Login
+-------------
+
+Plugin installed but not yet configured - TODO
+
+Email Encryption
+----------------
+
+All email addresses added as content through editor will be encrypted to prevent spam using the package
+`Networkteam.Neos.MailObfuscator`
+
+Google Analytics
+----------------
+
+Using package `TYPO3.Neos.GoogleAnalytics` to enable statistics in Google and also in Neos Backend.
+
+- On Google: The tracking id is set in Ansible template and provision the setting to live server. The result can be
+found on https://analytics.google.com/analytics/web/#report/defaultid/a42523446w121589281p127214097/
+- Inside Neos: The Google Developers Console is configured according to
+http://neos-google-analytics-integration.readthedocs.io/en/stable/ and the authentication setting with profile id is
+configured in Ansible template then provision to live server. The web console can be found at
+https://console.developers.google.com/apis/credentials?project=pretty-green-plants
+
+TYPO3.Neos.Seo
+--------------
+
+The meta keywords and description is set in the inspector of the root page. Current keywords are `plants, tree, garden,
+shop, green, pretty, phnom penh, cambodia, pretty` and the description is `Pretty Green Plants is the best plant shop in
+Phnom Penh selling all kinds plants, indoor and outdoor, for decorating your house or office.`.
+
+The title tag is set in the inspector of the page, the field `Title Override`.
+
+Some other meta data are hard-coded directly in the fluid page template.
+
+Content Types and Customization
+===============================
+
+Backend Login Wallpaper
+-----------------------
+
+Overwrite the default wall paper in the site setting.
+
+Main Menu
+---------
+
+Render as TypoScript object `parts.mainMenu` and visibility is enabled in the global setting for beta period.
+The default is off, that means no menu displayed.
+
+Social Media
+------------
+
+Render as TS object `parts.socialMedia` and read value from site setting.

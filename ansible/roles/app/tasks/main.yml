@@ -73,8 +73,4 @@
     - cache:warmup
 
 - name: Execute node:repair with auto answer yes
-  shell: 'echo y | {{ php_path }} ./flow node:repair chdir={{ app_root }}'
-  register: result
-  until: result.stdout.find('Node repair finished.') != -1
-  retries: 5
-  delay: 3
+  shell: 'yes y | {{ php_path }} ./flow node:repair chdir={{ app_root }}'
