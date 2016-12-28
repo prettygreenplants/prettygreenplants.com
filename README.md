@@ -53,7 +53,7 @@ Installation
 
 Get the code:
 
-	git clone git@gitlab.com:visay/prettygreenplants.git ~/dev/prettygreenplants
+	git clone git@github.com:visay/PrettyGreenPlants.git ~/dev/prettygreenplants
 
 Go into project directory:
 
