@@ -67,9 +67,10 @@
   with_items:
     - flow:cache:flush --force
     - doctrine:migrate
-    - resource:publish
     - resource:clean
+    - resource:publish
     - media:clearthumbnails
+    - media:renderthumbnails
     - cache:warmup
 
 - name: Execute node:repair with auto answer yes
