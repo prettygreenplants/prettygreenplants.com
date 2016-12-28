@@ -18,7 +18,8 @@
         "neos/redirecthandler-neosadapter": "~1.0",
         "neos/redirecthandler-databasestorage": "~1.0",
         "networkteam/neos-mailobfuscator": "~1.0",
-        "typo3/neos-googleanalytics": "~1.0"
+        "typo3/neos-googleanalytics": "~1.0",
+        "flownative/neos-compressor": "~1.0"
     },
     "require-dev": {
         "typo3/neos-kickstarter": "~2.3.0",

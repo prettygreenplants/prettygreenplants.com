@@ -134,6 +134,11 @@ The title tag is set in the inspector of the page, the field `Title Override`.
 
 Some other meta data are hard-coded directly in the fluid page template.
 
+HTML Output Compressor
+----------------------
+
+Using package `Flownative.Neos.Compressor` with default setting to minify html for better site grade.
+
 Content Types and Customization
 ===============================
 
