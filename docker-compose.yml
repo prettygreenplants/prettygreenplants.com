@@ -1,0 +1,41 @@
+# Passive data container which only provides a shared filesystem for the other containers
+data:
+  image: mariadb:10.0
+  command: echo "Data container has started"
+  volumes:
+    - .:/var/www
+    - /var/lib/mysql
+
+db:
+  image: mariadb:10.0
+  volumes_from:
+    - data
+  environment:
+    MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
+    MYSQL_USER: prettygreenplants
+    MYSQL_PASSWORD: prettygreenplants
+    MYSQL_DATABASE: prettygreenplants
+
+# App container which provides the php environment
+app:
+  # For development of the image comment out the 'image' line and replace with the next line
+  build: .
+  #image: sokly/prettygreenplants:latest
+  volumes_from:
+    - data
+  links:
+    - db
+  environment:
+    HOST_USER_ID: 1001
+
+web:
+  image: nginx:1.7
+  ports:
+    - "80:80"
+  volumes:
+    - ./Configuration/Docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    - ./Configuration/Docker/nginx_vhost_development.conf:/etc/nginx/conf.d/default.conf:ro
+  volumes_from:
+    - data
+  links:
+    - app

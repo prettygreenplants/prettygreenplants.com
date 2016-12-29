@@ -10,6 +10,6 @@ TYPO3:
     persistence:
       backendOptions:
         host: db
-        user: root
-        password: root
-        dbname: dockerflow
+        user: prettygreenplants
+        password: prettygreenplants
+        dbname: prettygreenplants

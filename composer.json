@@ -10,7 +10,6 @@
         "bin-dir": "bin"
     },
     "require": {
-        "php": "~5.5",
         "typo3/neos": "~2.3.0",
         "typo3/neos-nodetypes": "~2.3.0",
 
@@ -30,8 +29,7 @@
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~4.8 || ~5.4.0",
         "symfony/css-selector": "~2.0",
-        "flowpack/behat": "dev-master",
-        "shel/dockerflow": "3.2.*"
+        "flowpack/behat": "dev-master"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

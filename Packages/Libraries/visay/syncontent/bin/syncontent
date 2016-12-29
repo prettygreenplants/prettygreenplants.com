@@ -25,29 +25,11 @@ NC="\033[0m"
 
 echo
 
-# Detect framework environment
-if (cat ${ROOT_DIR}/composer.lock | grep "dockerflow" > /dev/null); then
-	FRAMEWORK="flow"
-	DATA_DIR="Data/Persistent"
+FRAMEWORK="flow"
+DATA_DIR="Data/Persistent"
 
-	# Use Development context if Flow Context is not set
-	FRAMEWORK_CONTEXT=${FLOW_CONTEXT:=Development}
-fi
-if (cat ${ROOT_DIR}/composer.lock | grep "dockertypo3" > /dev/null); then
-	FRAMEWORK="typo3"
-	DATA_DIR="Web/uploads"
-
-	# Use Development context if TYPO3 Context is not set
-	FRAMEWORK_CONTEXT=${TYPO3_CONTEXT:=Development}
-fi
-# If framework is not set anywhere, throw error
-if [ -z "${FRAMEWORK}" ]; then
-	echo -e ${RED}"-> Framework cannot be detected:"${NC}
-	echo
-	echo -e ${BROWN}"syncontent requires the system to run with shel/dockerflow or visay/dockertypo3"${NC}
-	echo
-	exit 1
-fi
+# Use Development context if Flow Context is not set
+FRAMEWORK_CONTEXT=${FLOW_CONTEXT:=Development}
 
 # Read all arguments and parse into variable ${REMOTE_USER}, ${REMOTE_PATH}, ${REMOTE_HOST} and ${REMOTE_PORT}
 for ARGS in "$@"
@@ -209,43 +191,7 @@ if [ -z "${REMOTE_PHP}" ]; then
 	fi
 fi
 
-if [ "${FRAMEWORK}" == "flow" ]; then
-	REMOTE_DUMP="/tmp"
-fi
-
-if [ "${FRAMEWORK}" == "typo3" ]; then
-	if [ -z "${REMOTE_DUMP}" ]; then
-		if [ -f "${MASTER_FILE}" ]; then
-			IFS=$'\n'
-			for LINE in `cat ${MASTER_FILE}`
-			do
-				LINE=${LINE//[[:blank:]]/}
-				case ${LINE} in
-					--remote-dump=*)
-					REMOTE_DUMP="${LINE#*=}"
-					shift
-					;;
-				esac
-			done
-		fi
-	fi
-
-	if [ -z "${REMOTE_DUMP}" ]; then
-		echo -e ${RED}"-> Please specify the path to sql dump on remote servers:"${NC}
-		echo
-		echo -e ${BROWN}"Example: ${DIR_NAME}/${FILE_NAME} --remote-dump=/tmp/dump/my-db.sql"${NC}
-		echo
-		echo -e ${BROWN}"Or specify it in config/master directory, read the doc"${NC}
-		echo
-		exit 1
-	fi
-
-	if (ssh ${REMOTE_USER}@${REMOTE_HOST} -p ${REMOTE_PORT} "[ ! -f ${REMOTE_DUMP} ]"); then
-		echo -e ${RED}"-> Please make sure the dump file at ${REMOTE_DUMP} exists on remote server"${NC}
-		echo
-		exit 1
-	fi
-fi
+REMOTE_DUMP="/tmp"
 
 # Check if data directory exists at the remote path on the server
 if (ssh ${REMOTE_USER}@${REMOTE_HOST} -p ${REMOTE_PORT} "[ ! -d ${REMOTE_PATH}/${DATA_DIR} ]"); then
