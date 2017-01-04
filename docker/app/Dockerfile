@@ -21,7 +21,6 @@ RUN apt-get install -y language-pack-en-base && LC_ALL=en_US.UTF-8 add-apt-repos
 # And clean up APT
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
-    sqlite3 \
     imagemagick \
     ghostscript \
     sendmail \
@@ -33,22 +32,20 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php7.0-xml \
     php7.0-curl \
     php7.0-ldap \
-    php7.0-sqlite3 \
     php7.0-imagick \
-    php7.0-redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Create webserver user and group
 RUN adduser --system --shell /bin/bash --no-create-home --uid 1000 --group --disabled-password --disabled-login prettygreenplants
 
 # Copy configuration files for php
-COPY Configuration/Docker/www.conf     /etc/php/7.0/fpm/pool.d/
-COPY Configuration/Docker/php-fpm.conf /etc/php/7.0/fpm/
-COPY Configuration/Docker/php.ini      /etc/php/7.0/fpm/
-COPY Configuration/Docker/php-cli.ini  /etc/php/7.0/cli/php.ini
+COPY www.conf     /etc/php/7.0/fpm/pool.d/
+COPY php-fpm.conf /etc/php/7.0/fpm/
+COPY php.ini      /etc/php/7.0/fpm/
+COPY php-cli.ini  /etc/php/7.0/cli/php.ini
 
 # Set entrypoint to fix volume mount permission
-COPY Configuration/Docker/entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 # Set workdir to project root

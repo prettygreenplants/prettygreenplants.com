@@ -4,7 +4,3 @@
 data_dir:
   flow:
     - Data/Persistent/
-  typo3:
-    - Web/fileadmin/
-    - Web/typo3conf/l10n/
-    - Web/uploads/

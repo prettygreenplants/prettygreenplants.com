@@ -18,9 +18,9 @@ Verify with `git --version` and if not yet installed, run:
 php
 ---
 
-Verify with `php -v` and if not yet installed, run:
+Verify with `php -v` and if not yet installed or not version 7.0, run:
 
-	sudo apt-get install php5-cli
+	sudo apt-get install php7.0-cli
 
 composer
 --------
@@ -61,24 +61,40 @@ Go into project directory:
 
 Check requirements by running the following command and you should get the message `- Everything looks good!`:
 
-	./check_setup.sh
+	bin/check_setup.sh
 
 Install project dependencies:
 
 	composer install --prefer-dist
 
+Build up docker containers for local development:
+
+	docker-compose build
+
 Start docker containers:
 
-	bin/dockerflow up -d
+	docker-compose up -d
+
+Make sure your user is the owner of everything in document root:
+
+	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants
 
 Restore content from live to local:
 
 	bin/syncontent
 
+Run the command to make sure you are the owner again:
+
+	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants
+
+Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and add the following line:
+
+	0.0.0.0 prettygreenplants www.prettygreenplants
+
 Verify:
 
-- Frontend: <http://prettygreenplants:8080>
-- Backend: <http://prettygreenplants:8080/neos>
+- Frontend: <http://prettygreenplants>
+- Backend: <http://prettygreenplants/neos>
 
 Deployment To Live
 ==================
@@ -95,7 +111,7 @@ Verify with `ansible --version` and if it is lower than 2.0 or is not yet instal
 Release
 -------
 
-	./release.sh
+	bin/release.sh
 
 Plugins
 =======

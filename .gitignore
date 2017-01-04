@@ -1,7 +1,12 @@
 /ansible/ansible.log
-/bin/
+/bin/*
+!/bin/check_setup.sh
+!/bin/release.sh
+!/bin/syncontent
 /Build/
-/Configuration/
+/Configuration/*
+!/Configuration/Routes.yaml
+!/Configuration/Settings.yaml
 /Data/
 /Packages/*
 !/Packages/Sites/
