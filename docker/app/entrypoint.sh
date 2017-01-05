@@ -4,11 +4,7 @@
 set -e
 
 DEFAULT_WWW_USER="prettygreenplants"
-
-if [ -z "${WWW_USER_ID}" ]; then
-	echo "Environment variable WWW_USER_ID needs to be set for mounting permission!"
-	exit 1
-fi
+DEFAULT_WWW_USER_ID="1000"
 
 if [ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]; then
 	echo "Updating user ${DEFAULT_WWW_USER} to ${WWW_USER}!"
@@ -20,7 +16,6 @@ if [ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]; then
 fi
 
 # Update uid of the owner
-DEFAULT_WWW_USER_ID=$(id -u ${WWW_USER})
 if [ "${WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]; then
 	echo "Updating ${WWW_USER} user and group ID to ${WWW_USER_ID}!"
 	usermod --uid ${WWW_USER_ID} ${WWW_USER}

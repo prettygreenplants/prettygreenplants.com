@@ -5,12 +5,13 @@ MAINTAINER Sokly Phal <sokly@visay.info>
 MAINTAINER Visay Keo  <keo@visay.info>
 
 ENV WWW_USER prettygreenplants
+ENV WWW_USER_ID 1000
 ENV NGINX_HOST prettygreenplants.local
 ENV WWW_ROOT /var/www
 ENV FLOW_CONTEXT Development
 
 # Create webserver user and group
-RUN adduser --system --shell /bin/bash --no-create-home --uid 1000 --group --disabled-password --disabled-login ${WWW_USER}
+RUN adduser --system --shell /bin/bash --no-create-home --uid ${WWW_USER_ID} --group --disabled-password --disabled-login ${WWW_USER}
 
 # Copy configuration files for nginx
 COPY nginx.conf /etc/nginx/nginx.conf

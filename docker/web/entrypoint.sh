@@ -4,6 +4,7 @@
 set -e
 
 DEFAULT_WWW_USER="prettygreenplants"
+DEFAULT_WWW_USER_ID="1000"
 DEFAULT_NGINX_HOST="prettygreenplants.local"
 DEFAULT_WWW_ROOT="/var/www"
 DEFAULT_FLOW_CONTEXT="Development"
@@ -15,7 +16,6 @@ if [ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]; then
 fi
 
 # Update uid of the owner
-DEFAULT_WWW_USER_ID=$(id -u ${WWW_USER})
 if [ "${WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]; then
 	echo "Updating ${WWW_USER} user and group ID to ${WWW_USER_ID}!"
 	usermod --uid ${WWW_USER_ID} ${WWW_USER}

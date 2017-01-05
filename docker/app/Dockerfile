@@ -36,10 +36,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV WWW_USER prettygreenplants
+ENV WWW_USER_ID 1000
 ENV WWW_ROOT /var/www
 
 # Create webserver user and group
-RUN adduser --system --shell /bin/bash --no-create-home --uid 1000 --group --disabled-password --disabled-login ${WWW_USER}
+RUN adduser --system --shell /bin/bash --no-create-home --uid ${WWW_USER_ID} --group --disabled-password --disabled-login ${WWW_USER}
 
 # Copy configuration files for php
 COPY www.conf     /etc/php/7.0/fpm/pool.d/
