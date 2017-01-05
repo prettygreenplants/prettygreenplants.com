@@ -18,7 +18,7 @@ app:
   links:
     - db
   environment:
-    HOST_USER_ID: 1001
+    WWW_USER_ID: 1001
 
 web:
   build: docker/web
@@ -26,8 +26,7 @@ web:
   ports:
     - "80:80"
   environment:
-    NGINX_HOST: prettygreenplants
-    HOST_USER_ID: 1001
+    WWW_USER_ID: 1001
   volumes:
     - .:/var/www
   links:

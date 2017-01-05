@@ -3,20 +3,38 @@
 # Exit with error if a command returns a non-zero status
 set -e
 
-# Check if nginx host var is set, otherwise return error
-if [ -z "${NGINX_HOST}" ]; then
-	echo "NGINX_HOST environment variable is not set!"
-	exit 1
-else
-	# Get id of the owner
-	if [ ! -z "${HOST_USER_ID}" ]; then
-		echo "Updating prettygreenplants user and group ID to ${HOST_USER_ID}!"
-		usermod --uid ${HOST_USER_ID} prettygreenplants
-		groupmod --gid ${HOST_USER_ID} prettygreenplants
-	fi
+DEFAULT_WWW_USER="prettygreenplants"
+DEFAULT_NGINX_HOST="prettygreenplants.local"
+DEFAULT_WWW_ROOT="/var/www"
+DEFAULT_FLOW_CONTEXT="Development"
 
-	FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
-	sed -e "s~NGINX_HOST~${NGINX_HOST}~g;s~APP_CONTEXT~${FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+if [ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]; then
+	echo "Updating user ${DEFAULT_WWW_USER} to ${WWW_USER}!"
+	usermod -d /home/${WWW_USER} -l ${WWW_USER} ${DEFAULT_WWW_USER}
+	groupmod -n ${WWW_USER} ${DEFAULT_WWW_USER}
+fi
+
+# Update uid of the owner
+DEFAULT_WWW_USER_ID=$(id -u ${WWW_USER})
+if [ "${WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]; then
+	echo "Updating ${WWW_USER} user and group ID to ${WWW_USER_ID}!"
+	usermod --uid ${WWW_USER_ID} ${WWW_USER}
+	groupmod --gid ${WWW_USER_ID} ${WWW_USER}
+fi
+
+if [ "${NGINX_HOST}" != "${DEFAULT_NGINX_HOST}" ]; then
+	echo "Updating vhost to use the right domain!"
+	sed -i -e "s~${DEFAULT_NGINX_HOST}~${NGINX_HOST}~g" /etc/nginx/conf.d/default.conf
+fi
+
+if [ "${WWW_ROOT}" != "${DEFAULT_WWW_ROOT}" ]; then
+	echo "Updating vhost to use the right document root!"
+	sed -i -e "s~${DEFAULT_WWW_ROOT}~${WWW_ROOT}~g" /etc/nginx/conf.d/default.conf
+fi
+
+if [ "${FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]; then
+	echo "Updating vhost to use the right context!"
+	sed -i -e "s~${DEFAULT_FLOW_CONTEXT}~${FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf
 fi
 
 # Run normal command

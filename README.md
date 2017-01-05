@@ -62,11 +62,11 @@ Installation
 
 Get the code:
 
-	git clone git@github.com:visay/PrettyGreenPlants.git ~/dev/prettygreenplants
+	git clone git@github.com:visay/PrettyGreenPlants.git ~/dev/prettygreenplants.local
 
 Go into project directory:
 
-	cd ~/dev/prettygreenplants
+	cd ~/dev/prettygreenplants.local
 
 Check requirements by running the following command and you should get the message `- Everything looks good!`:
 
@@ -86,7 +86,7 @@ Start docker containers:
 
 Make sure your user is the owner of everything in document root:
 
-	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants
+	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants.local
 
 Restore content from live to local:
 
@@ -94,16 +94,16 @@ Restore content from live to local:
 
 Run the command to make sure you are the owner again:
 
-	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants
+	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants.local
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and add the following line:
 
-	0.0.0.0 prettygreenplants www.prettygreenplants
+	0.0.0.0 prettygreenplants.local www.prettygreenplants.local
 
 Verify:
 
-- Frontend: <http://prettygreenplants>
-- Backend: <http://prettygreenplants/neos>
+- Frontend: <http://prettygreenplants.local>
+- Backend: <http://prettygreenplants.local/neos>
 
 Deployment To Live
 ==================
