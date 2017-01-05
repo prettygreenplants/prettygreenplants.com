@@ -7,6 +7,14 @@
 /Configuration/*
 !/Configuration/Routes.yaml
 !/Configuration/Settings.yaml
+!/Configuration/Development/
+/Configuration/Development/*
+!/Configuration/Development/Settings.yaml
+!/Configuration/Development/Caches.yaml
+!/Configuration/Production/
+/Configuration/Production/*
+!/Configuration/Production/Settings.yaml
+!/Configuration/Production/Caches.yaml
 /Data/
 /Packages/*
 !/Packages/Sites/
