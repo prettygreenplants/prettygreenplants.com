@@ -9,3 +9,5 @@
 ./flow media:renderthumbnails
 ./flow node:repair
 ./flow cache:warmup
+
+sudo chown -R ubuntu:ubuntu /var/www/prettygreenplants

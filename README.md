@@ -113,12 +113,16 @@ AWS
 
 1. Get the latest code to AWS and install dependencies
 
-	bin/integrate.sh
+```bash
+bin/integrate.sh
+```
 
-2. Login to Docker Cloud and the redeploy `prettygreenplants` stack at https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general
+2. Login to Docker Cloud and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
 3. Login to `app` container's terminal and run the following commands to cleanup:
 
-	bin/cleanup.sh
+```bash
+bin/cleanup.sh
+```
 
 Note: Default document root is already in `/var/www` and FLOW_CONTEXT is already `Production`
 
@@ -142,11 +146,10 @@ Google Analytics
 Using package `TYPO3.Neos.GoogleAnalytics` to enable statistics in Google and also in Neos Backend.
 
 - On Google: The tracking id is set in Ansible template and provision the setting to live server. The result can be
-found on https://analytics.google.com/analytics/web/#report/defaultid/a42523446w121589281p127214097/
-- Inside Neos: The Google Developers Console is configured according to
-http://neos-google-analytics-integration.readthedocs.io/en/stable/ and the authentication setting with profile id is
-configured in Ansible template then provision to live server. The web console can be found at
-https://console.developers.google.com/apis/credentials?project=pretty-green-plants
+found [here](https://analytics.google.com/analytics/web/#report/defaultid/a42523446w121589281p127214097/)
+- Inside Neos: The Google Developers Console is configured according to the [doc](http://neos-google-analytics-integration.readthedocs.io/en/stable/)
+and the authentication setting with profile id is configured in Ansible template then provision to live server.
+The web console can be found [here](https://console.developers.google.com/apis/credentials?project=pretty-green-plants)
 
 TYPO3.Neos.Seo
 --------------
