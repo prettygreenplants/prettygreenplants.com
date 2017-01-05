@@ -1,6 +1,15 @@
 ---
 # tasks file for ansible/roles/app
 
+- name: Make sure application root exists
+  file:
+    path='{{ app_root }}'
+    owner='{{ www_user }}'
+    group='{{ www_group }}'
+    recurse=yes
+    state=directory
+  become: True
+
 - name: Clone app repository into app root
   git:
     accept_hostkey=yes
