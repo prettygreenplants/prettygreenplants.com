@@ -10,4 +10,4 @@
 ./flow node:repair
 ./flow cache:warmup
 
-chown -R prettygreenplants:prettygreenplants /var/www/prettygreenplants
+chown -R prettygreenplants:prettygreenplants /var/www
