@@ -16,7 +16,7 @@ else
 	fi
 
 	FLOW_CONTEXT=${FLOW_CONTEXT:=Development}
-	sed -e "s~NGINX_HOST~${NGINX_HOST}~g;s~FLOW_CONTEXT~${FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
+	sed -e "s~NGINX_HOST~${NGINX_HOST}~g;s~APP_CONTEXT~${FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf
 fi
 
 # Run normal command
