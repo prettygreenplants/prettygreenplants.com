@@ -6,11 +6,12 @@ TYPO3:
   Flow:
     persistence:
       backendOptions:
-        host: localhost
-        user: {{ lookup('ini', 'user section=client file=/tmp/{{ inventory_hostname }}') }}
-        password: {{ lookup('ini', 'password section=client file=/tmp/{{ inventory_hostname }}') }}
-        dbname: {{ database_name }}
+        host: 'db'
+        user: 'prettygreenplants'
+        password: 'prettygreenplants'
+        dbname: 'prettygreenplants'
 
+{% if 'live' in group_names %}
   Neos:
     GoogleAnalytics:
       authentication:
@@ -22,3 +23,4 @@ TYPO3:
         prettygreenplants:
           trackingId: 'UA-42523446-2'
           profileId: '127214097'
+{% endif %}

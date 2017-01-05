@@ -1,7 +1,7 @@
 db:
   image: mariadb:10.0
   volumes:
-    - /var/lib/mysql
+    - .:/var/www
   environment:
     MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
     MYSQL_USER: prettygreenplants
@@ -27,7 +27,6 @@ web:
     - "80:80"
   environment:
     NGINX_HOST: prettygreenplants
-    FLOW_CONTEXT: Development
     HOST_USER_ID: 1001
   volumes:
     - .:/var/www

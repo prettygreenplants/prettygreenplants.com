@@ -5,77 +5,32 @@
   git:
     accept_hostkey=yes
     dest='{{ app_root }}'
-    executable=/usr/local/cpanel/3rdparty/bin/git
     force=yes
     repo='{{ git_repo }}'
     version=master
 
-- name: Remove .htaccess to start clean
-  file:
-    path={{ app_root }}/Web/.htaccess
-    state=absent
-
 - name: Install project dependencies
-  shell: '{{ composer_path }} install --prefer-dist --no-dev -n chdir={{ app_root }}'
-
-- name: Adjust .htaccess
-  replace:
-    dest='{{ app_root }}/Web/.htaccess'
-    regexp='{{ item.search }}'
-    replace='{{ item.replace }}'
-  with_items:
-    - { search: '^# SetEnv FLOW_CONTEXT(.*)$', replace: 'SetEnv FLOW_CONTEXT {{ project_context }}' }
-    - { search: '^# SetEnv FLOW_ROOTPATH(.*)$', replace: 'SetEnv FLOW_ROOTPATH {{ app_root }}/' }
-    - { search: '^	RewriteEngine On(.*)$', replace: '	RewriteEngine On\n	RewriteCond %{HTTP_HOST} !^{{ domain_name }} [NC]\n	RewriteRule ^/?(.*)$ http://{{ domain_name }}/$1 [L,R=301]' }
-
-- name: Copy database connection file from remote to memory
-  shell: 'cat {{ database_login_path }}/{{ inventory_hostname }}'
-  register: db_info
-
-- name: Create temporary local db file for filling the Settings
-  local_action: copy
-    content='{{ db_info.stdout }}'
-    dest='/tmp/{{ inventory_hostname }}'
+  composer:
+    no_dev='{{ composer_dev_flag }}'
+    prefer_dist=yes
+    working_dir='{{ app_root }}'
 
 - name: Setup database connection
   template:
     dest='{{ app_root }}/Configuration/{{ project_context }}/Settings.yaml'
     src=Settings.yaml.j2
 
-- name: Clean up database connection file
-  local_action: file
-    path='/tmp/{{ inventory_hostname }}'
-    state=absent
-
-- name: Make sure directory for web root exists
+- name: Make sure files and directories permissions are correct
   file:
-    path='{{ web_root }}'
+    path='{{ app_root }}'
+    owner='{{ www_user }}'
+    group='{{ www_group }}'
+    recurse=yes
     state=directory
+  become: True
 
-- name: Create symlink to web root
+- name: Clean up files and directories
   file:
-    path='{{ web_root }}/{{ item }}'
-    src='{{ app_root }}/Web/{{ item }}'
-    state=link
-  with_items: '{{ web_root_files }}'
-
-- name: Copy index.php to web root
-  copy:
-    dest='{{ web_root }}/index.php'
-    mode=0644
-    remote_src=True
-    src='{{ app_root }}/Web/index.php'
-
-- name: Clean up
-  shell: '{{ php_path }} ./flow {{ item }} chdir={{ app_root }}'
-  with_items:
-    - flow:cache:flush --force
-    - doctrine:migrate
-    - resource:clean
-    - resource:publish
-    - media:clearthumbnails
-    - media:renderthumbnails
-    - cache:warmup
-
-- name: Execute node:repair with auto answer yes
-  shell: 'yes y | {{ php_path }} ./flow node:repair chdir={{ app_root }}'
+    path='{{ app_root }}/{{ item }}'
+    state=absent
+  with_items: '{{ temp_files }}'

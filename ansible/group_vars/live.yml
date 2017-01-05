@@ -1,5 +1,17 @@
 ---
 
-domain_name: 'prettygreenplants.com'
-database_name: 'visayinf_prettygreenplants'
-web_root: '/home/visayinf/public_html/prettygreenplants.com'
+app_root: '/var/www/{{ project_name }}'
+www_user: 'ubuntu'
+www_group: 'ubuntu'
+
+project_context: 'Production'
+composer_dev_flag: 'yes'
+
+temp_files:
+  - 'Configuration/PackageStates.php'
+  - 'Data/Logs/Exceptions'
+  - 'Data/Logs/I18n_Development.log'
+  - 'Data/Logs/Security_Development.log'
+  - 'Data/Logs/System_Development.log'
+  - 'Data/Temporary'
+  - 'Web/_Resources'

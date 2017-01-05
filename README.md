@@ -48,6 +48,15 @@ Verify with `docker-compose -v` and if not yet installed, run:
 
 Refer to <https://docs.docker.com/compose/install/>
 
+Ansible
+-------
+
+Verify with `ansible --version` and if it is lower than 2.0 or is not yet installed, run:
+
+	sudo add-apt-repository ppa:ansible/ansible -y
+	sudo apt-get update
+	sudo apt-get -y --force-yes install ansible
+
 Installation
 ============
 
@@ -99,19 +108,19 @@ Verify:
 Deployment To Live
 ==================
 
-Ansible
--------
+AWS
+---
 
-Verify with `ansible --version` and if it is lower than 2.0 or is not yet installed, run:
+1. Get the latest code to AWS and install dependencies
 
-	sudo add-apt-repository ppa:ansible/ansible -y
-	sudo apt-get update
-	sudo apt-get -y --force-yes install ansible
+	bin/integrate.sh
 
-Release
--------
+2. Login to Docker Cloud and the redeploy `prettygreenplants` stack at https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general
+3. Login to `app` container's terminal and run the following commands to cleanup:
 
-	bin/release.sh
+	bin/cleanup.sh
+
+Note: Default document root is already in `/var/www` and FLOW_CONTEXT is already `Production`
 
 Plugins
 =======

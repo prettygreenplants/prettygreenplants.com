@@ -1,13 +1,12 @@
 ---
 
+# All available var here with global default values
+# Empty var needs to be defined in stage var
 project_name: 'prettygreenplants'
-project_context: 'Production'
-database_login_path: '/home/visayinf/.my.cnf'
 git_repo: 'git@github.com:visay/PrettyGreenPlants.git'
-app_root: '/home/visayinf/{{ project_name }}-{{ inventory_hostname }}'
-web_root_files:
-  - .htaccess
-  - _Resources
-  - robots.txt
-php_path: '/usr/local/bin/php'
-composer_path: '{{ php_path }} /home/visayinf/bin/composer'
+temp_files: []
+app_root: ''
+project_context: ''
+www_user: ''
+www_group: ''
+composer_dev_flag: ''

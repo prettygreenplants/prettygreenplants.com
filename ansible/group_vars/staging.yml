@@ -1,5 +1,15 @@
 ---
 
-domain_name: ''
-database_name: ''
-web_root: ''
+app_root: ''
+www_user: ''
+www_group: ''
+
+project_context: 'Development'
+composer_dev_flag: 'no'
+
+temp_files:
+  - 'Configuration/PackageStates.php'
+  - 'Data/Logs/Exceptions'
+  - 'Data/Logs/System.log'
+  - 'Data/Temporary'
+  - 'Web/_Resources'

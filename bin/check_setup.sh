@@ -26,7 +26,7 @@ command -v docker-compose >/dev/null 2>&1 ||
 command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 command ansible --version | grep 2 >/dev/null 2>&1 ||
-	{ echo -e ${YELLOW}"- ANSIBLE version 2 or higher is only required when deployment. Please check REAME.md file."${NC} >&2; WARNING="1"; }
+	{ echo -e ${YELLOW}"- ANSIBLE version 2 or higher is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 
 if [ ${ERROR} == "0" ]; then
 	if [ ${WARNING} == "0" ]; then
@@ -34,6 +34,6 @@ if [ ${ERROR} == "0" ]; then
 	else
 		echo
 		echo -e ${GREEN}"+ Your local environment looks good for development!"${NC}
-		echo -e ${YELLOW}"+ Anyway, there may be issues when deploying to live!"${NC}
+		echo -e ${YELLOW}"+ Anyway, there may be issues when sync content from live to local!"${NC}
 	fi
 fi
