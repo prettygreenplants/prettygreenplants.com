@@ -25,8 +25,6 @@ web:
 #  image: visay/prettygreenplants_nginx:latest
   ports:
     - "80:80"
-  environment:
-    WWW_USER_ID: 1001
   volumes:
     - .:/var/www
   links:

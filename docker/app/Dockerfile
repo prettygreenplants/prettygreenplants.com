@@ -37,7 +37,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ENV WWW_USER prettygreenplants
 ENV WWW_USER_ID 1000
-ENV WWW_ROOT /var/www
+ENV FLOW_CONTEXT Development
 
 # Create webserver user and group
 RUN adduser --system --shell /bin/bash --no-create-home --uid ${WWW_USER_ID} --group --disabled-password --disabled-login ${WWW_USER}
@@ -48,14 +48,13 @@ COPY php-fpm.conf /etc/php/7.0/fpm/
 COPY php.ini      /etc/php/7.0/fpm/
 COPY php-cli.ini  /etc/php/7.0/cli/php.ini
 
-RUN sed -i -e "s~DEFAULT_WWW_USER~${WWW_USER}~g" /etc/php/7.0/fpm/pool.d/www.conf
+RUN sed -i -e "s~###DEFAULT_WWW_USER###~${WWW_USER}~g" /etc/php/7.0/fpm/pool.d/www.conf
 
 # Set entrypoint to fix volume mount permission
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-# Set workdir to project root
-WORKDIR ${WWW_ROOT}
+WORKDIR /var/www
 
 # Expose port and by default start php-fpm
 EXPOSE 9000

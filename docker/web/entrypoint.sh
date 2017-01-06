@@ -5,36 +5,31 @@ set -e
 
 DEFAULT_WWW_USER="prettygreenplants"
 DEFAULT_WWW_USER_ID="1000"
-DEFAULT_NGINX_HOST="prettygreenplants.local"
-DEFAULT_WWW_ROOT="/var/www"
 DEFAULT_FLOW_CONTEXT="Development"
+DEFAULT_NGINX_HOST="prettygreenplants.local"
 
-if [ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]; then
-	echo "Updating user ${DEFAULT_WWW_USER} to ${WWW_USER}!"
-	usermod -d /home/${WWW_USER} -l ${WWW_USER} ${DEFAULT_WWW_USER}
-	groupmod -n ${WWW_USER} ${DEFAULT_WWW_USER}
+if [[ -v APP_ENV_WWW_USER ]] && [[ -n "${APP_ENV_WWW_USER}" ]] && [[ "${APP_ENV_WWW_USER}" != "${DEFAULT_WWW_USER}" ]]; then
+	echo "Updating user ${DEFAULT_WWW_USER} to ${APP_ENV_WWW_USER}!"
+	usermod -d /home/${APP_ENV_WWW_USER} -l ${APP_ENV_WWW_USER} ${DEFAULT_WWW_USER}
+	groupmod -n ${APP_ENV_WWW_USER} ${DEFAULT_WWW_USER}
+	DEFAULT_WWW_USER="${APP_ENV_WWW_USER}"
 fi
 
 # Update uid of the owner
-if [ "${WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]; then
-	echo "Updating ${WWW_USER} user and group ID to ${WWW_USER_ID}!"
-	usermod --uid ${WWW_USER_ID} ${WWW_USER}
-	groupmod --gid ${WWW_USER_ID} ${WWW_USER}
+if [[ -v APP_ENV_WWW_USER_ID ]] && [[ -n "${APP_ENV_WWW_USER_ID}" ]] && [[ "${APP_ENV_WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]]; then
+	echo "Updating ${DEFAULT_WWW_USER} user and group ID to ${APP_ENV_WWW_USER_ID}!"
+	usermod --uid ${APP_ENV_WWW_USER_ID} ${DEFAULT_WWW_USER}
+	groupmod --gid ${APP_ENV_WWW_USER_ID} ${DEFAULT_WWW_USER}
+fi
+
+if [[ -v APP_ENV_FLOW_CONTEXT ]] && [[ -n "${APP_ENV_FLOW_CONTEXT}" ]] && [[ "${APP_ENV_FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]]; then
+	echo "Updating vhost to use the right context!"
+	sed -i -e "s~FLOW_CONTEXT     ${DEFAULT_FLOW_CONTEXT}~FLOW_CONTEXT     ${APP_ENV_FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf
 fi
 
 if [ "${NGINX_HOST}" != "${DEFAULT_NGINX_HOST}" ]; then
 	echo "Updating vhost to use the right domain!"
 	sed -i -e "s~${DEFAULT_NGINX_HOST}~${NGINX_HOST}~g" /etc/nginx/conf.d/default.conf
-fi
-
-if [ "${WWW_ROOT}" != "${DEFAULT_WWW_ROOT}" ]; then
-	echo "Updating vhost to use the right document root!"
-	sed -i -e "s~${DEFAULT_WWW_ROOT}~${WWW_ROOT}~g" /etc/nginx/conf.d/default.conf
-fi
-
-if [ "${FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]; then
-	echo "Updating vhost to use the right context!"
-	sed -i -e "s~${DEFAULT_FLOW_CONTEXT}~${FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf
 fi
 
 # Run normal command
