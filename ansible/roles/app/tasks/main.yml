@@ -3,11 +3,14 @@
 
 - name: Make sure application root exists
   file:
-    path='{{ app_root }}'
+    path='{{ item }}'
     owner='{{ www_user }}'
     group='{{ www_group }}'
     recurse=yes
     state=directory
+  with_items:
+    - '{{ app_root }}'
+    - '/var/www/backup/{{ project_name }}'
   become: True
 
 - name: Clone app repository into app root

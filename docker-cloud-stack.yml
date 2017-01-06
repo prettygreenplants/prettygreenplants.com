@@ -1,0 +1,38 @@
+app:
+  autoredeploy: true
+  environment:
+    - FLOW_CONTEXT=Production
+  image: 'visay/prettygreenplants_app:latest'
+  links:
+    - db
+  volumes:
+    - '/var/www/prettygreenplants:/var/www'
+backup:
+  environment:
+    - BACKUP_GID=1000
+    - BACKUP_UID=1000
+  image: 'confirm/mysql-backup:latest'
+  links:
+    - db
+  volumes:
+    - '/var/www/backup/prettygreenplants:/backup'
+db:
+  environment:
+    - MYSQL_DATABASE=prettygreenplants
+    - MYSQL_PASSWORD=prettygreenplants
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_USER=prettygreenplants
+  image: 'mariadb:10.0'
+  volumes:
+    - '/var/www/prettygreenplants:/var/www'
+web:
+  autoredeploy: true
+  environment:
+    - NGINX_HOST=prettygreenplants.com
+  image: 'visay/prettygreenplants_nginx:latest'
+  links:
+    - app
+  ports:
+    - '80:80'
+  volumes:
+    - '/var/www/prettygreenplants:/var/www'

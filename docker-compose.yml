@@ -1,28 +1,28 @@
 db:
-  image: mariadb:10.0
+  image: 'mariadb:10.0'
   volumes:
     - .:/var/www
   environment:
-    MYSQL_RANDOM_ROOT_PASSWORD: 'yes'
-    MYSQL_USER: prettygreenplants
-    MYSQL_PASSWORD: prettygreenplants
-    MYSQL_DATABASE: prettygreenplants
+    - MYSQL_ROOT_PASSWORD=root
+    - MYSQL_USER=prettygreenplants
+    - MYSQL_PASSWORD=prettygreenplants
+    - MYSQL_DATABASE=prettygreenplants
 
 # App container which provides the php environment
 app:
   # For development of the image comment out the 'image' line and replace with the next line
-  build: docker/app
-  #image: visay/prettygreenplants_app:latest
+  build: 'docker/app'
+  #image: 'visay/prettygreenplants_app:latest'
   volumes:
     - .:/var/www
   links:
     - db
   environment:
-    WWW_USER_ID: 1001
+    - WWW_USER_ID=1001
 
 web:
-  build: docker/web
-#  image: visay/prettygreenplants_nginx:latest
+  build: 'docker/web'
+#  image: 'visay/prettygreenplants_nginx:latest'
   ports:
     - "80:80"
   volumes:
