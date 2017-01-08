@@ -33,13 +33,22 @@ page = Page {
 				normal.attributes.class = ''
 			}
 
-			socialMedia = Neos.Neos:Content {
+			banner = Neos.Neos:Content {
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/Banner.html'
 				emailText = "Email"
 				facebookText = "Facebook"
-
-				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/SocialMedia.html'
 				email = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.email')}
 				facebookLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.facebook')}
+			}
+
+			footer = Neos.Fusion:Template {
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/Footer.html'
+				year = ${Date.year(Date.today())}
+				copyrights = ${Configuration.setting('Sokly.PrettyGreenPlants.copyrights')}
+				toggleBeta = ${Configuration.setting('Sokly.PrettyGreenPlants.toggleBeta')}
+				menu = Menu {
+					templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/FooterMenu.html'
+				}
 			}
 		}
 

@@ -4,6 +4,8 @@ Sokly:
     socialMedia:
       email: 'info@prettygreenplants.com'
       facebook: 'https://www.facebook.com/prettygreenplants'
+    # TODO: Move copyrights text to language file
+    copyrights: 'All Rights Reserved, PrettyGreenPlants.com'
 
 ## Overwrite Global Settings
 Neos:

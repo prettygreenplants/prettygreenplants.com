@@ -224,7 +224,7 @@ Content Types and Customization
 Backend Login Wallpaper
 -----------------------
 
-Overwrite the default wall paper in the site setting.
+Overwrite the default wallpaper in the site setting.
 
 Main Menu
 ---------

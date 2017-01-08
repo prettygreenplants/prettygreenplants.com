@@ -23,13 +23,13 @@
 
 	<!-- custom metadata managed by the site -->
 	<f:section name="metaData">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 		<meta name="author" content="Visay Keo">
 	</f:section>
 
 	<f:section name="stylesheets">
 		<!-- Favicon -->
+		<link rel="shortcut icon" href="{f:uri.resource(path: 'img/favicon/favicon.ico', package: 'Sokly.PrettyGreenPlants')}">
 		<link rel="apple-touch-icon" sizes="57x57" href="{f:uri.resource(path: 'img/favicon/apple-icon-57x57.png', package: 'Sokly.PrettyGreenPlants')}">
 		<link rel="apple-touch-icon" sizes="60x60" href="{f:uri.resource(path: 'img/favicon/apple-icon-60x60.png', package: 'Sokly.PrettyGreenPlants')}">
 		<link rel="apple-touch-icon" sizes="72x72" href="{f:uri.resource(path: 'img/favicon/apple-icon-72x72.png', package: 'Sokly.PrettyGreenPlants')}">
@@ -48,60 +48,59 @@
 		<meta name="msapplication-TileImage" content="{f:uri.resource(path: 'img/favicon/ms-icon-144x144.png', package: 'Sokly.PrettyGreenPlants')}">
 		<meta name="theme-color" content="#ffffff">
 
-		<!-- Put your stylesheet inclusions here, they will be included in your website by TypoScript -->
-		<!-- Bootstrap Core CSS -->
-		<link href="{f:uri.resource(path: 'css/bootstrap.min.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet">
-
-		<!-- Custom CSS -->
-		<link href="{f:uri.resource(path: 'css/landing-page.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet">
-
 		<!-- Custom Fonts -->
-		<link href="{f:uri.resource(path: 'font-awesome/css/font-awesome.min.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet" type="text/css">
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Raleway:400,300,500,600,700,800,900" rel="stylesheet" type="text/css">
+
+		<!-- Put your stylesheet inclusions here, they will be included in your website by TypoScript -->
+		<!-- CSS -->
+		<link href="{f:uri.resource(path: 'css/edd.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet" type="text/css" media="all">
+		<link href="{f:uri.resource(path: 'css/bootstrap.min.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet" type="text/css" media="all">
+		<link href="{f:uri.resource(path: 'css/style.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet" type="text/css" media="all">
+		<link href="{f:uri.resource(path: 'css/font-awesome.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet" type="text/css" media="all">
+
+		<!-- UNCOMMENT THE FOLLOWING LINE TO ACTIVATE THE BOXED LAYOUT (see the documentation for more)-->
+		<!--
+		<link href="{f:uri.resource(path: 'css/boxed.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet">
+		-->
+
+		<!-- CHANGE THEME SKIN COLOR HERE (replace blue with any other color from assets/css/skins/ folder) -->
+		<link href="{f:uri.resource(path: 'css/green.css', package: 'Sokly.PrettyGreenPlants')}" rel="stylesheet">
 	</f:section>
 
 	<f:section name="headScripts">
 		<!-- Put your scripts inclusions for the head here, they will be included in your website by TypoScript -->
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
+
 	</f:section>
 </head>
 <body>
+
 <f:section name="body">
+	<div class="boxedlayout">
+		<f:if condition="{toggleBeta}">
+			<!-- HEADER
+			================================================== -->
+			{parts.mainMenu -> f:format.raw()}
+		</f:if>
 
-	<f:if condition="{toggleBeta}">
-		<!-- Navigation -->
-		{parts.mainMenu -> f:format.raw()}
-	</f:if>
+		<!-- PAGE CONTENT
+		================================================== -->
+		{parts.banner -> f:format.raw()}
 
-	<!-- Header -->
-	<div class="intro-header">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12">
-					<div class="intro-message">
-						<h1>Coming Soon</h1>
-						<h3>Pretty Green Plants</h3>
-						<hr class="intro-divider">
-						{parts.socialMedia -> f:format.raw()}
-					</div>
-				</div>
-			</div>
-		</div>
+		<!-- FOOTER
+		================================================== -->
+		{parts.footer -> f:format.raw()}
 	</div>
 </f:section>
 
 <f:section name="bodyScripts">
 	<!-- Put your scripts inclusions for the end of the body here, they will be included in your website by TypoScript -->
-	<!-- jQuery -->
 	<script src="{f:uri.resource(path: 'js/jquery.js', package: 'Sokly.PrettyGreenPlants')}"></script>
-
-	<!-- Bootstrap Core JavaScript -->
 	<script src="{f:uri.resource(path: 'js/bootstrap.min.js', package: 'Sokly.PrettyGreenPlants')}"></script>
+	<script src="{f:uri.resource(path: 'js/masonry.js', package: 'Sokly.PrettyGreenPlants')}"></script>
+	<script src="{f:uri.resource(path: 'js/imagesloaded.js', package: 'Sokly.PrettyGreenPlants')}"></script>
+	<script src="{f:uri.resource(path: 'js/SmoothScroll.js', package: 'Sokly.PrettyGreenPlants')}"></script>
+	<script src="{f:uri.resource(path: 'js/init.js', package: 'Sokly.PrettyGreenPlants')}"></script>
+	<script src="{f:uri.resource(path: 'js/anim.js', package: 'Sokly.PrettyGreenPlants')}"></script>
 </f:section>
 </body>
 </html>
