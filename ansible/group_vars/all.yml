@@ -4,9 +4,13 @@
 # Empty var needs to be defined in stage var
 project_name: 'prettygreenplants'
 git_repo: 'git@github.com:visay/PrettyGreenPlants.git'
-temp_files: []
+
 app_root: ''
-project_context: ''
 www_user: ''
 www_group: ''
+
+project_context: ''
 composer_dev_flag: ''
+release_version: ''
+
+temp_files: []

@@ -19,7 +19,7 @@
     dest='{{ app_root }}'
     force=yes
     repo='{{ git_repo }}'
-    version=master
+    version='{{ release_version }}'
 
 - name: Install project dependencies
   composer:

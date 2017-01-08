@@ -6,6 +6,7 @@ www_group: 'ubuntu'
 
 project_context: 'Production'
 composer_dev_flag: 'yes'
+release_version: 'stable'
 
 temp_files:
   - 'Configuration/PackageStates.php'
