@@ -1,6 +1,0 @@
----
-# defaults file for rsync
-
-data_dir:
-  flow:
-    - Data/Persistent/

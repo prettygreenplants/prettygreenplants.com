@@ -1,13 +1,11 @@
 #!/usr/bin/env bash
 
-./flow flow:cache:flush -f
-./flow database:setcharset
-./flow doctrine:migrate
-./flow resource:clean
-./flow resource:publish
-./flow media:clearthumbnails
-./flow media:renderthumbnails
-./flow node:repair
-./flow cache:warmup
-
-chown -R prettygreenplants:prettygreenplants /var/www
+sudo -u prettygreenplants -H ./flow flow:cache:flush --force
+sudo -u prettygreenplants -H ./flow database:setcharset
+sudo -u prettygreenplants -H ./flow doctrine:migrate
+sudo -u prettygreenplants -H ./flow resource:clean
+sudo -u prettygreenplants -H ./flow resource:publish
+sudo -u prettygreenplants -H ./flow media:clearthumbnails
+sudo -u prettygreenplants -H ./flow media:renderthumbnails
+sudo -u prettygreenplants -H ./flow node:repair
+sudo -u prettygreenplants -H ./flow cache:warmup

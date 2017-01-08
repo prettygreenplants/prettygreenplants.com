@@ -84,17 +84,9 @@ Start docker containers:
 
 	docker-compose up -d
 
-Make sure your user is the owner of everything in document root:
-
-	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants.local
-
 Restore content from live to local:
 
-	bin/syncontent
-
-Run the command to make sure you are the owner again:
-
-	sudo chown -R ${USER}:${USER} ~/dev/prettygreenplants.local
+	bin/syncontent.sh
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and add the following line:
 

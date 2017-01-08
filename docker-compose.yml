@@ -7,6 +7,8 @@ db:
     - MYSQL_USER=prettygreenplants
     - MYSQL_PASSWORD=prettygreenplants
     - MYSQL_DATABASE=prettygreenplants
+  ports:
+    - "3306:3306"
 
 # App container which provides the php environment
 app:

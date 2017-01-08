@@ -1,4 +1,0 @@
-/ansible/hosts.ini
-/ansible/playbook.retry
-/config/master/*
-.DS_Store

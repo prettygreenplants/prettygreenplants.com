@@ -7,15 +7,6 @@ app:
     - db
   volumes:
     - '/var/www/prettygreenplants:/var/www'
-backup:
-  environment:
-    - BACKUP_GID=1000
-    - BACKUP_UID=1000
-  image: 'confirm/mysql-backup:latest'
-  links:
-    - db
-  volumes:
-    - '/var/www/backup/prettygreenplants:/backup'
 db:
   environment:
     - MYSQL_DATABASE=prettygreenplants

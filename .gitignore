@@ -1,4 +1,5 @@
 /ansible/ansible.log
+/backup/
 /bin/*
 !/bin/check_setup.sh
 !/bin/cleanup.sh
