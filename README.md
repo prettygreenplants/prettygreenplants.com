@@ -22,6 +22,18 @@ Verify with `php -v` and if not yet installed or not version 7.0, run:
 
 	sudo apt-get install php7.0-cli
 
+php extensions
+--------------
+
+Make sure these extensions are installed:
+
+- mbstring
+- dom
+
+Verify with `php -m` and see if any of them are not in the list, re-install all with:
+
+	sudo apt-get install php7.0-mbstring php7.0-xml
+
 composer
 --------
 
