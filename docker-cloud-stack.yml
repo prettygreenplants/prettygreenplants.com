@@ -5,17 +5,21 @@ app:
   image: 'visay/prettygreenplants_app:latest'
   links:
     - db
+  target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
 db:
+  command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
   environment:
     - MYSQL_DATABASE=prettygreenplants
     - MYSQL_PASSWORD=prettygreenplants
     - MYSQL_ROOT_PASSWORD=root
     - MYSQL_USER=prettygreenplants
-  image: 'mariadb:10.0'
+  image: 'mariadb:10.1'
+  target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
+    - /var/lib/mysql
 web:
   autoredeploy: true
   environment:
@@ -25,5 +29,6 @@ web:
     - app
   ports:
     - '80:80'
+  target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'

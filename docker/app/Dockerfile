@@ -1,5 +1,5 @@
 # Pull base image
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER Sokly Phal <sokly@visay.info>
 MAINTAINER Visay Keo  <keo@visay.info>
@@ -12,27 +12,25 @@ ENV LC_ALL en_US.UTF-8
 ENV DEBIAN_FRONTEND noninteractive
 
 # Upgrade the base system
-RUN apt-get update && apt-get upgrade -y -q --no-install-recommends && apt-get install -y --no-install-recommends software-properties-common
-
-# Add ppa for PHP 7.0
-RUN apt-get install -y language-pack-en-base && LC_ALL=en_US.UTF-8 add-apt-repository -y ppa:ondrej/php
+RUN apt-get update && apt-get upgrade -y -q --no-install-recommends
 
 # Install packages as per recommendation (https://docs.docker.com/articles/dockerfile_best-practices/)
 # And clean up APT
 RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
-    imagemagick \
     ghostscript \
+    imagemagick \
     sendmail \
-    php7.0-fpm \
+    sudo \
     php7.0-cli \
-    php7.0-mysql \
-    php7.0-gd \
-    php7.0-mbstring \
-    php7.0-xml \
     php7.0-curl \
+    php7.0-fpm \
+    php7.0-gd \
     php7.0-ldap \
-    php7.0-imagick \
+    php7.0-mbstring \
+    php7.0-mysql \
+    php7.0-xml \
+    php-imagick \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV WWW_USER prettygreenplants
