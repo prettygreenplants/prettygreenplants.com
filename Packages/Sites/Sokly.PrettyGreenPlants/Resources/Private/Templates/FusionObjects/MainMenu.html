@@ -1,5 +1,5 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
-{namespace ts=TYPO3\TypoScript\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
+{namespace fusion=Neos\Fusion\ViewHelpers}
 
 <f:render section="itemList" arguments="{items: items, site: site}" />
 
@@ -15,14 +15,14 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<a class="navbar-brand topnav" href="{neos:uri.node(node: '~')}">{ts:render(path: 'siteTitle')}</a>
+				<a class="navbar-brand topnav" href="{neos:uri.node(node: '~')}">{fusion:render(path: 'siteTitle')}</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="collapse navbar-collapse" id="navbar-main-collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<f:for each="{items}" as="item">
-						<li class="{ts:render(path: '{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}">
+						<li class="{fusion:render(path: '{item.state}.attributes.class', context: {item: item}) -> f:format.raw()}">
 							<neos:link.node node="{item.node}">{item.label}</neos:link.node>
 						</li>
 					</f:for>

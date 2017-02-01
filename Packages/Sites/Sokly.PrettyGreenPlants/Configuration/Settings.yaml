@@ -6,7 +6,7 @@ Sokly:
       facebook: 'https://www.facebook.com/prettygreenplants'
 
 ## Overwrite Global Settings
-TYPO3:
+Neos:
   Neos:
     userInterface:
       backendLoginForm:

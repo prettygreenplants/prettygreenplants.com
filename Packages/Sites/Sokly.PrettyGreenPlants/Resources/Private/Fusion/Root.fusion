@@ -1,19 +1,19 @@
 /**
- * Root TypoScript template for the Pretty Green Plants site
+ * Root Fusion template for the Pretty Green Plants site
  */
 page = Page {
 	head {
-		metaData = TYPO3.TypoScript:Template {
+		metaData = Neos.Fusion:Template {
 			templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/Page/Default.html'
 			sectionName = 'metaData'
 		}
 
-		stylesheets.site = TYPO3.TypoScript:Template {
+		stylesheets.site = Neos.Fusion:Template {
 			templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/Page/Default.html'
 			sectionName = 'stylesheets'
 		}
 
-		javascripts.site = TYPO3.TypoScript:Template {
+		javascripts.site = Neos.Fusion:Template {
 			templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/Page/Default.html'
 			sectionName = 'headScripts'
 		}
@@ -27,23 +27,23 @@ page = Page {
 
 		parts {
 			mainMenu = Menu {
-				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/TypoScriptObjects/MainMenu.html'
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/MainMenu.html'
 				siteTitle = ${q(node.context.currentSite).property('name')}
 				current.attributes.class = 'active'
 				normal.attributes.class = ''
 			}
 
-			socialMedia = TYPO3.Neos:Content {
+			socialMedia = Neos.Neos:Content {
 				emailText = "Email"
 				facebookText = "Facebook"
 
-				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/TypoScriptObjects/SocialMedia.html'
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/SocialMedia.html'
 				email = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.email')}
 				facebookLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.facebook')}
 			}
 		}
 
-		javascripts.site = TYPO3.TypoScript:Template {
+		javascripts.site = Neos.Fusion:Template {
 			templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/Page/Default.html'
 			sectionName = 'bodyScripts'
 		}

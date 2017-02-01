@@ -1,0 +1,9 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+
+<ul class="footermenu fright">
+	<f:for each="{items}" as="item">
+		<li>
+			<neos:link.node node="{item.node}">{item.label}</neos:link.node>
+		</li>
+	</f:for>
+</ul>

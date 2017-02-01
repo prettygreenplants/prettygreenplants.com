@@ -2,7 +2,7 @@
 # Global Settings which apply to all contexts
 #
 
-TYPO3:
+Neos:
   Flow:
     persistence:
       backendOptions:

@@ -1,0 +1,17 @@
+<footer class="themefooter section medium-padding bg-graphite">
+	<!-- /grid -->
+	<div class="sectioncredits">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<span class="credits-left fleft">{year -> f:format.raw()} &copy; {copyrights -> f:format.raw()}</span>
+					<f:if condition="{toggleBeta}">
+						{menu -> f:format.raw()}
+					</f:if>
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>
+		<!-- /grid -->
+	</div>
+</footer>
