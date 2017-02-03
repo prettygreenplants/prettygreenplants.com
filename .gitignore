@@ -4,7 +4,7 @@
 !/bin/check_setup.sh
 !/bin/cleanup.sh
 !/bin/integrate.sh
-!/bin/syncontent
+!/bin/syncontent.sh
 /Build/
 /Configuration/*
 !/Configuration/Routes.yaml
