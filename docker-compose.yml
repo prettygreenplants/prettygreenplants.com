@@ -12,6 +12,9 @@ db:
 #  ports:
 #    - "3306:3306"
 
+redis:
+  image: 'redis:alpine'
+
 # App container which provides the php environment
 app:
   # For development of the image comment out the 'image' line and replace with the next line
@@ -21,6 +24,7 @@ app:
     - .:/var/www
   links:
     - db
+    - redis
   environment:
     - WWW_USER_ID=1001
 #    - WWW_USER=prettygreenplants

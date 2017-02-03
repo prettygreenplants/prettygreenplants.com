@@ -5,6 +5,7 @@ app:
   image: 'visay/prettygreenplants_app:latest'
   links:
     - db
+    - redis
   target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
@@ -20,6 +21,9 @@ db:
   volumes:
     - '/var/www/prettygreenplants:/var/www'
     - /var/lib/mysql
+redis:
+  image: 'redis:alpine'
+  target_num_containers: 1
 web:
   autoredeploy: true
   environment:

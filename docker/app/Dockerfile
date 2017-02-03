@@ -31,6 +31,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php7.0-mysql \
     php7.0-xml \
     php-imagick \
+    php-redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 ENV WWW_USER prettygreenplants
