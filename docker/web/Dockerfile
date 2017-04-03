@@ -1,10 +1,9 @@
 # Pull base image
 FROM nginx:alpine
 
-MAINTAINER Sokly Phal <sokly@visay.info>
-MAINTAINER Visay Keo  <keo@visay.info>
+MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
 
-ENV NGINX_HOST prettygreenplants.local
+ENV NGINX_HOST local.prettygreenplants
 
 # Install usermod command for alpine - should be included by default from alpine
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories

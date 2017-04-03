@@ -1,11 +1,10 @@
 # Pull base image
 FROM ubuntu:16.04
 
-MAINTAINER Sokly Phal <sokly@visay.info>
-MAINTAINER Visay Keo  <keo@visay.info>
+MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
 
 # Set the locales
-RUN locale-gen en_US.UTF-8 en_GB.UTF-8 de_DE.UTF-8 es_ES.UTF-8 fr_FR.UTF-8 it_IT.UTF-8 km_KH sv_SE.UTF-8
+RUN locale-gen en_US.UTF-8 km_KH
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8

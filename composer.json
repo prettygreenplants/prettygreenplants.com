@@ -1,9 +1,9 @@
 {
-    "name": "sokly/pretty-green-plants-distribution",
-    "description": "Neos Base Distribution for Sokly's Pretty Green Plants website.",
+    "name": "prettygreenplants/prettygreenplants.com",
+    "description": "Neos Base Distribution for Pretty Green Plants website.",
     "license": "GPL-3.0+",
     "support": {
-        "email": "sokly@visay.info"
+        "email": "info@prettygreenplants.com"
     },
     "config": {
         "vendor-dir": "Packages/Libraries",

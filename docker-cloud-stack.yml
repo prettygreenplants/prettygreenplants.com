@@ -2,7 +2,7 @@ app:
   autoredeploy: true
   environment:
     - FLOW_CONTEXT=Production
-  image: 'visay/prettygreenplants_app:latest'
+  image: 'prettygreenplants/app:latest'
   links:
     - db
     - redis
@@ -28,7 +28,7 @@ web:
   autoredeploy: true
   environment:
     - NGINX_HOST=prettygreenplants.com
-  image: 'visay/prettygreenplants_nginx:latest'
+  image: 'prettygreenplants/nginx:latest'
   links:
     - app
   ports:

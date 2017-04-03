@@ -19,7 +19,7 @@ redis:
 app:
   # For development of the image comment out the 'image' line and replace with the next line
   build: 'docker/app'
-  #image: 'visay/prettygreenplants_app:latest'
+  #image: 'prettygreenplants/app:latest'
   volumes:
     - .:/var/www
   links:
@@ -32,7 +32,7 @@ app:
 
 web:
   build: 'docker/web'
-#  image: 'visay/prettygreenplants_nginx:latest'
+#  image: 'prettygreenplants/nginx:latest'
   ports:
     - "80:80"
   volumes:
@@ -40,4 +40,4 @@ web:
   links:
     - app
 #  environment:
-#    - NGINX_HOST=prettygreenplants.local
+#    - NGINX_HOST=local.prettygreenplants

@@ -74,11 +74,11 @@ Installation
 
 Get the code:
 
-	git clone git@github.com:visay/PrettyGreenPlants.git ~/dev/prettygreenplants.local
+	git clone git@github.com:prettygreenplants/prettygreenplants.com.git ~/dev/prettygreenplants.com
 
 Go into project directory:
 
-	cd ~/dev/prettygreenplants.local
+	cd ~/dev/prettygreenplants.com
 
 Check requirements by running the following command and you should get the message `- Everything looks good!`:
 
@@ -102,12 +102,12 @@ Restore content from live to local:
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and add the following line:
 
-	0.0.0.0 prettygreenplants.local www.prettygreenplants.local
+	0.0.0.0 local.prettygreenplants www.local.prettygreenplants
 
 Verify:
 
-- Frontend: <http://prettygreenplants.local>
-- Backend: <http://prettygreenplants.local/neos>
+- Frontend: <http://local.prettygreenplants>
+- Backend: <http://local.prettygreenplants/neos>
 
 Deployment To Live
 ==================

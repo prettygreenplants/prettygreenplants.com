@@ -6,7 +6,7 @@ set -e
 DEFAULT_WWW_USER="prettygreenplants"
 DEFAULT_WWW_USER_ID="1000"
 DEFAULT_FLOW_CONTEXT="Development"
-DEFAULT_NGINX_HOST="prettygreenplants.local"
+DEFAULT_NGINX_HOST="local.prettygreenplants"
 
 # Update system user if defined differently
 if [[ -n "${APP_ENV_WWW_USER}" ]] && [[ "${APP_ENV_WWW_USER}" != "${DEFAULT_WWW_USER}" ]]; then
