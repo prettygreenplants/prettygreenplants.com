@@ -24,6 +24,8 @@
   - name: Configure database connection
     template: src=Settings.yaml.j2
               dest="{{ base_dir }}/Configuration/Development/Settings.yaml"
+    vars:
+      - aws_cloud: False
 
   - name: Restore database from last backup
     shell: docker-compose -f {{ base_dir }}/docker-compose-maintainance.yml run --rm restore

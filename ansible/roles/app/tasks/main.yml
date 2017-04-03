@@ -31,6 +31,8 @@
   template:
     dest='{{ app_root }}/Configuration/{{ project_context }}/Settings.yaml'
     src=Settings.yaml.j2
+  vars:
+    - aws_cloud: True
 
 - name: Make sure files and directories permissions are correct
   file:
