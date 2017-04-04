@@ -3,5 +3,11 @@
 - hosts: all
 
   roles:
+    - role: common
+      become: True
+      tags: packages
     - role: app
       tags: app
+    - role: syncontent
+      delegate_to: localhost
+      tags: syncontent

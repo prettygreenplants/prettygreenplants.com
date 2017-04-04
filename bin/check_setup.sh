@@ -21,6 +21,8 @@ command php -m | grep "mbstring" >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- PHP extension mbstring is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command php -m | grep "dom" >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- PHP extension dom is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
+command php -m | grep "zip" >/dev/null 2>&1 ||
+	{ echo -e ${YELLOW}"- PHP extension zip is recommended. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 command -v composer >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- COMPOSER is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command -v docker >/dev/null 2>&1 ||
@@ -29,8 +31,8 @@ command -v docker-compose >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- DOCKER-COMPOSE is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
-command ansible --version | grep 2 >/dev/null 2>&1 ||
-	{ echo -e ${YELLOW}"- ANSIBLE version 2 or higher is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
+command ansible --version | grep 2.2.2 >/dev/null 2>&1 ||
+	{ echo -e ${YELLOW}"- ANSIBLE version 2.2.2 is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 
 if [ ${ERROR} == "0" ]; then
 	if [ ${WARNING} == "0" ]; then

@@ -1,0 +1,31 @@
+authorizedkeys:
+  image: dockercloud/authorizedkeys
+  deployment_strategy: every_node
+  autodestroy: always
+  environment:
+    - AUTHORIZED_KEYS=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAAAgQCXMtgs4DqwFTIuXdqC4MWMB87BpT74Pu/Oj5N/BhZ/kFSU76dGERtDC/8ORgV7HYrxn1RH+mlbcIy+ksNvSNUxLrbVpMZFRwgsaloT7lcx+wx1FYBiH8cD2vlq3UgU9y5Epl9VeKor3xjx+27+mpu1RJAONWCpa/ucGv7RwOpSqw== visay@web-essentials.asia
+  volumes:
+    - /home/ubuntu:/user:rw
+
+backup:
+  image: 'confirm/mysql-backup:latest'
+  autodestroy: always
+  environment:
+    - BACKUP_GID=1000
+    - BACKUP_UID=1000
+  links:
+    - 'db.prettygreenplants:db'
+  volumes:
+    - /var/www/backup/prettygreenplants:/backup
+
+restore:
+  image: 'confirm/mysql-backup:latest'
+  autodestroy: always
+  environment:
+    - BACKUP_GID=1000
+    - BACKUP_UID=1000
+    - MODE=RESTORE
+  links:
+    - 'db.prettygreenplants:db'
+  volumes:
+    - /var/www/backup/prettygreenplants:/backup

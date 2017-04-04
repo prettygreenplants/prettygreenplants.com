@@ -10,7 +10,7 @@ Neos:
         user: 'prettygreenplants'
         password: 'prettygreenplants'
         dbname: 'prettygreenplants'
-{% if aws_cloud %}
+{% if aws_cloud and 'live' in group_names %}
 
   GoogleAnalytics:
     authentication:

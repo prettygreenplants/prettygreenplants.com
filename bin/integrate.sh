@@ -8,9 +8,9 @@ ERROR="0"
 
 command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
-command ansible --version | grep 2 >/dev/null 2>&1 ||
-	{ echo -e ${RED}"- ANSIBLE version 2 or higher is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
+command ansible --version | grep 2.2.2 >/dev/null 2>&1 ||
+	{ echo -e ${RED}"- ANSIBLE version 2.2.2 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 
 if [ ${ERROR} == "0" ]; then
-	ansible-playbook ansible/playbook.yml --limit live
+	ansible-playbook ansible/playbook.yml --limit live --tags app
 fi

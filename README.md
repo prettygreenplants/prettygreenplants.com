@@ -30,9 +30,13 @@ Make sure these extensions are installed:
 - mbstring
 - dom
 
+The following extension is recommended to speed thing up but not required:
+
+- zip
+
 Verify with `php -m` and see if any of them are not in the list, re-install all with:
 
-	sudo apt-get install php7.0-mbstring php7.0-xml
+	sudo apt-get install php7.0-mbstring php7.0-xml php7.0-zip
 
 composer
 --------
@@ -63,7 +67,7 @@ Refer to <https://docs.docker.com/compose/install/>
 Ansible
 -------
 
-Verify with `ansible --version` and if it is lower than 2.0 or is not yet installed, run:
+Verify with `ansible --version` and if it is not version 2.2.2 or is not yet installed, run:
 
 	sudo add-apt-repository ppa:ansible/ansible -y
 	sudo apt-get update
@@ -115,14 +119,20 @@ Deployment To Live
 AWS
 ---
 
-1. Get the latest code to AWS and install dependencies
+1. Install neccessary packages on the cloud (needed for first install only)
+
+```bash
+bin/server_setup.sh
+```
+
+2. Get the latest code to AWS and install dependencies
 
 ```bash
 bin/integrate.sh
 ```
 
-2. Login to Docker Cloud and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
-3. Login to `app` container's terminal and run the following commands to cleanup:
+3. Login to Docker Cloud and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
+4. Login to `app` container's terminal and run the following commands to cleanup:
 
 ```bash
 bin/cleanup.sh
