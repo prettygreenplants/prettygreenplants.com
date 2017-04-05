@@ -1,12 +1,13 @@
 ---
 
 app_root: '/var/www/{{ project_name }}'
+letsencrypt_dir: '/etc/letsencrypt'
 www_user: 'ubuntu'
 www_group: 'ubuntu'
 
 project_context: 'Production'
 composer_dev_flag: 'yes'
-release_version: 'stable'
+release_version: 'master'
 
 temp_files:
   - 'Configuration/PackageStates.php'

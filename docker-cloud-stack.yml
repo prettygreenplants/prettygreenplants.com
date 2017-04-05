@@ -20,7 +20,7 @@ db:
   target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
-    - /var/lib/mysql
+    - '/var/lib/mysql:/var/lib/mysql'
 redis:
   image: 'redis:alpine'
   target_num_containers: 1
@@ -33,6 +33,8 @@ web:
     - app
   ports:
     - '80:80'
+    - '443:443'
   target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
+    - '/etc/letsencrypt/prettygreenplants:/etc/letsencrypt/prettygreenplants'

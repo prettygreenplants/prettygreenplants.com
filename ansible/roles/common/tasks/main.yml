@@ -4,6 +4,10 @@
 - name: Update package caches
   apt: update_cache=yes
 
+- name: Add repo for letsencrypt
+  apt_repository: repo=ppa:certbot/certbot
+                  filename=letsencrypt
+
 - name: Install packages
   apt: name='{{ item }}'
   with_items:
@@ -12,6 +16,7 @@
     - php7.0-mbstring
     - php7.0-xml
     - php7.0-zip
+    - certbot
 
 - name: Download composer
   get_url: url=https://getcomposer.org/installer
@@ -37,3 +42,10 @@
         owner={{ www_user }}
         group={{ www_group }}
         recurse=yes
+
+- name: Create directory for letsencrypt
+  file: path={{ letsencrypt_dir }}/{{ project_name }}
+        state=directory
+
+#- name: Generate ssl certificate
+#  shell: /usr/bin/certbot certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
