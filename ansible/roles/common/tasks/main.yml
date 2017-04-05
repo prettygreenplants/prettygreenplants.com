@@ -26,3 +26,14 @@
   file: path=/usr/local/bin/composer
         mode=a+x
         state=file
+
+- name: Update composer to latest version
+  composer: command=self-update
+            working_dir=/usr/local/bin
+
+- name: Fix permission for composer cache directory
+  file: path=/home/{{ www_user }}/.composer
+        state=directory
+        owner={{ www_user }}
+        group={{ www_group }}
+        recurse=yes

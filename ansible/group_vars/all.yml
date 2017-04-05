@@ -3,7 +3,10 @@
 # All available var here with global default values
 # Empty var needs to be defined in stage var
 project_name: 'prettygreenplants'
-git_repo: 'git@github.com:prettygreenplants/prettygreenplants.com.git'
+
+# Use https protocol for cloning
+# git protocol is not allowed in aws firewall
+git_repo: 'https://github.com/prettygreenplants/prettygreenplants.com.git'
 
 app_root: ''
 www_user: ''
