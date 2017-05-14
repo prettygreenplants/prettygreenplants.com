@@ -3,11 +3,11 @@
 
 - name: Make sure application root exists
   file:
-    path='{{ item }}'
-    owner='{{ www_user }}'
-    group='{{ www_group }}'
-    recurse=yes
-    state=directory
+    path: '{{ item }}'
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+    recurse: yes
+    state: directory
   with_items:
     - '{{ app_root }}'
     - '/var/www/backup/{{ project_name }}'
@@ -15,36 +15,36 @@
 
 - name: Clone app repository into app root
   git:
-    accept_hostkey=yes
-    dest='{{ app_root }}'
-    force=yes
-    repo='{{ git_repo }}'
-    version='{{ release_version }}'
+    accept_hostkey: yes
+    dest: '{{ app_root }}'
+    force: yes
+    repo: '{{ git_repo }}'
+    version: '{{ release_version }}'
 
 - name: Install project dependencies
   composer:
-    no_dev='{{ composer_dev_flag }}'
-    prefer_dist=yes
-    working_dir='{{ app_root }}'
+    no_dev: '{{ composer_dev_flag }}'
+    prefer_dist: yes
+    working_dir: '{{ app_root }}'
 
 - name: Setup database connection
   template:
-    dest='{{ app_root }}/Configuration/{{ project_context }}/Settings.yaml'
-    src=Settings.yaml.j2
+    dest: '{{ app_root }}/Configuration/{{ project_context }}/Settings.yaml'
+    src: Settings.yaml.j2
   vars:
     - aws_cloud: True
 
 - name: Make sure files and directories permissions are correct
   file:
-    path='{{ app_root }}'
-    owner='{{ www_user }}'
-    group='{{ www_group }}'
-    recurse=yes
-    state=directory
+    path: '{{ app_root }}'
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+    recurse: yes
+    state: directory
   become: True
 
 - name: Clean up files and directories
   file:
-    path='{{ app_root }}/{{ item }}'
-    state=absent
+    path: '{{ app_root }}/{{ item }}'
+    state: absent
   with_items: '{{ temp_files }}'

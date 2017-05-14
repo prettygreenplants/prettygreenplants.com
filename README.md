@@ -67,7 +67,7 @@ Refer to <https://docs.docker.com/compose/install/>
 Ansible
 -------
 
-Verify with `ansible --version` and if it is not version 2.2.2 or is not yet installed, run:
+Verify with `ansible --version` and if it is not version 2.3.0 or is not yet installed, run:
 
 	sudo add-apt-repository ppa:ansible/ansible -y
 	sudo apt-get update

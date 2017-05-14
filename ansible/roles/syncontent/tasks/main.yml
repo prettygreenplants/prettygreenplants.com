@@ -2,36 +2,40 @@
 # tasks file for syncontent
 
   - name: Cleanup temp files
-    file: path="{{ base_dir}}/{{ item }}"
-          state=absent
+    file:
+      path: '{{ base_dir}}/{{ item }}'
+      state: absent
     with_items:
       - Configuration/PackageStates.php
       - Data
       - Web/_Resources
 
   - name: Make sure local directory exists
-    file: path="{{ base_dir }}/{{ item }}" state=directory
+    file:
+      path: '{{ base_dir }}/{{ item }}'
+      state: directory
     with_items:
       - Data/Persistent/
       - backup/
 
   - name: Sync flow persistent data and db dump from remote to local
-    shell: rsync --delay-updates -F --compress --delete-after --archive --rsh "ssh -S none -o StrictHostKeyChecking=no -o ControlMaster=auto -o ControlPersist=60s -F {{ base_dir }}/ansible/ssh.cfg -q" --out-format="<<CHANGED>>%i %n%L" "{{ inventory_hostname }}:{{ item.remote }}" "{{ item.local }}"
+    shell: rsync --delay-updates -F --compress --delete-after --archive --rsh 'ssh -S none -o StrictHostKeyChecking=no -o ControlMaster=auto -o ControlPersist=60s -F {{ base_dir }}/ansible/ssh.cfg -q' --out-format='<<CHANGED>>%i %n%L' '{{ inventory_hostname }}:{{ item.remote }}' '{{ item.local }}'
     with_items:
-      - { remote: "/var/www/{{ project_name }}/Data/Persistent/", local: "{{ base_dir }}/Data/Persistent/" }
-      - { remote: "/var/www/backup/{{ project_name }}/", local: "{{ base_dir }}/backup/" }
+      - { remote: '/var/www/{{ project_name }}/Data/Persistent/', local: '{{ base_dir }}/Data/Persistent/' }
+      - { remote: '/var/www/backup/{{ project_name }}/', local: '{{ base_dir }}/backup/' }
 
   - name: Configure database connection
-    template: src=Settings.yaml.j2
-              dest="{{ base_dir }}/Configuration/Development/Settings.yaml"
+    template:
+      src: Settings.yaml.j2
+      dest: '{{ base_dir }}/Configuration/Development/Settings.yaml'
     vars:
       - aws_cloud: False
 
   - name: Restore database from last backup
-    shell: docker-compose -f {{ base_dir }}/docker-compose-maintainance.yml run --rm restore
+    shell: 'docker-compose -f {{ base_dir }}/docker-compose-maintainance.yml run --rm restore'
 
   - name: Maintainance and cleanup
-    shell: docker-compose run --rm app sudo -u prettygreenplants -H ./flow {{ item }}
+    shell: 'docker-compose run --rm app sudo -u prettygreenplants -H ./flow {{ item }}'
     with_items:
       - flow:cache:flush --force
       - database:setcharset

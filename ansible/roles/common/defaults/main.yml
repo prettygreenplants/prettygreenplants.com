@@ -1,2 +1,10 @@
 ---
 # defaults file for common
+
+common_packages:
+  - git
+  - php7.0-cli
+  - php7.0-mbstring
+  - php7.0-xml
+  - php7.0-zip
+  - certbot
