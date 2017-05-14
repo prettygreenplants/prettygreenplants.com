@@ -28,6 +28,8 @@ web:
   autoredeploy: true
   environment:
     - NGINX_HOST=prettygreenplants.com
+    - SSL_CERTIFICATE=/etc/letsencrypt/live/prettygreenplants.com/fullchain.pem
+    - SSL_KEY=/etc/letsencrypt/live/prettygreenplants.com/privkey.pem
   image: 'prettygreenplants/nginx:latest'
   links:
     - app

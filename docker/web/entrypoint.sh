@@ -7,6 +7,8 @@ DEFAULT_WWW_USER="prettygreenplants"
 DEFAULT_WWW_USER_ID="1000"
 DEFAULT_FLOW_CONTEXT="Development"
 DEFAULT_NGINX_HOST="local.prettygreenplants"
+DEFAULT_SSL_CERTIFICATE="/var/www/docker/web/ssl/self-signed.cert"
+DEFAULT_SSL_KEY="/var/www/docker/web/ssl/self-signed.key"
 
 # Update system user if defined differently
 if [[ -n "${APP_ENV_WWW_USER}" ]] && [[ "${APP_ENV_WWW_USER}" != "${DEFAULT_WWW_USER}" ]]; then
@@ -33,6 +35,16 @@ fi
 if [[ -n "${APP_ENV_FLOW_CONTEXT}" ]] && [[ "${APP_ENV_FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]]; then
 	echo "Set Flow context to \"${APP_ENV_FLOW_CONTEXT}\" context!"
 	sed -i -e "s~FLOW_CONTEXT     ${DEFAULT_FLOW_CONTEXT}~FLOW_CONTEXT     ${APP_ENV_FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf
+fi
+
+# Update ssl certificate and key if defined differently
+if [ "${SSL_CERTIFICATE}" != "${DEFAULT_SSL_CERTIFICATE}" ]; then
+	echo "Set ssl certificate to \"${SSL_CERTIFICATE}\"!"
+	sed -i -e "s~${DEFAULT_SSL_CERTIFICATE}~${SSL_CERTIFICATE}~g" /etc/nginx/conf.d/default.conf
+fi
+if [ "${SSL_KEY}" != "${DEFAULT_SSL_KEY}" ]; then
+	echo "Set ssl key to \"${SSL_KEY}\"!"
+	sed -i -e "s~${DEFAULT_SSL_KEY}~${SSL_KEY}~g" /etc/nginx/conf.d/default.conf
 fi
 
 # Run normal command

@@ -7,6 +7,7 @@ backup:
     - prettygreenplantscom_db_1:db
   volumes:
     - ./backup:/backup
+
 restore:
   environment:
     - BACKUP_GID=1001

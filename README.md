@@ -60,7 +60,7 @@ docker-compose
 
 Verify with `docker-compose -v` and if not yet installed, run:
 
-	sudo curl -L https://github.com/docker/compose/releases/download/1.6.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+	sudo curl -L https://github.com/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 Refer to <https://docs.docker.com/compose/install/>
 
@@ -110,8 +110,8 @@ Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and a
 
 Verify:
 
-- Frontend: <http://local.prettygreenplants>
-- Backend: <http://local.prettygreenplants/neos>
+- Frontend: <https://local.prettygreenplants>
+- Backend: <https://local.prettygreenplants/neos>
 
 Deployment To Live
 ==================
@@ -131,7 +131,7 @@ bin/server_setup.sh
 bin/integrate.sh
 ```
 
-3. Login to Docker Cloud and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
+3. Login to Docker Cloud, update and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
 4. Login to `app` container's terminal and run the following commands to cleanup:
 
 ```bash
@@ -150,6 +150,8 @@ SSL certificate is generated from letsencrypt free certificate during deployment
 Nginx configuration inside web docker container allow `acme-challenge` with http for ssl validation and
 generation, and redirect the rest of http request (with or without www) to https://prettygreenplants.com
 (without www). Requesting https site with www will also redirect to the non-www version of the site.
+
+For local docker setup, self-signed certificate will be used.
 
 Plugins
 =======

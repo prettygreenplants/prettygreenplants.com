@@ -35,9 +35,12 @@ web:
 #  image: 'prettygreenplants/nginx:latest'
   ports:
     - "80:80"
+    - "443:443"
   volumes:
     - .:/var/www
   links:
     - app
 #  environment:
 #    - NGINX_HOST=local.prettygreenplants
+#    - SSL_CERTIFICATE=/var/www/docker/web/ssl/self-signed.cert
+#    - SSL_KEY=/var/www/docker/web/ssl/self-signed.key
