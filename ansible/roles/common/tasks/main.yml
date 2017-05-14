@@ -1,6 +1,10 @@
 ---
 # tasks file for common
 
+- name: Set timezone to Phnom Penh
+  timezone:
+    name: Asia/Phnom_Penh
+
 - name: Update package caches
   apt:
     update_cache: yes
@@ -49,5 +53,13 @@
     path: '{{ letsencrypt_dir }}/{{ project_name }}'
     state: directory
 
-#- name: Generate ssl certificate
-#  shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+- name: Generate ssl certificate
+  shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+
+- name: Install cronjob for generating ssl certificate
+  cron:
+    name: letsencrypt
+    day: 1-5
+    hour: 1
+    minute: 0
+    job: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
