@@ -3,12 +3,17 @@ FROM ubuntu:16.04
 
 MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
 
+ENV DEBIAN_FRONTEND noninteractive
+
+# Set timezone
+ENV TZ=Asia/Phnom_Penh
+RUN ln -nfs /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
 # Set the locales
 RUN locale-gen en_US.UTF-8 km_KH
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
-ENV DEBIAN_FRONTEND noninteractive
 
 # Upgrade the base system
 RUN apt-get update && apt-get upgrade -y -q --no-install-recommends

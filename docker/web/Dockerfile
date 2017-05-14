@@ -7,7 +7,11 @@ ENV NGINX_HOST local.prettygreenplants
 
 # Install usermod command for alpine - should be included by default from alpine
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories
-RUN apk --no-cache add shadow
+RUN apk --no-cache add shadow tzdata
+
+# Set timezone
+ENV TZ=Asia/Phnom_Penh
+RUN ln -nfs /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Create webserver user and group
 RUN addgroup -g 1000 -S prettygreenplants

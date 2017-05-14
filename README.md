@@ -140,6 +140,17 @@ bin/cleanup.sh
 
 Note: Default document root is already in `/var/www` and FLOW_CONTEXT is already `Production`
 
+Infrastructure
+==============
+
+SSL & Redirection
+-----------------
+
+SSL certificate is generated from letsencrypt free certificate during deployment and monthly by cronjob.
+Nginx configuration inside web docker container allow `acme-challenge` with http for ssl validation and
+generation, and redirect the rest of http request (with or without www) to https://prettygreenplants.com
+(without www). Requesting https site with www will also redirect to the non-www version of the site.
+
 Plugins
 =======
 
