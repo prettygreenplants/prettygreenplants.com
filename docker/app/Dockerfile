@@ -9,12 +9,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Asia/Phnom_Penh
 RUN ln -nfs /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# Set the locales
-RUN locale-gen en_US.UTF-8 km_KH
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
 # Upgrade the base system
 RUN apt-get update && apt-get upgrade -y -q --no-install-recommends
 
@@ -24,6 +18,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     ghostscript \
     imagemagick \
+    locales \
     sendmail \
     sudo \
     php7.0-cli \
@@ -37,6 +32,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     php-imagick \
     php-redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# Set the locales
+RUN locale-gen en_US.UTF-8 km_KH
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
 
 ENV WWW_USER prettygreenplants
 ENV WWW_USER_ID 1000
