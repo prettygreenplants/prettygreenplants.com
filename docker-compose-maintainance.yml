@@ -1,20 +1,20 @@
 backup:
-  image: 'confirm/mysql-backup:latest'
+  image: confirm/mysql-backup:latest
   environment:
-    - BACKUP_GID=1001
-    - BACKUP_UID=1001
+    BACKUP_GID: 1001
+    BACKUP_UID: 1001
   external_links:
     - prettygreenplantscom_db_1:db
   volumes:
-    - ./backup:/backup
+    - './backup:/backup'
 
 restore:
+  image: confirm/mysql-backup:latest
   environment:
-    - BACKUP_GID=1001
-    - BACKUP_UID=1001
-    - MODE=RESTORE
-  image: 'confirm/mysql-backup:latest'
+    BACKUP_GID: 1001
+    BACKUP_UID: 1001
+    MODE: RESTORE
   external_links:
     - prettygreenplantscom_db_1:db
   volumes:
-    - ./backup:/backup
+    - './backup:/backup'

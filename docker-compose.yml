@@ -1,46 +1,42 @@
-db:
-  image: 'mariadb:10.1'
-  command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-  volumes:
-    - /var/lib/mysql
-    - .:/var/www
-  environment:
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_USER=prettygreenplants
-    - MYSQL_PASSWORD=prettygreenplants
-    - MYSQL_DATABASE=prettygreenplants
-#  ports:
-#    - "3306:3306"
-
-redis:
-  image: 'redis:alpine'
-
-# App container which provides the php environment
 app:
-  # For development of the image comment out the 'image' line and replace with the next line
   build: 'docker/app'
-  #image: 'prettygreenplants/app:latest'
+#  image: prettygreenplants/app:latest
   volumes:
-    - .:/var/www
+    - './neos:/var/www'
   links:
     - db
     - redis
   environment:
-    - WWW_USER_ID=1001
-#    - WWW_USER=prettygreenplants
-#    - FLOW_CONTEXT=Production
+    WWW_USER_ID: 1001
+#    WWW_USER: 'prettygreenplants'
+#    FLOW_CONTEXT: 'Development'
+
+db:
+  image: mariadb:10.1
+  command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+#  volumes:
+#    - '/var/lib/mysql'
+  environment:
+    MYSQL_ROOT_PASSWORD: 'root'
+    MYSQL_USER: 'prettygreenplants'
+    MYSQL_PASSWORD: 'prettygreenplants'
+    MYSQL_DATABASE: 'prettygreenplants'
+#  ports:
+#    - '3306:3306'
+
+redis:
+  image: redis:alpine
 
 web:
   build: 'docker/web'
-#  image: 'prettygreenplants/nginx:latest'
+#  image: prettygreenplants/nginx:latest
   ports:
-    - "80:80"
-    - "443:443"
+    - '80:80'
+    - '443:443'
   volumes:
-    - .:/var/www
+    - './neos:/var/www'
   links:
     - app
 #  environment:
-#    - NGINX_HOST=local.prettygreenplants
-#    - SSL_CERTIFICATE=/var/www/docker/web/ssl/self-signed.cert
-#    - SSL_KEY=/var/www/docker/web/ssl/self-signed.key
+#    NGINX_HOST: 'local.prettygreenplants'
+#    USE_SELF_SIGNED_CERTIFICATE: true

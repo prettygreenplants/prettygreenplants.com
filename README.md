@@ -86,11 +86,11 @@ Go into project directory:
 
 Check requirements by running the following command and you should get the message `- Everything looks good!`:
 
-	bin/check_setup.sh
+	scripts/check_setup.sh
 
 Install project dependencies:
 
-	composer install --prefer-dist
+	composer install --prefer-dist --working-dir=neos
 
 Build up docker containers for local development:
 
@@ -102,7 +102,7 @@ Start docker containers:
 
 Restore content from live to local:
 
-	bin/syncontent.sh
+	scripts/syncontent.sh
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and add the following line:
 
@@ -119,23 +119,23 @@ Deployment To Live
 AWS
 ---
 
-1. Install neccessary packages on the cloud (needed for first install only)
+1. Install necessary packages on the cloud (needed for first install only)
 
 ```bash
-bin/server_setup.sh
+scripts/server_setup.sh
 ```
 
 2. Get the latest code to AWS and install dependencies
 
 ```bash
-bin/integrate.sh
+scripts/integrate.sh
 ```
 
 3. Login to Docker Cloud, update and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
 4. Login to `app` container's terminal and run the following commands to cleanup:
 
 ```bash
-bin/cleanup.sh
+scripts/cleanup.sh
 ```
 
 Note: Default document root is already in `/var/www` and FLOW_CONTEXT is already `Production`
@@ -182,8 +182,9 @@ TYPO3.Neos.Seo
 --------------
 
 The meta keywords and description is set in the inspector of the root page. Current keywords are `plants, tree, garden,
-shop, green, pretty, phnom penh, cambodia, pretty` and the description is `Pretty Green Plants is the best plant shop in
-Phnom Penh selling all kinds plants, indoor and outdoor, for decorating your house or office.`.
+shop, green, pretty, phnom penh, cambodia, pretty, environment, fresh, free delivery` and the description is
+`The best plant shop in Phnom Penh selling all kinds of plants, indoor and outdoor, for decorating your home and office
+with free delivery service.`.
 
 The title tag is set in the inspector of the page, the field `Title Override`.
 

@@ -1,7 +1,7 @@
 app:
   autoredeploy: true
   environment:
-    - FLOW_CONTEXT=Production
+    FLOW_CONTEXT: 'Production'
   image: 'prettygreenplants/app:latest'
   links:
     - db
@@ -9,28 +9,30 @@ app:
   target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
+
 db:
+  image: 'mariadb:10.1'
   command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
   environment:
-    - MYSQL_DATABASE=prettygreenplants
-    - MYSQL_PASSWORD=prettygreenplants
-    - MYSQL_ROOT_PASSWORD=root
-    - MYSQL_USER=prettygreenplants
-  image: 'mariadb:10.1'
+    MYSQL_DATABASE: 'prettygreenplants'
+    MYSQL_PASSWORD: 'prettygreenplants'
+    MYSQL_ROOT_PASSWORD: 'root'
+    MYSQL_USER: 'prettygreenplants'
   target_num_containers: 1
   volumes:
     - '/var/www/prettygreenplants:/var/www'
     - '/var/lib/mysql:/var/lib/mysql'
+
 redis:
-  image: 'redis:alpine'
+  image: redis:alpine
   target_num_containers: 1
+
 web:
+  image: prettygreenplants/nginx:latest
   autoredeploy: true
   environment:
-    - NGINX_HOST=prettygreenplants.com
-    - SSL_CERTIFICATE=/etc/letsencrypt/live/prettygreenplants.com/fullchain.pem
-    - SSL_KEY=/etc/letsencrypt/live/prettygreenplants.com/privkey.pem
-  image: 'prettygreenplants/nginx:latest'
+    NGINX_HOST: 'prettygreenplants.com'
+    USE_SELF_SIGNED_CERTIFICATE: false
   links:
     - app
   ports:
@@ -38,5 +40,5 @@ web:
     - '443:443'
   target_num_containers: 1
   volumes:
-    - '/var/www/prettygreenplants:/var/www'
+    - '/var/www/prettygreenplants/neos:/var/www'
     - '/etc/letsencrypt:/etc/letsencrypt'

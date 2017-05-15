@@ -3,7 +3,7 @@
 
   - name: Cleanup temp files
     file:
-      path: '{{ base_dir}}/{{ item }}'
+      path: '{{ base_dir}}/neos/{{ item }}'
       state: absent
     with_items:
       - Configuration/PackageStates.php
@@ -15,19 +15,19 @@
       path: '{{ base_dir }}/{{ item }}'
       state: directory
     with_items:
-      - Data/Persistent/
-      - backup/
+      - 'neos/Data/Persistent/'
+      - 'backup/'
 
   - name: Sync flow persistent data and db dump from remote to local
     shell: rsync --delay-updates -F --compress --delete-after --archive --rsh 'ssh -S none -o StrictHostKeyChecking=no -o ControlMaster=auto -o ControlPersist=60s -F {{ base_dir }}/ansible/ssh.cfg -q' --out-format='<<CHANGED>>%i %n%L' '{{ inventory_hostname }}:{{ item.remote }}' '{{ item.local }}'
     with_items:
-      - { remote: '/var/www/{{ project_name }}/Data/Persistent/', local: '{{ base_dir }}/Data/Persistent/' }
+      - { remote: '/var/www/{{ project_name }}/neos/Data/Persistent/', local: '{{ base_dir }}/neos/Data/Persistent/' }
       - { remote: '/var/www/backup/{{ project_name }}/', local: '{{ base_dir }}/backup/' }
 
   - name: Configure database connection
     template:
       src: Settings.yaml.j2
-      dest: '{{ base_dir }}/Configuration/Development/Settings.yaml'
+      dest: '{{ base_dir }}/neos/Configuration/Development/Settings.yaml'
     vars:
       - aws_cloud: False
 
