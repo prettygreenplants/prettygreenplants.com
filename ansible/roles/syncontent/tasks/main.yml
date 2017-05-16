@@ -35,14 +35,4 @@
     shell: 'docker-compose -f {{ base_dir }}/docker-compose-maintainance.yml run --rm restore'
 
   - name: Maintainance and cleanup
-    shell: 'docker-compose run --rm app sudo -u prettygreenplants -H ./flow {{ item }}'
-    with_items:
-      - flow:cache:flush --force
-      - database:setcharset
-      - doctrine:migrate
-      - resource:clean
-      - resource:publish
-      - media:clearthumbnails
-      - media:renderthumbnails
-      - node:repair
-      - cache:warmup
+    shell: 'docker-compose run --rm app /cleanup.sh'

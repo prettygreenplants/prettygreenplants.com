@@ -3,6 +3,7 @@ app:
 #  image: prettygreenplants/app:latest
   volumes:
     - './neos:/var/www'
+    - './scripts/cleanup.sh:/cleanup.sh:ro'
   links:
     - db
     - redis
