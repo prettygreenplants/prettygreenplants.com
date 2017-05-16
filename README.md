@@ -135,7 +135,7 @@ scripts/integrate.sh
 4. Login to `app` container's terminal and run the following commands to cleanup:
 
 ```bash
-scripts/cleanup.sh
+/cleanup.sh
 ```
 
 Note: Default document root is already in `/var/www` and FLOW_CONTEXT is already `Production`
