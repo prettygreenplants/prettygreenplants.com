@@ -4,8 +4,7 @@ FROM nginx:alpine
 MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
 
 ENV NGINX_HOST local.prettygreenplants
-ENV SSL_CERTIFICATE /var/www/docker/web/ssl/self-signed.cert
-ENV SSL_KEY /var/www/docker/web/ssl/self-signed.key
+ENV USE_SELF_SIGNED_CERTIFICATE true
 
 # Install usermod command for alpine - should be included by default from alpine
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories
@@ -22,6 +21,8 @@ RUN adduser -G prettygreenplants -S -D -H -u 1000 prettygreenplants
 # Copy configuration files for nginx
 COPY nginx.conf /etc/nginx/nginx.conf
 COPY nginx_vhost.conf /etc/nginx/conf.d/default.conf
+COPY ssl/self-signed.cert /etc/ssl/certs/prettygreenplants-self-signed.cert
+COPY ssl/self-signed.key /etc/ssl/private/prettygreenplants-self-signed.key
 
 RUN sed -i -e "s~###DEFAULT_NGINX_HOST###~${NGINX_HOST}~g" /etc/nginx/conf.d/default.conf
 

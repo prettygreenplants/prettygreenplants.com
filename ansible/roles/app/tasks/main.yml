@@ -25,11 +25,11 @@
   composer:
     no_dev: '{{ composer_dev_flag }}'
     prefer_dist: yes
-    working_dir: '{{ app_root }}'
+    working_dir: '{{ app_root }}/neos'
 
 - name: Setup database connection
   template:
-    dest: '{{ app_root }}/Configuration/{{ project_context }}/Settings.yaml'
+    dest: '{{ app_root }}/neos/Configuration/{{ project_context }}/Settings.yaml'
     src: Settings.yaml.j2
   vars:
     - aws_cloud: True
@@ -45,6 +45,6 @@
 
 - name: Clean up files and directories
   file:
-    path: '{{ app_root }}/{{ item }}'
+    path: '{{ app_root }}/neos/{{ item }}'
     state: absent
   with_items: '{{ temp_files }}'

@@ -1,0 +1,12 @@
+/bin/
+/Build/
+/Configuration/*
+!/Configuration/*.yaml
+/Data/
+/Packages/*
+!/Packages/Sites/
+/Readme.rst
+/Upgrading.rst
+/Web/
+/flow
+/flow.bat
