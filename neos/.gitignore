@@ -5,6 +5,9 @@
 /Data/
 /Packages/*
 !/Packages/Sites/
+!/Packages/Application/
+/Packages/Application/*
+!/Packages/Application/PrettyGreenPlants.Shop/
 /Readme.rst
 /Upgrading.rst
 /Web/

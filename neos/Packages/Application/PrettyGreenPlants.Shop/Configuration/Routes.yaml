@@ -1,0 +1,11 @@
+#                                                                        #
+# Default routes configuration for the PrettyGreenPlants.Shop package    #
+#                                                                        #
+
+-
+  name: 'Default'
+  uriPattern: ''
+  defaults:
+    '@package':    'PrettyGreenPlants.Shop'
+    '@controller': 'Standard'
+    '@action':     'index'

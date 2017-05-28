@@ -1,0 +1,18 @@
+{
+    "name": "prettygreenplants/shop",
+    "description": "Shopping package for Pretty Green Plants product page.",
+    "type": "neos-package",
+    "require": {
+        "neos/flow": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PrettyGreenPlants\\Shop\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "PrettyGreenPlants.Shop"
+        }
+    }
+}
