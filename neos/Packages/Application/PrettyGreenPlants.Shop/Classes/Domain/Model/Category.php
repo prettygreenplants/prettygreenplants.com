@@ -109,13 +109,13 @@ class Category
      * @return void
      * @throws UnsupportedRequestTypeException
      */
-    public function setParentCategory(Category $category)
+    public function setParentCategory($category)
     {
-        if ($category->isTopLevelCategory()) {
-            $this->parentCategory = $category;
-        } else {
+        if (($category instanceof Category) && (! $category->isTopLevelCategory() || $this->isParent())) {
             throw new UnsupportedRequestTypeException('Only one level sub-category is allowed!', 1497099382);
         }
+
+        $this->parentCategory = $category;
     }
 
     /**

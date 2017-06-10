@@ -7,6 +7,7 @@ namespace PrettyGreenPlants\Shop\Domain\Model;
 
 use Neos\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use PrettyGreenPlants\Shop\Domain\Model\Category;
 
 /**
  * @Flow\Entity
@@ -21,7 +22,7 @@ class Product
     protected $name;
 
     /**
-     * @var \PrettyGreenPlants\Shop\Domain\Model\Category
+     * @var Category
      * @ORM\ManyToOne
      * @Flow\Validate(type="NotEmpty")
      */
@@ -64,7 +65,7 @@ class Product
     }
 
     /**
-     * @return \PrettyGreenPlants\Shop\Domain\Model\Category
+     * @return Category
      */
     public function getCategory()
     {
@@ -72,10 +73,10 @@ class Product
     }
 
     /**
-     * @param \PrettyGreenPlants\Shop\Domain\Model\Category $category
+     * @param Category $category
      * @return void
      */
-    public function setCategory($category)
+    public function setCategory(Category $category)
     {
         $this->category = $category;
     }

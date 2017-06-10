@@ -1,0 +1,33 @@
+<f:layout name="Default" />
+
+<f:section name="Title">Show product"{product.name}"</f:section>
+
+<f:section name="Content">
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>{product.name}</td>
+        </tr>
+
+        <tr>
+            <th>Category</th>
+            <td>{product.category.name}</td>
+        </tr>
+
+        <tr>
+            <th>Code</th>
+            <td>{product.code}</td>
+        </tr>
+
+        <tr>
+            <th>Cost</th>
+            <td>{product.cost}</td>
+        </tr>
+
+        <tr>
+            <th>Description</th>
+            <td>{product.description}</td>
+        </tr>
+    </table>
+    <f:link.action action="index">Back</f:link.action>
+</f:section>

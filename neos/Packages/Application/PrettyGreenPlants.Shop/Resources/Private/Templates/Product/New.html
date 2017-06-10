@@ -1,0 +1,40 @@
+<f:layout name="Default" />
+
+<f:section name="Title">New product</f:section>
+
+<f:section name="Content">
+    <p>Just fill out the following form to create a new product:</p>
+
+    <f:form action="create" objectName="newProduct">
+        <ol>
+            <li>
+                <label for="name">Name</label>
+                <f:form.textfield property="name" id="name" />
+            </li>
+
+            <li>
+                <label for="category">Category</label>
+                <f:form.select property="category" id="category" options="{categories}" optionLabelField="name" />
+            </li>
+
+            <li>
+                <label for="code">Code</label>
+                <f:form.textfield property="code" id="code" />
+            </li>
+
+            <li>
+                <label for="cost">Cost</label>
+                <f:form.textfield property="cost" id="cost" />
+            </li>
+
+            <li>
+                <label for="description">Description</label>
+                <f:form.textfield property="description" id="description" />
+            </li>
+
+            <li>
+                <f:form.submit value="Create" />
+            </li>
+        </ol>
+    </f:form>
+</f:section>

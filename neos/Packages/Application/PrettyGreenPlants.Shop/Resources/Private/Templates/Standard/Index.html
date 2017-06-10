@@ -4,46 +4,13 @@
 
 <f:section name="Content">
 	<h1>Objects</h1>
-
-	<f:if condition="{topLevelCategories}">
-		<p>Category:</p>
-		<ul>
-			<f:then>
-				<f:for each="{topLevelCategories}" as="category">
-					<li>
-						{category.name}
-						<f:if condition="{category.parent}">
-							<ul>
-								<f:render section="SubCategory" arguments="{categories: category.children}" />
-							</ul>
-						</f:if>
-					</li>
-				</f:for>
-			</f:then>
-			<f:else>
-				No category in the database.
-			</f:else>
-		</ul>
-	</f:if>
-
-	<f:if condition="{products}">
-		<p>Category:</p>
-		<ul>
-			<f:then>
-				<f:for each="{products}" as="product">
-					<li>{product.name}</li>
-				</f:for>
-			</f:then>
-			<f:else>
-				No product in the database.
-			</f:else>
-		</ul>
-	</f:if>
-
+	<ul>
+		<li>
+			<f:link.action action="index" controller="Category">Category</f:link.action>
+		</li>
+		<li>
+			<f:link.action action="index" controller="Product">Product</f:link.action>
+		</li>
+	</ul>
 </f:section>
 
-<f:section name="SubCategory">
-	<f:for each="{categories}" as="category">
-		<li>{category.name}</li>
-	</f:for>
-</f:section>

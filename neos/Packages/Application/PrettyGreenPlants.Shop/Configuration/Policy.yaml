@@ -2,10 +2,20 @@ privilegeTargets:
   Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege:
     'PrettyGreenPlants.Shop:StandardControllerActions':
       matcher: 'method(PrettyGreenPlants\Shop\Controller\StandardController->(index)Action())'
+    'PrettyGreenPlants.Shop:ProductControllerActions':
+      matcher: 'method(PrettyGreenPlants\Shop\Controller\ProductController->(.*)Action())'
+    'PrettyGreenPlants.Shop:CategoryControllerActions':
+      matcher: 'method(PrettyGreenPlants\Shop\Controller\CategoryController->(.*)Action())'
 
 roles:
   'Neos.Flow:Everybody':
     privileges:
       -
         privilegeTarget: 'PrettyGreenPlants.Shop:StandardControllerActions'
+        permission: GRANT
+      -
+        privilegeTarget: 'PrettyGreenPlants.Shop:ProductControllerActions'
+        permission: GRANT
+      -
+        privilegeTarget: 'PrettyGreenPlants.Shop:CategoryControllerActions'
         permission: GRANT
