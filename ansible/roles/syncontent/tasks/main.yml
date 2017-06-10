@@ -30,6 +30,7 @@
       dest: '{{ base_dir }}/neos/Configuration/Development/Settings.yaml'
     vars:
       - aws_cloud: False
+      - beta_enable: True
 
   - name: Restore database from last backup
     shell: 'docker-compose -f {{ base_dir }}/docker-compose-maintainance.yml run --rm restore'

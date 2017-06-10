@@ -218,6 +218,23 @@ HTML Output Compressor
 
 Using package `Flownative.Neos.Compressor` with default setting to minify html for better site grade.
 
+Shop
+----
+
+Building custom package `PrettyGreenPlants.Shop` with the following features:
+
+- Product listing
+- Product search by name
+- Product filter by category
+- Product details view
+- Add to cart
+- Order with email sending feature
+- Invoice creation
+- Invoice customization
+
+Product attributes: -> refer to Product model in the code
+Product category attributes: -> refer to Product category model in the code
+
 Content Types and Customization
 ===============================
 

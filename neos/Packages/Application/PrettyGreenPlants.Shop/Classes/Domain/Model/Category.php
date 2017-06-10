@@ -1,35 +1,51 @@
 <?php
+
 namespace PrettyGreenPlants\Shop\Domain\Model;
 
 /*
  * This file is part of the PrettyGreenPlants.Shop package.
  */
-
 use Neos\Flow\Annotations as Flow;
 use Doctrine\ORM\Mapping as ORM;
+use Neos\Flow\Mvc\Exception\UnsupportedRequestTypeException;
+use Neos\Flow\Persistence\PersistenceManagerInterface;
+use Neos\Flow\Persistence\QueryResultInterface;
+use PrettyGreenPlants\Shop\Domain\Repository\CategoryRepository;
 
 /**
  * @Flow\Entity
  */
 class Category
 {
-
     /**
      * @var string
+     * @Flow\Validate(type="NotEmpty")
      */
     protected $name;
 
     /**
      * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $description;
 
     /**
-     * @var \PrettyGreenPlants\Shop\Domain\Model\Category
+     * @var Category
      * @ORM\ManyToOne
      */
     protected $parentCategory;
 
+    /**
+     * @var CategoryRepository
+     * @Flow\Inject
+     */
+    protected $categoryRepository;
+
+    /**
+     * @var PersistenceManagerInterface
+     * @Flow\Inject
+     */
+    protected $persistenceManager;
 
     /**
      * @return string
@@ -41,6 +57,7 @@ class Category
 
     /**
      * @param string $name
+     *
      * @return void
      */
     public function setName($name)
@@ -58,6 +75,7 @@ class Category
 
     /**
      * @param string $description
+     *
      * @return void
      */
     public function setDescription($description)
@@ -66,23 +84,64 @@ class Category
     }
 
     /**
-     * @return \PrettyGreenPlants\Shop\Domain\Model\Category
+     * @return bool
+     */
+    public function isTopLevelCategory()
+    {
+        if ($this->getParentCategory() === null) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @return Category
      */
     public function getParentCategory()
     {
-        // TODO: If it is already the parentCategory, should return boolean for easier check in controller
-        // Return type should be boolean also
         return $this->parentCategory;
     }
 
     /**
-     * @param \PrettyGreenPlants\Shop\Domain\Model\Category $parentCategory
+     * @param Category $category
+     *
      * @return void
+     * @throws UnsupportedRequestTypeException
      */
-    public function setParentCategory($parentCategory)
+    public function setParentCategory(Category $category)
     {
-        // TODO: Check if this category already has sub category, block them from being a sub cat because we don't support 3rd level cat
-        $this->parentCategory = $parentCategory;
+        if ($category->isTopLevelCategory()) {
+            $this->parentCategory = $category;
+        } else {
+            throw new UnsupportedRequestTypeException('Only one level sub-category is allowed!', 1497099382);
+        }
     }
 
+    /**
+     * @return bool
+     */
+    public function isParent()
+    {
+        $objectIdentifier = $this->persistenceManager->getIdentifierByObject($this);
+        if ($this->categoryRepository->countByParentCategory($objectIdentifier) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @return QueryResultInterface|null
+     */
+    public function getChildren()
+    {
+        if ($this->isParent()) {
+            $objectIdentifier = $this->persistenceManager->getIdentifierByObject($this);
+
+            return $this->categoryRepository->findByParentCategory($objectIdentifier);
+        } else {
+            return null;
+        }
+    }
 }

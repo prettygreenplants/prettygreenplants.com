@@ -16,27 +16,32 @@ class Product
 
     /**
      * @var string
+     * @Flow\Validate(type="NotEmpty")
      */
     protected $name;
 
     /**
      * @var \PrettyGreenPlants\Shop\Domain\Model\Category
      * @ORM\ManyToOne
+     * @Flow\Validate(type="NotEmpty")
      */
     protected $category;
 
     /**
      * @var string
+     * @Flow\Validate(type="NotEmpty")
      */
     protected $code;
 
     /**
      * @var integer
+     * @Flow\Validate(type="NotEmpty")
      */
     protected $cost;
 
     /**
      * @var string
+     * @ORM\Column(type="string", nullable=true)
      */
     protected $description;
 

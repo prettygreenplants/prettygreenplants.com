@@ -7,6 +7,7 @@ www_group: ''
 project_context: 'Development'
 composer_dev_flag: 'no'
 release_version: 'master'
+beta_enable: true
 
 temp_files:
   - 'Configuration/PackageStates.php'

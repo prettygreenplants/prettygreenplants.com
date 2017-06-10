@@ -1,15 +1,49 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
-<f:section name="Title">Index view of Standard controller</f:section>
+<f:section name="Title">Listing</f:section>
 
 <f:section name="Content">
-    <h1>A freshly created Fluid template!</h1>
-    <p>Some data set by the controller:</p>
-    <ul>
+	<h1>Objects</h1>
 
-        <f:for each="{foos}" as="foo">
-            <li>{foo}</li>
-        </f:for>
+	<f:if condition="{topLevelCategories}">
+		<p>Category:</p>
+		<ul>
+			<f:then>
+				<f:for each="{topLevelCategories}" as="category">
+					<li>
+						{category.name}
+						<f:if condition="{category.parent}">
+							<ul>
+								<f:render section="SubCategory" arguments="{categories: category.children}" />
+							</ul>
+						</f:if>
+					</li>
+				</f:for>
+			</f:then>
+			<f:else>
+				No category in the database.
+			</f:else>
+		</ul>
+	</f:if>
 
-    </ul>
+	<f:if condition="{products}">
+		<p>Category:</p>
+		<ul>
+			<f:then>
+				<f:for each="{products}" as="product">
+					<li>{product.name}</li>
+				</f:for>
+			</f:then>
+			<f:else>
+				No product in the database.
+			</f:else>
+		</ul>
+	</f:if>
+
+</f:section>
+
+<f:section name="SubCategory">
+	<f:for each="{categories}" as="category">
+		<li>{category.name}</li>
+	</f:for>
 </f:section>
