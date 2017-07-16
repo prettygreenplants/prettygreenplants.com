@@ -33,6 +33,8 @@ command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 command ansible --version | grep 2.3.0 >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE version 2.3.0 is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
+command -v go >/dev/null 2>&1 ||
+	{ echo -e ${YELLOW}"- GO is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 
 if [ ${ERROR} == "0" ]; then
 	if [ ${WARNING} == "0" ]; then
@@ -40,6 +42,6 @@ if [ ${ERROR} == "0" ]; then
 	else
 		echo
 		echo -e ${GREEN}"+ Your local environment looks good for development!"${NC}
-		echo -e ${YELLOW}"+ Anyway, there may be issues when sync content from live to local!"${NC}
+		echo -e ${YELLOW}"+ Anyway, there may be issues when deploying to live server or sync content from live to local!"${NC}
 	fi
 fi

@@ -1,6 +1,13 @@
 ---
 # tasks file for common
 
+- set_fact:
+    dockercloud_api_key: '{{ lookup("env", "DOCKERCLOUD_APIKEY") }}'
+
+- fail:
+    msg: 'Please pass environment variable for DOCKERCLOUD_APIKEY'
+  when: dockercloud_api_key is not defined or dockercloud_api_key == ''
+
 - name: Set timezone to Phnom Penh
   timezone:
     name: Asia/Phnom_Penh
@@ -63,3 +70,45 @@
     hour: 1
     minute: 0
     job: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+
+- name: Compile backup script from go
+  shell: go build
+  args:
+    chdir: '{{ playbook_dir }}/../go'
+  delegate_to: localhost
+  become: false
+
+- name: Make sure backup directory exists
+  file:
+    path: '{{ item }}'
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+    recurse: yes
+    state: directory
+  with_items:
+    - '/var/www/backup'
+
+- name: Copy backup script to server
+  copy:
+    src: '{{ playbook_dir }}/../go/go'
+    dest: '/var/www/backup/backup'
+    mode: 0755
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+
+- name: Pass docker cloud user as cron variable
+  cronvar:
+    name: DOCKERCLOUD_USER
+    value: 'visay'
+
+- name: Pass docker cloud api key as cron variable
+  cronvar:
+    name: DOCKERCLOUD_APIKEY
+    value: '{{ dockercloud_api_key }}'
+
+- name: Install cronjob for daily backup
+  cron:
+    name: daily_backup
+    hour: 23
+    minute: 0
+    job: '/var/www/backup/backup'

@@ -73,6 +73,11 @@ Verify with `ansible --version` and if it is not version 2.3.0 or is not yet ins
 	sudo apt-get update
 	sudo apt-get -y --force-yes install ansible
 
+Go
+--
+
+Verify with `go version` and if it is not yet installed, follow https://golang.org/doc/install#tarball
+
 Installation
 ============
 
@@ -122,8 +127,10 @@ AWS
 1. Install necessary packages on the cloud (needed for first install only)
 
 ```bash
-scripts/server_setup.sh
+DOCKERCLOUD_APIKEY=<token> scripts/server_setup.sh
 ```
+
+_Note:_ Get Docker Cloud API Key from the user account settings page
 
 2. Get the latest code to AWS and install dependencies
 
