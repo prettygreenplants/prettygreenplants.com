@@ -138,7 +138,7 @@ _Note:_ Get Docker Cloud API Key from the user account settings page
 scripts/integrate.sh
 ```
 
-3. Login to Docker Cloud, update and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/visay/stack/d37c9307-90f9-433a-afa7-60cf03795168/general)
+3. Login to Docker Cloud, update and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/prettygreenplants/stack/8bb6f503-404b-408e-a43b-96edcc260414/general)
 4. Login to `app` container's terminal and run the following commands to cleanup:
 
 ```bash
