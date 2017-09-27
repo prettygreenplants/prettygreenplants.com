@@ -112,3 +112,18 @@
     hour: 23
     minute: 0
     job: '/var/www/backup/backup'
+
+- name: Create rotate script on the server
+  template:
+    src: 'rotate.sh.j2'
+    dest: '/var/www/backup/rotate.sh'
+    mode: 0755
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+
+- name: Install cronjob for monthly rotate
+  cron:
+    name: monthly_rotate
+    day: 28
+    minute: 0
+    job: '/var/www/backup/rotate.sh'
