@@ -1,0 +1,16 @@
+#
+# {{ ansible_managed }}
+#
+# Default server configuration for letsencrypt
+#
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name prettygreenplants.com;
+
+	location ^~ /.well-known/acme-challenge/ {
+		default_type "text/plain";
+		root /etc/letsencrypt/prettygreenplants;
+	}
+}

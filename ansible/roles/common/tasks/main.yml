@@ -55,10 +55,13 @@
     group: '{{ www_group }}'
     recurse: yes
 
-- name: Create directory for letsencrypt
-  file:
-    path: '{{ letsencrypt_dir }}/{{ project_name }}'
-    state: directory
+- name: Check if letsencrypt certificate exists
+  stat:
+    path: /etc/letsencrypt/live/prettygreenplants.com/fullchain.pem
+  register: letsencrypt_certs
+
+- include: letsencrypt.yml
+  when: letsencrypt_certs.stat.exists == False
 
 - name: Generate ssl certificate
   shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com

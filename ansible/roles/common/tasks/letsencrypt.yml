@@ -1,0 +1,45 @@
+---
+
+- name: Create directory for letsencrypt
+  file:
+    path: '{{ letsencrypt_dir }}/{{ project_name }}'
+    state: directory
+
+- name: Install nginx on host for letsencrypt verification
+  apt:
+    name: nginx
+
+- name: Setup letsencrypt verification vhost
+  template:
+    src: vhost-letsencrypt.conf.j2
+    dest: /etc/nginx/sites-enabled/default
+
+- name: Reload nginx service for letsencrypt config
+  service:
+    name: nginx
+    state: restarted
+
+- name: Generate ssl certificate
+  shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+
+- name: Stop nginx service for removal
+  service:
+    name: nginx
+    state: stopped
+
+- name: Uninstall nginx from the host
+  apt:
+    name: nginx
+    state: absent
+    force: yes
+    purge: yes
+    autoremove: yes
+
+- name: Clean up nginx directories
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items:
+    - /var/www/html
+    - /etc/nginx
+    - /usr/share/nginx
