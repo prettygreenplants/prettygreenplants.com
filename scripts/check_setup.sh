@@ -31,8 +31,8 @@ command -v docker-compose >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- DOCKER-COMPOSE is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
-command ansible --version | grep 2.3.0 >/dev/null 2>&1 ||
-	{ echo -e ${YELLOW}"- ANSIBLE version 2.3.0 is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
+command ansible --version | grep 2.4.3 >/dev/null 2>&1 ||
+	{ echo -e ${YELLOW}"- ANSIBLE version 2.4.3 is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 command -v go >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- GO is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 

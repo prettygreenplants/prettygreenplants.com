@@ -60,7 +60,7 @@
     path: /etc/letsencrypt/live/prettygreenplants.com/fullchain.pem
   register: letsencrypt_certs
 
-- include: letsencrypt.yml
+- import_tasks: letsencrypt.yml
   when: letsencrypt_certs.stat.exists == False
 
 - name: Generate ssl certificate
