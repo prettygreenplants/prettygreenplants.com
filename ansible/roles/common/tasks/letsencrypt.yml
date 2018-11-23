@@ -1,6 +1,6 @@
 ---
 
-- name: Create directory for letsencrypt
+- name: Create webroot directory for letsencrypt generation
   file:
     path: '{{ letsencrypt_dir }}/{{ project_name }}'
     state: directory
@@ -20,7 +20,7 @@
     state: restarted
 
 - name: Generate ssl certificate
-  shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+  shell: '/usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w {{ letsencrypt_dir }}/{{ project_name }} -d prettygreenplants.com -d www.prettygreenplants.com'
 
 - name: Stop nginx service for removal
   service:

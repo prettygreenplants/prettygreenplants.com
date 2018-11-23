@@ -1,12 +1,20 @@
 ---
 # tasks file for common
 
-- set_fact:
-    dockercloud_api_key: '{{ lookup("env", "DOCKERCLOUD_APIKEY") }}'
+#- set_fact:
+#    dockercloud_api_key: '{{ lookup("env", "DOCKERCLOUD_APIKEY") }}'
+#
+#- fail:
+#    msg: 'Please pass environment variable for DOCKERCLOUD_APIKEY'
+#  when: dockercloud_api_key is not defined or dockercloud_api_key == ''
 
-- fail:
-    msg: 'Please pass environment variable for DOCKERCLOUD_APIKEY'
-  when: dockercloud_api_key is not defined or dockercloud_api_key == ''
+- name: Display warning to manually manage system upgrade
+  debug:
+    msg: 'Please manually run apt-get upgrade to apply updates'
+
+- name: Display info to setup live patch
+  debug:
+    msg: 'Please manually activate Canonical Livepatch at https://ubuntu.com/livepatch if kernel support'
 
 - name: Set timezone to Phnom Penh
   timezone:
@@ -15,6 +23,11 @@
 - name: Update package caches
   apt:
     update_cache: yes
+
+- name: Add repo for php
+  apt_repository:
+    repo: 'ppa:ondrej/php'
+    filename: php
 
 - name: Add repo for letsencrypt
   apt_repository:
@@ -64,69 +77,74 @@
   when: letsencrypt_certs.stat.exists == False
 
 - name: Generate ssl certificate
-  shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+  shell: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com -d www.prettygreenplants.com
 
-- name: Install cronjob for generating ssl certificate
-  cron:
-    name: letsencrypt
-    day: 1-5
-    hour: 1
-    minute: 0
-    job: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
+#- name: Install cronjob for generating ssl certificate
+#  cron:
+#    name: letsencrypt
+#    day: 1-5
+#    hour: 1
+#    minute: 0
+#    job: /usr/bin/letsencrypt certonly --keep --expand --agree-tos -m keo@visay.info -n --webroot -w /etc/letsencrypt/prettygreenplants -d prettygreenplants.com
 
-- name: Compile backup script from go
-  shell: go build
-  args:
-    chdir: '{{ playbook_dir }}/../go'
-  delegate_to: localhost
-  become: false
+# TODO need to add --hook to reload the container to take new certificate
+- name: Verify that cron job for letsencrypt exists automatically
+  debug:
+    msg: 'Check if /etc/cron.d/certbot is auto created and content looks good'
 
-- name: Make sure backup directory exists
-  file:
-    path: '{{ item }}'
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
-    recurse: yes
-    state: directory
-  with_items:
-    - '/var/www/backup'
-
-- name: Copy backup script to server
-  copy:
-    src: '{{ playbook_dir }}/../go/go'
-    dest: '/var/www/backup/backup'
-    mode: 0755
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
-
-- name: Pass docker cloud user as cron variable
-  cronvar:
-    name: DOCKERCLOUD_USER
-    value: 'visay'
-
-- name: Pass docker cloud api key as cron variable
-  cronvar:
-    name: DOCKERCLOUD_APIKEY
-    value: '{{ dockercloud_api_key }}'
-
-- name: Install cronjob for daily backup
-  cron:
-    name: daily_backup
-    hour: 23
-    minute: 0
-    job: '/var/www/backup/backup'
-
-- name: Create rotate script on the server
-  template:
-    src: 'rotate.sh.j2'
-    dest: '/var/www/backup/rotate.sh'
-    mode: 0755
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
-
-- name: Install cronjob for monthly rotate
-  cron:
-    name: monthly_rotate
-    day: 28
-    minute: 0
-    job: '/var/www/backup/rotate.sh'
+#- name: Compile backup script from go
+#  shell: go build
+#  args:
+#    chdir: '{{ playbook_dir }}/../go'
+#  delegate_to: localhost
+#  become: false
+#
+#- name: Make sure backup directory exists
+#  file:
+#    path: '{{ item }}'
+#    owner: '{{ www_user }}'
+#    group: '{{ www_group }}'
+#    recurse: yes
+#    state: directory
+#  with_items:
+#    - '/var/www/backup'
+#
+#- name: Copy backup script to server
+#  copy:
+#    src: '{{ playbook_dir }}/../go/go'
+#    dest: '/var/www/backup/backup'
+#    mode: 0755
+#    owner: '{{ www_user }}'
+#    group: '{{ www_group }}'
+#
+#- name: Pass docker cloud user as cron variable
+#  cronvar:
+#    name: DOCKERCLOUD_USER
+#    value: 'visay'
+#
+#- name: Pass docker cloud api key as cron variable
+#  cronvar:
+#    name: DOCKERCLOUD_APIKEY
+#    value: '{{ dockercloud_api_key }}'
+#
+#- name: Install cronjob for daily backup
+#  cron:
+#    name: daily_backup
+#    hour: 23
+#    minute: 0
+#    job: '/var/www/backup/backup'
+#
+#- name: Create rotate script on the server
+#  template:
+#    src: 'rotate.sh.j2'
+#    dest: '/var/www/backup/rotate.sh'
+#    mode: 0755
+#    owner: '{{ www_user }}'
+#    group: '{{ www_group }}'
+#
+#- name: Install cronjob for monthly rotate
+#  cron:
+#    name: monthly_rotate
+#    day: 28
+#    minute: 0
+#    job: '/var/www/backup/rotate.sh'

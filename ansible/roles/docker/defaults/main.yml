@@ -1,0 +1,9 @@
+---
+# defaults file for docker
+# https://docs.docker.com/install/linux/docker-ce/ubuntu/#set-up-the-repository
+
+docker_packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common

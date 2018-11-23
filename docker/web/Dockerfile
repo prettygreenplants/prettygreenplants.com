@@ -3,7 +3,7 @@ FROM nginx:alpine
 
 MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
 
-ENV NGINX_HOST local.prettygreenplants
+ENV NGINX_HOST local.prettygreenplants.com
 ENV USE_SELF_SIGNED_CERTIFICATE true
 
 # Install usermod command for alpine - should be included by default from alpine

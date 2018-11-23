@@ -6,6 +6,9 @@
     - role: common
       become: True
       tags: packages
+    - role: docker
+      become: True
+      tags: packages
     - role: app
       tags: app
     - role: syncontent

@@ -48,3 +48,18 @@
     path: '{{ app_root }}/neos/{{ item }}'
     state: absent
   with_items: '{{ temp_files }}'
+
+- name: Pull latest docker images defined in docker compose
+  shell: 'docker-compose -f docker-compose-prod.yml pull'
+  args:
+    chdir: '{{ app_root }}'
+
+- name: Start docker containers with docker compose
+  shell: 'docker-compose -f docker-compose-prod.yml up -d'
+  args:
+    chdir: '{{ app_root }}'
+
+- name: Execute cleanup script
+  shell: 'docker-compose -f docker-compose-prod.yml run --rm app /cleanup.sh'
+  args:
+    chdir: '{{ app_root }}'

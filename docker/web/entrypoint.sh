@@ -6,7 +6,7 @@ set -e
 DEFAULT_WWW_USER="prettygreenplants"
 DEFAULT_WWW_USER_ID="1000"
 DEFAULT_FLOW_CONTEXT="Development"
-DEFAULT_NGINX_HOST="local.prettygreenplants"
+DEFAULT_NGINX_HOST="local.prettygreenplants.com"
 SELF_SINGED_SSL_CERTIFICATE="/etc/ssl/certs/prettygreenplants-self-signed.cert"
 SELF_SINGED_SSL_KEY="/etc/ssl/private/prettygreenplants-self-signed.key"
 LETSENCRYPT_SSL_CERTIFICATE="/etc/letsencrypt/live/prettygreenplants.com/fullchain.pem"

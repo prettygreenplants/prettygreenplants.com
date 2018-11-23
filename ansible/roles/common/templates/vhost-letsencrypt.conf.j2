@@ -7,10 +7,10 @@ server {
 	listen 80 default_server;
 	listen [::]:80 default_server;
 
-	server_name prettygreenplants.com;
+	server_name prettygreenplants.com www.prettygreenplants.com;
 
 	location ^~ /.well-known/acme-challenge/ {
 		default_type "text/plain";
-		root /etc/letsencrypt/prettygreenplants;
+		root {{ letsencrypt_dir }}/{{ project_name }};
 	}
 }

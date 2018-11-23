@@ -1,5 +1,5 @@
-Requirements:
-=============
+Dev Requirements:
+=================
 
 curl
 ----
@@ -55,19 +55,21 @@ docker
 
 Verify with `docker -v` and if not yet installed, follow <https://docs.docker.com/engine/installation/linux/ubuntulinux/>
 
+Additionally, add current Linux user to docker group and restart the machine so docker can be run as normal user.
+
 docker-compose
 --------------
 
 Verify with `docker-compose -v` and if not yet installed, run:
 
-	sudo curl -L https://github.com/docker/compose/releases/download/1.11.1/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+	sudo curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 
 Refer to <https://docs.docker.com/compose/install/>
 
 Ansible
 -------
 
-Verify with `ansible --version` and if it is not version 2.4.3 or is not yet installed, run:
+Verify with `ansible --version` and if it is not version 2.5 or is not yet installed, run:
 
 	sudo add-apt-repository ppa:ansible/ansible -y
 	sudo apt-get update
@@ -83,11 +85,11 @@ Installation
 
 Get the code:
 
-	git clone git@github.com:prettygreenplants/prettygreenplants.com.git ~/dev/prettygreenplants.com
+	git clone git@github.com:prettygreenplants/prettygreenplants.com.git ~/dev/prettygreenplants
 
 Go into project directory:
 
-	cd ~/dev/prettygreenplants.com
+	cd ~/dev/prettygreenplants
 
 Check requirements by running the following command and you should get the message `- Everything looks good!`:
 
@@ -97,9 +99,12 @@ Install project dependencies:
 
 	composer install --prefer-dist --working-dir=neos
 
-Build up docker containers for local development:
+Build up docker containers and pull latest version for local development:
 
+	docker-compose pull
 	docker-compose build
+
+Check your Linux user account with `echo $UID`. If it does not return 1001, change value in docker-compose.yml to that ID.
 
 Start docker containers:
 
@@ -111,12 +116,12 @@ Restore content from live to local:
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and add the following line:
 
-	0.0.0.0 local.prettygreenplants www.local.prettygreenplants
+	0.0.0.0 local.prettygreenplants.com www.local.prettygreenplants.com
 
 Verify:
 
-- Frontend: <https://local.prettygreenplants>
-- Backend: <https://local.prettygreenplants/neos>
+- Frontend: <https://local.prettygreenplants.com>
+- Backend: <https://local.prettygreenplants.com/neos>
 
 Deployment To Live
 ==================
@@ -124,28 +129,25 @@ Deployment To Live
 AWS
 ---
 
-1. Install necessary packages on the cloud (needed for first install only)
+1. Create an ec2 instances on AWS, associate elastic IP and configure security group
+2. Update the system with:
 
 ```bash
-DOCKERCLOUD_APIKEY=<token> scripts/server_setup.sh
+sudo apt-get update
+sudo apt-get upgrade
 ```
 
-_Note:_ Get Docker Cloud API Key from the user account settings page
+3. Install necessary packages on the cloud (needed for first install only)
 
-2. Get the latest code to AWS and install dependencies
+```bash
+scripts/server_setup.sh
+```
+
+4. Get the latest code to AWS, install dependencies and start up containers
 
 ```bash
 scripts/integrate.sh
 ```
-
-3. Login to Docker Cloud, update and redeploy `prettygreenplants` [stack](https://cloud.docker.com/app/prettygreenplants/stack/8bb6f503-404b-408e-a43b-96edcc260414/general)
-4. Login to `app` container's terminal and run the following commands to cleanup:
-
-```bash
-/cleanup.sh
-```
-
-Note: Default document root is already in `/var/www` and FLOW_CONTEXT is already `Production`
 
 Infrastructure
 ==============
@@ -153,9 +155,9 @@ Infrastructure
 SSL & Redirection
 -----------------
 
-SSL certificate is generated from letsencrypt free certificate during deployment and monthly by cronjob.
-Nginx configuration inside web docker container allow `acme-challenge` with http for ssl validation and
-generation, and redirect the rest of http request (with or without www) to https://prettygreenplants.com
+SSL certificate is generated from letsencrypt free certificate during deployment and twice a day by cronjob added
+automatically by the package. Nginx configuration inside web docker container allow `acme-challenge` with http for ssl
+validation and generation, and redirect the rest of http request (with or without www) to https://prettygreenplants.com
 (without www). Requesting https site with www will also redirect to the non-www version of the site.
 
 For local docker setup, self-signed certificate will be used.
