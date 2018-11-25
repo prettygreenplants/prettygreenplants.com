@@ -1,0 +1,30 @@
+---
+
+- name: Make sure backup directory exists
+  file:
+    path: '/var/www/backup/{{ project_name }}'
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+    recurse: yes
+    state: directory
+  become: True
+
+- name: Install cronjob for daily backup
+  cron:
+    name: daily_backup
+    hour: 23
+    minute: 0
+    job: '/usr/local/bin/docker-compose -f /var/www/prettygreenplants/docker-compose-maintainance-prod.yml run --rm backup'
+
+- name: Create rotate script on the server
+  template:
+    src: 'rotate.sh.j2'
+    dest: '/var/www/backup/rotate.sh'
+    mode: 0755
+
+- name: Install cronjob for monthly rotate
+  cron:
+    name: monthly_rotate
+    day: 28
+    minute: 0
+    job: '/var/www/backup/rotate.sh'

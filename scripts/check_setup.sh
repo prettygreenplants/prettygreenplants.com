@@ -33,8 +33,6 @@ command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 command ansible --version | grep 2.5.11 >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- ANSIBLE version 2.5.11 is required during content sync. Please check REAME.md file."${NC} >&2; WARNING="1"; }
-command -v go >/dev/null 2>&1 ||
-	{ echo -e ${YELLOW}"- GO is not installed. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 
 if [ ${ERROR} == "0" ]; then
 	if [ ${WARNING} == "0" ]; then

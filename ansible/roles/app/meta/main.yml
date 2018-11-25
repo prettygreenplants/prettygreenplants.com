@@ -2,7 +2,7 @@
 
 galaxy_info:
   author: Visay Keo
-  description: App role for installing project code only on aws cloud to be ready for docker.
+  description: App role for installing project to aws cloud with docker.
   company: Pretty Green Plants
   license: GPLv3
   min_ansible_version: 2.3

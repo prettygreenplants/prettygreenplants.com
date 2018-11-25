@@ -11,6 +11,8 @@
       tags: packages
     - role: app
       tags: app
+    - role: backup
+      tags: app
     - role: syncontent
       delegate_to: localhost
       tags: syncontent

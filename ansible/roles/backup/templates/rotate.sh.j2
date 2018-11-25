@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#
+# {{ ansible_managed }}
+#
+
+BACKUP_PATH="/var/www/backup/{{ project_name }}"
+
+# Count backup files in the last 7 days
+# This is to determine whether daily backup is still working
+LAST_BACKUPS=`find ${BACKUP_PATH}/ -mindepth 1 -maxdepth 1 -type d -ctime -7 | wc -l`
+
+# If there are 6 or 7 backup files in the last 7 days, assume that daily backup is still running fine
+# Then execute the removal of backup files older than 30 days
+if [[ "${LAST_BACKUPS}" -gt 5 && "${LAST_BACKUPS}" -lt 8 ]]; then
+    find ${BACKUP_PATH}/ -mindepth 1 -maxdepth 1 -type d -ctime +30 | xargs rm -rf
+fi

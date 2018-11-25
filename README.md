@@ -75,11 +75,6 @@ Verify with `ansible --version` and if it is not version 2.5 or is not yet insta
 	sudo apt-get update
 	sudo apt-get -y --force-yes install ansible
 
-Go
---
-
-Verify with `go version` and if it is not yet installed, follow https://golang.org/doc/install#tarball
-
 Installation
 ============
 
@@ -151,6 +146,20 @@ scripts/integrate.sh
 
 Infrastructure
 ==============
+
+Backup & Restore
+----------------
+
+Every night, there is cronjob which calls the backup container defined in `docker-compose-maintainace-prod.yml` to backup
+the database to `/var/www/backup/prettygreenplants` (TODO for files). The backup file is then used by the syncontent
+script to fetch from cloud and restore locally or to setup on a new cloud server. To restore on the new cloud, run:
+
+```bash
+docker-compose -f docker-compose-maintainance-prod.yml run --rm restore
+```
+
+There is another cronjob for cleaning up backup files that are older than specified period. See `rotate.sh.j2` ansible
+template in `backup` role.
 
 SSL & Redirection
 -----------------
