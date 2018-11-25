@@ -5,14 +5,14 @@
   roles:
     - role: common
       become: True
-      tags: packages
+      tags: deploy
     - role: docker
       become: True
-      tags: packages
+      tags: deploy
     - role: app
-      tags: app
+      tags: deploy
     - role: backup
-      tags: app
+      tags: deploy
     - role: syncontent
       delegate_to: localhost
       tags: syncontent

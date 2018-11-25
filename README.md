@@ -132,16 +132,10 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-3. Install necessary packages on the cloud (needed for first install only)
+3. Install necessary packages on the cloud, get the latest code, install dependencies and start up containers
 
 ```bash
-scripts/server_setup.sh
-```
-
-4. Get the latest code to AWS, install dependencies and start up containers
-
-```bash
-scripts/integrate.sh
+scripts/deploy.sh
 ```
 
 Infrastructure
