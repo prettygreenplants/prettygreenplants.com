@@ -1,13 +1,6 @@
 ---
 # tasks file for common
 
-#- set_fact:
-#    dockercloud_api_key: '{{ lookup("env", "DOCKERCLOUD_APIKEY") }}'
-#
-#- fail:
-#    msg: 'Please pass environment variable for DOCKERCLOUD_APIKEY'
-#  when: dockercloud_api_key is not defined or dockercloud_api_key == ''
-
 - name: Display warning to manually manage system upgrade
   debug:
     msg: 'Please manually run apt-get upgrade to apply updates'

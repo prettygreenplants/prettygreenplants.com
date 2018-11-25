@@ -10,20 +10,20 @@ Neos:
   Flow:
     persistence:
       backendOptions:
-        host: 'db'
-        user: 'prettygreenplants'
-        password: 'prettygreenplants'
-        dbname: 'prettygreenplants'
+        host: '{{ mysql_db_host }}'
+        user: '{{ mysql_db_user }}'
+        password: '{{ mysql_db_password }}'
+        dbname: '{{ mysql_db_name }}'
 {% if aws_cloud and 'live' in group_names %}
 
   GoogleAnalytics:
     authentication:
-      applicationName: 'Pretty Green Plants'
-      clientId: '880718627449-r7tnjjffsm6q8dc1lt9ivgkq5mj5n49p.apps.googleusercontent.com'
-      clientSecret: '-bA9nNYMXFnTBoljanY74DvX'
-      developerKey: 'AIzaSyBs9lJ-6gY15sJdN7-t791rjZ5GX0R0R7M'
+      applicationName: '{{ google_analytic_app_name }}'
+      clientId: '{{ google_analytic_client_id }}'
+      clientSecret: '{{ google_analytic_client_secret }}'
+      developerKey: '{{ google_analytic_developer_key }}'
     sites:
       prettygreenplants:
-        trackingId: 'UA-42523446-2'
-        profileId: '127214097'
+        trackingId: '{{ google_analytic_tracking_id }}'
+        profileId: '{{ google_analytic_profile_id }}'
 {% endif %}

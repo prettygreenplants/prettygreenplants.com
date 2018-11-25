@@ -17,3 +17,15 @@ composer_dev_flag: ''
 release_version: ''
 
 temp_files: []
+
+google_analytic_app_name: ''
+google_analytic_client_id: ''
+google_analytic_client_secret: ''
+google_analytic_developer_key: ''
+google_analytic_tracking_id: ''
+google_analytic_profile_id: ''
+
+mysql_db_host: '{{ mysql_db_host_vault }}'
+mysql_db_user: '{{ mysql_db_user_vault }}'
+mysql_db_password: '{{ mysql_db_password_vault }}'
+mysql_db_name: '{{ mysql_db_name_vault }}'

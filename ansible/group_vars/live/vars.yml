@@ -17,3 +17,10 @@ temp_files:
   - 'Data/Logs/System_Development.log'
   - 'Data/Temporary'
   - 'Web/_Resources'
+
+google_analytic_app_name: '{{ google_analytic_app_name_vault }}'
+google_analytic_client_id: '{{ google_analytic_client_id_vault }}'
+google_analytic_client_secret: '{{ google_analytic_client_secret_vault }}'
+google_analytic_developer_key: '{{ google_analytic_developer_key_vault }}'
+google_analytic_tracking_id: '{{ google_analytic_tracking_id_vault }}'
+google_analytic_profile_id: '{{ google_analytic_profile_id_vault }}'
