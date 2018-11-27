@@ -145,15 +145,23 @@ Backup & Restore
 ----------------
 
 Every night, there is cronjob which calls the backup container defined in `docker-compose-maintainace-prod.yml` to backup
-the database to `/var/www/backup/prettygreenplants` (TODO for files). The backup file is then used by the syncontent
-script to fetch from cloud and restore locally or to setup on a new cloud server. To restore on the new cloud, run:
+the database to `/var/www/backup/prettygreenplants/db` and another one to backup files (`Data/Logs` and `Data/Persistent`)
+to `/var/www/backup/prettygreenplants/files`.
+
+The backup db file is then used by the syncontent script to fetch from cloud and restore locally or to setup on a new
+cloud server. To restore on the new cloud, run:
 
 ```bash
 docker-compose -f docker-compose-maintainance-prod.yml run --rm restore
 ```
 
-There is another cronjob for cleaning up backup files that are older than specified period. See `rotate.sh.j2` ansible
-template in `backup` role.
+Syncontent script fetch files directly from Neos document root and not taking from the backup as the db.
+
+The third cronjob is to sync both the file and db backup to Amazon S3 bucket `pgp-website-backup` so make sure that
+bucket is manually created on S3.
+
+The last cronjob is for cleaning up backup files/directories (both file and db backup) that are older than specified
+period. See `rotate.sh.j2` ansible template in `backup` role.
 
 SSL & Redirection
 -----------------
