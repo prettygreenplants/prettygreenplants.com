@@ -8,4 +8,4 @@ FILENAME=$(date '+%Y-%m-%d')
 BACKUP_SOURCE="{{ app_root }}/neos/Data"
 BACKUP_DEST="/var/www/backup/{{ project_name }}/files"
 
-/bin/tar -jcf "${BACKUP_DEST}/${NAME}.tar.bz2" ${BACKUP_PATH}/Persistent/ ${BACKUP_PATH}/Logs/
+cd ${BACKUP_SOURCE} && /bin/tar -jcf ${BACKUP_DEST}/${FILENAME}.tar.bz2 Persistent/ Logs/
