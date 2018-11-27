@@ -29,3 +29,6 @@ mysql_db_host: '{{ mysql_db_host_vault }}'
 mysql_db_user: '{{ mysql_db_user_vault }}'
 mysql_db_password: '{{ mysql_db_password_vault }}'
 mysql_db_name: '{{ mysql_db_name_vault }}'
+
+aws_access_key_id: ''
+aws_secret_access_key: ''

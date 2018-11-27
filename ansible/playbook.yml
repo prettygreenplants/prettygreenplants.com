@@ -9,6 +9,9 @@
     - role: docker
       become: True
       tags: deploy
+    - role: aws-cli
+      become: True
+      tags: deploy
     - role: app
       tags: deploy
     - role: backup

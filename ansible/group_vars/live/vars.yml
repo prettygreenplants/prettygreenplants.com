@@ -24,3 +24,6 @@ google_analytic_client_secret: '{{ google_analytic_client_secret_vault }}'
 google_analytic_api_key: '{{ google_analytic_api_key_vault }}'
 google_analytic_tracking_id: '{{ google_analytic_tracking_id_vault }}'
 google_analytic_profile_id: '{{ google_analytic_profile_id_vault }}'
+
+aws_access_key_id: '{{ aws_access_key_id_vault }}'
+aws_secret_access_key: '{{ aws_secret_access_key_vault }}'

@@ -1,0 +1,50 @@
+---
+
+- name: Download the AWS CLI Bundled Installer
+  get_url:
+    url: https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
+    dest: /tmp/awscli-bundle.zip
+
+- name: Unzip the package
+  unarchive:
+    src: /tmp/awscli-bundle.zip
+    dest: /tmp
+    remote_src: yes
+
+- name: Install missing python dependency for install aws-cli
+  apt:
+    name: python3-distutils
+
+- name: Run the install executable
+  shell: /usr/bin/python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+
+- name: Clean up downloaded files
+  file:
+    path: '{{ item }}'
+    state: absent
+  with_items:
+    - /tmp/awscli-bundle.zip
+    - /tmp/awscli-bundle
+
+- name: Create directory for cli config of the user
+  file:
+    path: '/home/{{ www_user }}/.aws'
+    state: directory
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+    mode: 0775
+
+- name: Apply cli config for the user
+  template:
+    src: '{{ item }}.j2'
+    dest: '/home/{{ www_user }}/.aws/{{ item }}'
+    owner: '{{ www_user }}'
+    group: '{{ www_group }}'
+    mode: 0600
+  with_items:
+    - config
+    - credentials
+
+- name: Run aws cli test command as user
+  shell: aws sts get-caller-identity
+  become_user: '{{ www_user }}'

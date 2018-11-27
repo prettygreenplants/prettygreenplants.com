@@ -8,3 +8,4 @@ common_packages:
   - php7.0-xml
   - php7.0-zip
   - certbot
+  - unzip
