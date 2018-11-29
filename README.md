@@ -155,6 +155,9 @@ cloud server. To restore on the new cloud, run:
 docker-compose -f docker-compose-maintainance-prod.yml run --rm restore
 ```
 
+_Note_: For every reset, always check the google analytic backend module to make sure the connection is still working.
+If not, just reconnect and save the setting.
+
 Syncontent script fetch files directly from Neos document root and not taking from the backup as the db.
 
 The third cronjob is to sync both the file and db backup to Amazon S3 bucket `pgp-website-backup` so make sure that
