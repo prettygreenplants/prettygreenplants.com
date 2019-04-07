@@ -37,7 +37,7 @@
     name: daily_backup_sync
     hour: 0
     minute: 30
-    job: '/usr/local/bin/aws s3 sync /var/www/backup/{{ project_name }}/ s3://pgp-website-backup/ --delete --sse --storage-class ONEZONE_IA --quiet'
+    job: '/usr/local/bin/aws s3 sync /var/www/backup/{{ project_name }}/ s3://prettygreenplants-website-backup/ --delete --sse --storage-class ONEZONE_IA --quiet'
 
 - name: Create rotate script on the server
   template:

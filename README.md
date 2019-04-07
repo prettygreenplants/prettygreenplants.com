@@ -160,7 +160,7 @@ If not, just reconnect and save the setting.
 
 Syncontent script fetch files directly from Neos document root and not taking from the backup as the db.
 
-The third cronjob is to sync both the file and db backup to Amazon S3 bucket `pgp-website-backup` so make sure that
+The third cronjob is to sync both the file and db backup to Amazon S3 bucket `prettygreenplants-website-backup` so make sure that
 bucket is manually created on S3.
 
 The last cronjob is for cleaning up backup files/directories (both file and db backup) that are older than specified
