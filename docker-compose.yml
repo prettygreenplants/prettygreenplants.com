@@ -38,4 +38,4 @@ web:
     - app
 #  environment:
 #    - NGINX_HOST=local.prettygreenplants.com # Default is local.prettygreenplants.com
-#    - USE_SELF_SIGNED_CERTIFICATE=True # Default is True (We use =True because : True doesn't work)
+#    - USE_SELF_SIGNED_CERTIFICATE=True # Default is True

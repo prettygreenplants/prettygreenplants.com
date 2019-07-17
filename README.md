@@ -62,14 +62,14 @@ docker-compose
 
 Verify with `docker-compose -v` and if not yet installed, run:
 
-	sudo curl -L https://github.com/docker/compose/releases/download/1.11.2/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+	sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 
 Refer to <https://docs.docker.com/compose/install/>
 
 Ansible
 -------
 
-Verify with `ansible --version` and if it is not version 2.5 or is not yet installed, run:
+Verify with `ansible --version` and if it is not version 2.8 or is not yet installed, run:
 
 	sudo add-apt-repository ppa:ansible/ansible -y
 	sudo apt-get update

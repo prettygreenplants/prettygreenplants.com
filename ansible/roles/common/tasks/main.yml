@@ -16,6 +16,7 @@
 - name: Update package caches
   apt:
     update_cache: yes
+    force_apt_get: yes
 
 - name: Add repo for php
   apt_repository:
@@ -29,8 +30,8 @@
 
 - name: Install packages
   apt:
-    name: '{{ item }}'
-  with_items: '{{ common_packages }}'
+    name: '{{ common_packages }}'
+    force_apt_get: yes
 
 - name: Download composer
   get_url:

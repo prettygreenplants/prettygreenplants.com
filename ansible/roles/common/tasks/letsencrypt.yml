@@ -8,6 +8,7 @@
 - name: Install nginx on host for letsencrypt verification
   apt:
     name: nginx
+    force_apt_get: yes
 
 - name: Setup letsencrypt verification vhost
   template:
@@ -34,6 +35,7 @@
     force: yes
     purge: yes
     autoremove: yes
+    force_apt_get: yes
 
 - name: Clean up nginx directories
   file:

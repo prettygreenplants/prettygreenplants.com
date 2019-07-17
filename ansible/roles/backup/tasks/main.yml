@@ -15,8 +15,8 @@
 - name: Install cronjob for daily db backup
   cron:
     name: daily_db_backup
-    hour: 23
-    minute: 0
+    hour: '23'
+    minute: '0'
     job: '/usr/local/bin/docker-compose -f {{ app_root }}/docker-compose-maintainance-prod.yml run --rm backup'
 
 - name: Create file backup script
@@ -28,15 +28,15 @@
 - name: Install cronjob for daily file backup
   cron:
     name: daily_file_backup
-    hour: 23
-    minute: 30
+    hour: '23'
+    minute: '30'
     job: '/var/www/backup/backup_files.sh'
 
 - name: Install cronjob for daily backup sync to s3
   cron:
     name: daily_backup_sync
-    hour: 0
-    minute: 30
+    hour: '0'
+    minute: '30'
     job: '/usr/local/bin/aws s3 sync /var/www/backup/{{ project_name }}/ s3://prettygreenplants-website-backup/ --delete --sse --storage-class ONEZONE_IA --quiet'
 
 - name: Create rotate script on the server
@@ -48,7 +48,7 @@
 - name: Install cronjob for monthly rotate
   cron:
     name: monthly_rotate
-    day: 28
-    hour: 1
-    minute: 0
+    day: '28'
+    hour: '1'
+    minute: '0'
     job: '/var/www/backup/rotate.sh'

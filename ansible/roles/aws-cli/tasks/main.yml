@@ -14,6 +14,7 @@
 - name: Install missing python dependency for install aws-cli
   apt:
     name: python3-distutils
+    force_apt_get: yes
 
 - name: Run the install executable
   shell: /usr/bin/python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws

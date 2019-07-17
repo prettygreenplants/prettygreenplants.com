@@ -6,7 +6,7 @@ backup:
   external_links:
     - prettygreenplants_db_1:db
   volumes:
-    - './backup:/backup'
+    - './backup/db:/backup'
 
 restore:
   image: confirm/mysql-backup:latest
@@ -17,4 +17,4 @@ restore:
   external_links:
     - prettygreenplants_db_1:db
   volumes:
-    - './backup:/backup'
+    - './backup/db:/backup'

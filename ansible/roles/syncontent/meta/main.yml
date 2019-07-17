@@ -5,7 +5,7 @@ galaxy_info:
   description: Sync resources from remote machine to local
   company: Pretty Green Plants
   license: MIT
-  min_ansible_version: 2.3
+  min_ansible_version: 2.8
   platforms:
     - name: Ubuntu
       versions:
