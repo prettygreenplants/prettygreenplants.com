@@ -41,6 +41,10 @@ page = Page {
 				email = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.email')}
 				facebookLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.facebook')}
 			}
+
+			messenger = Menu {
+				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/Messenger.html'
+			}
 		}
 
 		javascripts.site = Neos.Fusion:Template {
