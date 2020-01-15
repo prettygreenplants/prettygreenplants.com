@@ -2,13 +2,13 @@
 
 - name: Download the AWS CLI Bundled Installer
   get_url:
-    url: https://s3.amazonaws.com/aws-cli/awscli-bundle.zip
-    dest: /tmp/awscli-bundle.zip
+    url: 'https://s3.amazonaws.com/aws-cli/awscli-bundle-{{ aws_cli_version }}.zip'
+    dest: '/tmp/awscli-bundle-{{ aws_cli_version }}.zip'
 
 - name: Unzip the package
   unarchive:
-    src: /tmp/awscli-bundle.zip
-    dest: /tmp
+    src: '/tmp/awscli-bundle-{{ aws_cli_version }}.zip'
+    dest: /tmp/
     remote_src: yes
 
 - name: Install missing python dependency for install aws-cli
@@ -17,14 +17,14 @@
     force_apt_get: yes
 
 - name: Run the install executable
-  shell: /usr/bin/python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+  shell: '/usr/bin/python3 /tmp/awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws'
 
 - name: Clean up downloaded files
   file:
     path: '{{ item }}'
     state: absent
   with_items:
-    - /tmp/awscli-bundle.zip
+    - '/tmp/awscli-bundle-{{ aws_cli_version }}.zip'
     - /tmp/awscli-bundle
 
 - name: Create directory for cli config of the user
