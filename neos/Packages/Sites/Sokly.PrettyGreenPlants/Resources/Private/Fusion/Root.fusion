@@ -43,6 +43,7 @@ page = Page {
 			}
 
 			messenger = Menu {
+				@if.notInBackend = ${!node.context.inBackend}
 				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/Messenger.html'
 			}
 		}

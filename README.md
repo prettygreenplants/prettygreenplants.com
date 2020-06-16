@@ -236,3 +236,9 @@ Social Media
 ------------
 
 Render as TS object `parts.socialMedia` and read value from site setting.
+
+Facebook Chat
+-------------
+
+Render as TS object `parts.messenger` using snippet from Facebook. This is rendered
+in Frontend only so it is not affecting the Backend editing experience.
