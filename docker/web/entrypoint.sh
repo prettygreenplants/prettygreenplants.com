@@ -30,20 +30,20 @@ fi
 # Update hostname if defined differently
 if [ "${NGINX_HOST}" != "${DEFAULT_NGINX_HOST}" ]; then
 	echo "Set Neos hostname to \"${NGINX_HOST}\"!"
-	sed -i -e "s~${DEFAULT_NGINX_HOST}~${NGINX_HOST}~g" /etc/nginx/conf.d/default.conf
+	sed -i -e "s~${DEFAULT_NGINX_HOST}~${NGINX_HOST}~g" /etc/nginx/conf.d/prettygreenplants.conf
 fi
 
 # Update flow context if defined differently
 if [[ -n "${APP_ENV_FLOW_CONTEXT}" ]] && [[ "${APP_ENV_FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]]; then
 	echo "Set Flow context to \"${APP_ENV_FLOW_CONTEXT}\" context!"
-	sed -i -e "s~FLOW_CONTEXT     ${DEFAULT_FLOW_CONTEXT}~FLOW_CONTEXT     ${APP_ENV_FLOW_CONTEXT}~g" /etc/nginx/conf.d/default.conf
+	sed -i -e "s~FLOW_CONTEXT     ${DEFAULT_FLOW_CONTEXT}~FLOW_CONTEXT     ${APP_ENV_FLOW_CONTEXT}~g" /etc/nginx/conf.d/prettygreenplants.conf
 fi
 
 # Update ssl certificate and key if defined differently
 if [ "${USE_SELF_SIGNED_CERTIFICATE}" != true ]; then
 	echo "Overwrite self-signed ssl certificates to letsencrypt!"
-	sed -i -e "s~${SELF_SINGED_SSL_CERTIFICATE}~${LETSENCRYPT_SSL_CERTIFICATE}~g" /etc/nginx/conf.d/default.conf
-	sed -i -e "s~${SELF_SINGED_SSL_KEY}~${LETSENCRYPT_SSL_KEY}~g" /etc/nginx/conf.d/default.conf
+	sed -i -e "s~${SELF_SINGED_SSL_CERTIFICATE}~${LETSENCRYPT_SSL_CERTIFICATE}~g" /etc/nginx/conf.d/prettygreenplants.conf
+	sed -i -e "s~${SELF_SINGED_SSL_KEY}~${LETSENCRYPT_SSL_KEY}~g" /etc/nginx/conf.d/prettygreenplants.conf
 fi
 
 # Run normal command

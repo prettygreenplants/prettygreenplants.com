@@ -58,7 +58,7 @@ RUN sed -i -e "s~###DEFAULT_WWW_USER###~${WWW_USER}~g" /etc/php/7.0/fpm/pool.d/w
 COPY entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-WORKDIR /var/www
+WORKDIR /var/www/prettygreenplants
 
 # Expose port and by default start php-fpm
 EXPOSE 9000

@@ -1,11 +1,11 @@
 app:
   image: prettygreenplants/app:latest
   volumes:
-    - './neos:/var/www'
-    - './scripts/cleanup.sh:/cleanup.sh:ro'
+  - './neos:/var/www/prettygreenplants'
+  - './scripts/cleanup.sh:/cleanup.sh:ro'
   links:
-    - db
-    - redis
+  - db
+  - redis
   environment:
     FLOW_CONTEXT: 'Production'
 
@@ -13,8 +13,8 @@ app:
 db:
   image: mariadb:10.1
   command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-#  volumes:
-#    - '/var/lib/mysql'
+  volumes:
+  - '/var/lib/mysql'
   environment:
     MYSQL_ROOT_PASSWORD: 'root'
     MYSQL_USER: 'prettygreenplants'
@@ -27,13 +27,13 @@ redis:
 web:
   image: prettygreenplants/nginx:latest
   ports:
-    - '80:80'
-    - '443:443'
+  - '80:80'
+  - '443:443'
   volumes:
-    - './neos:/var/www'
-    - '/etc/letsencrypt:/etc/letsencrypt'
+  - './neos:/var/www/prettygreenplants'
+  - '/etc/letsencrypt:/etc/letsencrypt'
   links:
-    - app
+  - app
   environment:
-    - NGINX_HOST=prettygreenplants.com
-    - USE_SELF_SIGNED_CERTIFICATE=False
+  - NGINX_HOST=prettygreenplants.com
+  - USE_SELF_SIGNED_CERTIFICATE=False

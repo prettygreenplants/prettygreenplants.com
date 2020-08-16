@@ -1,28 +1,28 @@
 app:
   build: 'docker/app'
   volumes:
-    - './neos:/var/www'
-    - './scripts/cleanup.sh:/cleanup.sh:ro'
+  - './neos:/var/www/prettygreenplants'
+  - './scripts/cleanup.sh:/cleanup.sh:ro'
   links:
-    - db
-    - redis
+  - db
+  - redis
   environment:
     WWW_USER_ID: 1001 # Default is 1000
-#    WWW_USER: 'prettygreenplants' # Default is prettygreenplants
-#    FLOW_CONTEXT: 'Development' # Default is Development
+    # WWW_USER: 'prettygreenplants' # Default is prettygreenplants
+    # FLOW_CONTEXT: 'Development' # Default is Development
 
 db:
   image: mariadb:10.1
   command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-#  volumes:
-#    - '/var/lib/mysql'
+  volumes:
+  - '/var/lib/mysql'
   environment:
     MYSQL_ROOT_PASSWORD: 'root'
     MYSQL_USER: 'prettygreenplants'
     MYSQL_PASSWORD: 'prettygreenplants'
     MYSQL_DATABASE: 'prettygreenplants'
-#  ports:
-#    - '3306:3306'
+  # ports:
+  # - '3306:3306'
 
 redis:
   image: redis:alpine
@@ -30,12 +30,12 @@ redis:
 web:
   build: 'docker/web'
   ports:
-    - '80:80'
-    - '443:443'
+  - '80:80'
+  - '443:443'
   volumes:
-    - './neos:/var/www'
+  - './neos:/var/www/prettygreenplants'
   links:
-    - app
-#  environment:
-#    - NGINX_HOST=local.prettygreenplants.com # Default is local.prettygreenplants.com
-#    - USE_SELF_SIGNED_CERTIFICATE=True # Default is True
+  - app
+  # environment:
+  # - NGINX_HOST=local.prettygreenplants.com # Default is local.prettygreenplants.com
+  # - USE_SELF_SIGNED_CERTIFICATE=True # Default is True
