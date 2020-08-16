@@ -6,6 +6,8 @@ app:
   links:
   - db
   - redis
+  ports:
+  - '8080:9000'
   environment:
     FLOW_CONTEXT: 'Production'
 
@@ -32,8 +34,7 @@ web:
   volumes:
   - './neos:/var/www/prettygreenplants'
   - '/etc/letsencrypt:/etc/letsencrypt'
-  links:
-  - app
+  net: 'host'
   environment:
   - NGINX_HOST=prettygreenplants.com
   - USE_SELF_SIGNED_CERTIFICATE=False
