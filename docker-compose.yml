@@ -1,35 +1,40 @@
-app:
-  build: 'docker/app'
-  volumes:
-  - './neos:/var/www/prettygreenplants'
-  - './scripts/cleanup.sh:/cleanup.sh:ro'
-  links:
-  - db
-  - redis
-  ports:
-  - '8080:9000'
+version: '3'
 
-db:
-  image: mariadb:10.1
-  command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-  volumes:
-  - '/var/lib/mysql'
-  environment:
-    MYSQL_ROOT_PASSWORD: 'root'
-    MYSQL_USER: 'prettygreenplants'
-    MYSQL_PASSWORD: 'prettygreenplants'
-    MYSQL_DATABASE: 'prettygreenplants'
-  # ports:
-  # - '3306:3306'
+services:
+  app:
+    build: 'docker/app'
+    volumes:
+    - './neos:/var/www/prettygreenplants'
+    - './scripts/cleanup.sh:/cleanup.sh:ro'
+    links:
+    - db
+    - redis
+    ports:
+    - '8080:9000'
+    env_file: .env
 
-redis:
-  image: redis:alpine
+  db:
+    image: mariadb:10.1
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+    - '/var/lib/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'prettygreenplants'
+      MYSQL_PASSWORD: 'prettygreenplants'
+      MYSQL_DATABASE: 'prettygreenplants'
+    # ports:
+    # - '3306:3306'
 
-web:
-  build: 'docker/web'
-  ports:
-  - '80:80'
-  - '443:443'
-  volumes:
-  - './neos:/var/www/prettygreenplants'
-  net: 'host'
+  redis:
+    image: redis:alpine
+
+  web:
+    build: 'docker/web'
+    ports:
+    - '80:80'
+    - '443:443'
+    volumes:
+    - './neos:/var/www/prettygreenplants'
+    env_file: .env
+    network_mode: 'host'

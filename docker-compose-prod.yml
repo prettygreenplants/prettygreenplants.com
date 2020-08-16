@@ -1,35 +1,41 @@
-app:
-  image: prettygreenplants/app:latest
-  volumes:
-  - './neos:/var/www/prettygreenplants'
-  - './scripts/cleanup.sh:/cleanup.sh:ro'
-  links:
-  - db
-  - redis
-  ports:
-  - '8080:9000'
+version: '3'
 
-# TODO: Move to RDS
-db:
-  image: mariadb:10.1
-  command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
-  volumes:
-  - '/var/lib/mysql'
-  environment:
-    MYSQL_ROOT_PASSWORD: 'root'
-    MYSQL_USER: 'prettygreenplants'
-    MYSQL_PASSWORD: 'prettygreenplants'
-    MYSQL_DATABASE: 'prettygreenplants'
+services:
 
-redis:
-  image: redis:alpine
+  app:
+    image: prettygreenplants/app:latest
+    volumes:
+    - './neos:/var/www/prettygreenplants'
+    - './scripts/cleanup.sh:/cleanup.sh:ro'
+    links:
+    - db
+    - redis
+    ports:
+    - '8080:9000'
+    env_file: .env
 
-web:
-  image: prettygreenplants/nginx:latest
-  ports:
-  - '80:80'
-  - '443:443'
-  volumes:
-  - './neos:/var/www/prettygreenplants'
-  - '/etc/letsencrypt:/etc/letsencrypt'
-  net: 'host'
+  # TODO: Move to RDS
+  db:
+    image: mariadb:10.1
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    volumes:
+    - '/var/lib/mysql'
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_USER: 'prettygreenplants'
+      MYSQL_PASSWORD: 'prettygreenplants'
+      MYSQL_DATABASE: 'prettygreenplants'
+
+  redis:
+    image: redis:alpine
+
+  web:
+    image: prettygreenplants/nginx:latest
+    ports:
+    - '80:80'
+    - '443:443'
+    volumes:
+    - './neos:/var/www/prettygreenplants'
+    - '/etc/letsencrypt:/etc/letsencrypt'
+    env_file: .env
+    network_mode: 'host'
