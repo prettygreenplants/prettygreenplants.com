@@ -29,15 +29,15 @@
     mode: 'u+x,g+x,o+x'
 
 - name: Check if the user is in docker group
-  shell: 'groups {{ www_user }} | grep docker'
+  shell: 'groups {{ host_user }} | grep docker'
   register: docker_status
   ignore_errors: true
 
 - name: Add current user to docker group
-  shell: 'gpasswd -a {{ www_user }} docker'
+  shell: 'gpasswd -a {{ host_user }} docker'
   when: docker_status.failed
 
 - name: Server restart needed
   fail:
-    msg: 'Please reboot the server so Docker can run as {{ www_user }} user.'
+    msg: 'Please reboot the server so Docker can run as {{ host_user }} user.'
   when: docker_status.failed

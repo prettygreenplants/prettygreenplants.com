@@ -6,10 +6,8 @@ app:
   links:
   - db
   - redis
-  environment:
-    WWW_USER_ID: 1001 # Default is 1000
-    # WWW_USER: 'prettygreenplants' # Default is prettygreenplants
-    # FLOW_CONTEXT: 'Development' # Default is Development
+  ports:
+  - '8080:9000'
 
 db:
   image: mariadb:10.1
@@ -34,8 +32,4 @@ web:
   - '443:443'
   volumes:
   - './neos:/var/www/prettygreenplants'
-  links:
-  - app
-  # environment:
-  # - NGINX_HOST=local.prettygreenplants.com # Default is local.prettygreenplants.com
-  # - USE_SELF_SIGNED_CERTIFICATE=True # Default is True
+  net: 'host'

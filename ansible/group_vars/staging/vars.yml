@@ -1,8 +1,14 @@
 ---
 
+domain_name: ''
+
 app_root: ''
+host_user: ''
+host_group: ''
+
 www_user: ''
-www_group: ''
+www_user_id: ''
+www_group_id: ''
 
 project_context: 'Development'
 composer_dev_flag: 'no'

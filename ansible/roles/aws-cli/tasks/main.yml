@@ -29,18 +29,18 @@
 
 - name: Create directory for cli config of the user
   file:
-    path: '/home/{{ www_user }}/.aws'
+    path: '/home/{{ host_user }}/.aws'
     state: directory
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
+    owner: '{{ host_user }}'
+    group: '{{ host_group }}'
     mode: 0775
 
 - name: Apply cli config for the user
   template:
     src: '{{ item }}.j2'
-    dest: '/home/{{ www_user }}/.aws/{{ item }}'
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
+    dest: '/home/{{ host_user }}/.aws/{{ item }}'
+    owner: '{{ host_user }}'
+    group: '{{ host_group }}'
     mode: 0600
   with_items:
     - config
@@ -48,4 +48,4 @@
 
 - name: Run aws cli test command as user
   shell: aws sts get-caller-identity
-  become_user: '{{ www_user }}'
+  become_user: '{{ host_user }}'

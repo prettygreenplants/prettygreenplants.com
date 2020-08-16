@@ -8,8 +8,6 @@ app:
   - redis
   ports:
   - '8080:9000'
-  environment:
-    FLOW_CONTEXT: 'Production'
 
 # TODO: Move to RDS
 db:
@@ -35,6 +33,3 @@ web:
   - './neos:/var/www/prettygreenplants'
   - '/etc/letsencrypt:/etc/letsencrypt'
   net: 'host'
-  environment:
-  - NGINX_HOST=prettygreenplants.com
-  - USE_SELF_SIGNED_CERTIFICATE=False

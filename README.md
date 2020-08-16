@@ -94,12 +94,16 @@ Install project dependencies:
 
 	composer install --prefer-dist --working-dir=neos
 
+Create docker environment file
+
+	cp env.dev .env
+
 Build up docker containers and pull latest version for local development:
 
 	docker-compose pull
 	docker-compose build
 
-Check your Linux user account with `echo $UID`. If it does not return 1001, change value in docker-compose.yml to that ID.
+Check your Linux user account with `echo $UID` and update `.env` file to match.
 
 Start docker containers:
 

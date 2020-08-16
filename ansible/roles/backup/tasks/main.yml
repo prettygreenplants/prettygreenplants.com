@@ -3,8 +3,8 @@
 - name: Make sure backup directory exists
   file:
     path: '/var/www/backup/{{ project_name }}/{{ item }}'
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
+    owner: '{{ host_user }}'
+    group: '{{ host_group }}'
     recurse: yes
     state: directory
   with_items:

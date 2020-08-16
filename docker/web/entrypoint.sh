@@ -13,18 +13,18 @@ LETSENCRYPT_SSL_CERTIFICATE="/etc/letsencrypt/live/prettygreenplants.com/fullcha
 LETSENCRYPT_SSL_KEY="/etc/letsencrypt/live/prettygreenplants.com/privkey.pem"
 
 # Update system user if defined differently
-if [[ -n "${APP_ENV_WWW_USER}" ]] && [[ "${APP_ENV_WWW_USER}" != "${DEFAULT_WWW_USER}" ]]; then
-	echo "Rename user \"${DEFAULT_WWW_USER}\" to \"${APP_ENV_WWW_USER}\"!"
-	usermod -d /home/${APP_ENV_WWW_USER} -l ${APP_ENV_WWW_USER} ${DEFAULT_WWW_USER}
-	groupmod -n ${APP_ENV_WWW_USER} ${DEFAULT_WWW_USER}
-	DEFAULT_WWW_USER="${APP_ENV_WWW_USER}"
+if [[ -n "${WWW_USER}" ]] && [[ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]]; then
+	echo "Rename user \"${DEFAULT_WWW_USER}\" to \"${WWW_USER}\"!"
+	usermod -d /home/${WWW_USER} -l ${WWW_USER} ${DEFAULT_WWW_USER}
+	groupmod -n ${WWW_USER} ${DEFAULT_WWW_USER}
+	DEFAULT_WWW_USER="${WWW_USER}"
 fi
 
 # Update uid of system user if defined differently
-if [[ -n "${APP_ENV_WWW_USER_ID}" ]] && [[ "${APP_ENV_WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]]; then
-	echo "Update \"${DEFAULT_WWW_USER}\" user and group ID to \"${APP_ENV_WWW_USER_ID}\"!"
-	usermod --uid ${APP_ENV_WWW_USER_ID} ${DEFAULT_WWW_USER}
-	groupmod --gid ${APP_ENV_WWW_USER_ID} ${DEFAULT_WWW_USER}
+if [[ -n "${WWW_USER_ID}" ]] && [[ "${WWW_USER_ID}" != "${DEFAULT_WWW_USER_ID}" ]]; then
+	echo "Update \"${DEFAULT_WWW_USER}\" user and group ID to \"${WWW_USER_ID}\"!"
+	usermod --uid ${WWW_USER_ID} ${DEFAULT_WWW_USER}
+	groupmod --gid ${WWW_USER_ID} ${DEFAULT_WWW_USER}
 fi
 
 # Update hostname if defined differently
@@ -34,9 +34,9 @@ if [ "${NGINX_HOST}" != "${DEFAULT_NGINX_HOST}" ]; then
 fi
 
 # Update flow context if defined differently
-if [[ -n "${APP_ENV_FLOW_CONTEXT}" ]] && [[ "${APP_ENV_FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]]; then
-	echo "Set Flow context to \"${APP_ENV_FLOW_CONTEXT}\" context!"
-	sed -i -e "s~FLOW_CONTEXT     ${DEFAULT_FLOW_CONTEXT}~FLOW_CONTEXT     ${APP_ENV_FLOW_CONTEXT}~g" /etc/nginx/conf.d/prettygreenplants.conf
+if [[ -n "${FLOW_CONTEXT}" ]] && [[ "${FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]]; then
+	echo "Set Flow context to \"${FLOW_CONTEXT}\" context!"
+	sed -i -e "s~FLOW_CONTEXT     ${DEFAULT_FLOW_CONTEXT}~FLOW_CONTEXT     ${FLOW_CONTEXT}~g" /etc/nginx/conf.d/prettygreenplants.conf
 fi
 
 # Update ssl certificate and key if defined differently

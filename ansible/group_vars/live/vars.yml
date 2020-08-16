@@ -1,9 +1,16 @@
 ---
 
+domain_name: 'prettygreenplants.com'
+use_ssl: true
+
 app_root: '/var/www/{{ project_name }}'
 letsencrypt_dir: '/etc/letsencrypt'
-www_user: 'ubuntu'
-www_group: 'ubuntu'
+host_user: 'ubuntu'
+host_group: 'ubuntu'
+
+www_user: 'prettygreenplants'
+www_user_id: '1000'
+www_group_id: '1000'
 
 project_context: 'Production'
 composer_dev_flag: 'yes'

@@ -4,8 +4,8 @@
 - name: Make sure application root exists
   file:
     path: '{{ app_root }}'
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
+    owner: '{{ host_user }}'
+    group: '{{ host_group }}'
     recurse: yes
     state: directory
   become: True
@@ -24,6 +24,11 @@
     prefer_dist: yes
     working_dir: '{{ app_root }}/neos'
 
+- name: Setup docker environment file
+  template:
+    dest: '{{ app_root }}/.env'
+    src: env.j2
+
 - name: Setup database connection
   template:
     dest: '{{ app_root }}/neos/Configuration/{{ project_context }}/Settings.yaml'
@@ -34,8 +39,8 @@
 - name: Make sure files and directories permissions are correct
   file:
     path: '{{ app_root }}'
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
+    owner: '{{ host_user }}'
+    group: '{{ host_group }}'
     recurse: yes
     state: directory
   become: True

@@ -56,10 +56,10 @@
 
 - name: Fix permission for composer cache directory
   file:
-    path: '/home/{{ www_user }}/.composer'
+    path: '/home/{{ host_user }}/.composer'
     state: directory
-    owner: '{{ www_user }}'
-    group: '{{ www_group }}'
+    owner: '{{ host_user }}'
+    group: '{{ host_group }}'
     recurse: yes
 
 - name: Check if letsencrypt certificate exists
