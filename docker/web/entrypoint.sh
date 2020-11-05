@@ -40,7 +40,7 @@ if [[ -n "${FLOW_CONTEXT}" ]] && [[ "${FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT
 fi
 
 # Update ssl certificate and key if defined differently
-if [ "${USE_SELF_SIGNED_CERTIFICATE}" != true ]; then
+if [ "${USE_SELF_SIGNED_CERTIFICATE}" != True ]; then
 	echo "Overwrite self-signed ssl certificates to letsencrypt!"
 	sed -i -e "s~${SELF_SINGED_SSL_CERTIFICATE}~${LETSENCRYPT_SSL_CERTIFICATE}~g" /etc/nginx/conf.d/prettygreenplants.conf
 	sed -i -e "s~${SELF_SINGED_SSL_KEY}~${LETSENCRYPT_SSL_KEY}~g" /etc/nginx/conf.d/prettygreenplants.conf
