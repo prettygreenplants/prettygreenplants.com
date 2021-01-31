@@ -36,10 +36,12 @@ page = Page {
 			socialMedia = Neos.Neos:Content {
 				emailText = "Email"
 				facebookText = "Facebook"
+				instagramText = "Instagram"
 
 				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/SocialMedia.html'
 				email = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.email')}
 				facebookLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.facebook')}
+				instagramLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.instagram')}
 			}
 
 			messenger = Menu {
