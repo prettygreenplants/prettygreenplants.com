@@ -45,3 +45,10 @@
     hour: '1'
     minute: '0'
     job: '/var/www/backup/rotate.sh'
+
+- name: Install cronjob for daily cleanup docker images
+  cron:
+    name: daily_docker_image_cleanup
+    hour: '1'
+    minute: '30'
+    job: 'docker rmi $(docker images -f "dangling=true" -q)'
