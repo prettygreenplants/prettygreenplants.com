@@ -17,4 +17,5 @@ MUSER=root
 FILE=${BACKUP_FOLDER}/${NOW}.sql.gz
 $MYSQLDUMP -h $MHOST -u $MUSER -p${MPASS} --databases $MDB | $GZIP -9 > $FILE
 
-chown 1000:1000 $FILE
+chown ${BACKUP_UID:=1000}:${BACKUP_GID:=1000} $FILE
+echo "Database backup saved to ${FILE}!"

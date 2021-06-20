@@ -1,0 +1,28 @@
+#!/bin/sh
+
+BACKUP_FOLDER=/opt/mysql/backup
+
+if [[ -z "${FROM_DATE}" ]]; then
+    FROM_DATE=$(date '+%Y-%m-%d')
+fi
+
+GZIP=$(which gunzip)
+MYSQL=$(which mysql)
+
+### MySQL Server Login info ###
+MDB=$MYSQL_DATABASE
+MHOST=$MYSQL_CONTAINER_NAME
+MPASS=$MYSQL_ROOT_PASSWORD
+MUSER=root
+
+FILE=${BACKUP_FOLDER}/${FROM_DATE}.sql.gz
+
+if [ -f "$FILE" ]; then
+    $GZIP < $FILE | $MYSQL -h $MHOST -u $MUSER -p${MPASS} --database $MDB
+    echo "Database ${MDB} restored from ${FILE}!"
+else
+    echo "$FILE does not exist."
+    exit 1
+fi
+
+

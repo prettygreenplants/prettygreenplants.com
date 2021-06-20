@@ -15,8 +15,12 @@ if [ ${ERROR} == "0" ]; then
 	read -p "Are you sure (y/n)? " -r
 	echo
 
+  if [[ -z "${FROM_DATE}" ]]; then
+      FROM_DATE=$(date '+%Y-%m-%d')
+  fi
+
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		LOCAL_BASE_PATH=`pwd`
-		ansible-playbook ansible/playbook.yml --limit live --tags syncontent --extra-vars "base_dir=${LOCAL_BASE_PATH}"
+		ansible-playbook ansible/playbook.yml --limit live --tags syncontent --extra-vars "base_dir=${LOCAL_BASE_PATH} from_date=${FROM_DATE}"
 	fi
 fi

@@ -114,7 +114,9 @@ Start docker containers:
 
 Restore content from live to local:
 
-	scripts/syncontent.sh
+	FROM_DATE=2021-06-19 scripts/syncontent.sh
+
+_Note_: If `FROM_DATE` is not set, then it takes today's date for the backup filename.
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and
 add the following line:
@@ -153,18 +155,18 @@ Infrastructure
 Backup & Restore
 ----------------
 
-Every night, there is a cronjob which calls the backup container defined in
-`docker-compose-maintainace-prod.yml` to backup the database to
-`/var/www/backup/prettygreenplants/db` and another one to backup files
+Every night, there is a container containing cronjob which calls the backup script defined in `docker/db-backup/scripts/`
+to backup the database to `/var/www/backup/prettygreenplants/db` and another cronjob on docker host to backup files
 (`Data/Logs` and `Data/Persistent`) to `/var/www/backup/prettygreenplants/files`.
 
 The backup db file is then used by the syncontent script to fetch from cloud and
 restore locally or to setup on a new cloud server. To restore on the new cloud, run:
 
 ```bash
-docker-compose -f docker-compose-maintainance-prod.yml run --rm restore
+docker-compose -f docker-compose-prod.yml run --rm -e FROM_DATE=2021-06-19 db_backup /opt/mysql/restore-database
 ```
 
+_Note_: If `FROM_DATE` is not set, then it takes today's date for the backup filename.
 _Note_: For every reset, always check the google analytic backend module to make
 sure the connection is still working. If not, just reconnect and save the setting.
 

@@ -15,6 +15,7 @@ services:
 
   db:
     image: mariadb:10.1
+    container_name: prettygreenplants_db
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
     - '/var/lib/mysql'
@@ -25,6 +26,20 @@ services:
       MYSQL_DATABASE: 'prettygreenplants'
     # ports:
     # - '3306:3306'
+
+  db_backup:
+    build: ./docker/db-backup
+    environment:
+      MYSQL_CONTAINER_NAME: prettygreenplants_db
+      MYSQL_DATABASE: 'prettygreenplants'
+      MYSQL_ROOT_PASSWORD: 'root'
+      BACKUP_GID: 1001
+      BACKUP_UID: 1001
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./backup/db:/opt/mysql/backup
+    command: crond -f -d 8
+    restart: always
 
   redis:
     image: redis:alpine

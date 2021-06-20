@@ -12,13 +12,6 @@
     - files
   become: True
 
-- name: Install cronjob for daily db backup
-  cron:
-    name: daily_db_backup
-    hour: '23'
-    minute: '0'
-    job: '/usr/local/bin/docker-compose -f {{ app_root }}/docker-compose-maintainance-prod.yml run --rm backup'
-
 - name: Create file backup script
   template:
     src: backup_files.sh.j2

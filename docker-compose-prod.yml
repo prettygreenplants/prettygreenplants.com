@@ -17,7 +17,7 @@ services:
   # TODO: Move to RDS
   db:
     image: mariadb:10.1
-    container_name: db
+    container_name: prettygreenplants_db
     command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
     volumes:
     - '/var/lib/mysql'
@@ -30,9 +30,11 @@ services:
   db_backup:
     build: ./docker/db-backup
     environment:
-      MYSQL_CONTAINER_NAME: db
+      MYSQL_CONTAINER_NAME: prettygreenplants_db
       MYSQL_DATABASE: 'prettygreenplants'
       MYSQL_ROOT_PASSWORD: 'root'
+      BACKUP_GID: 1000
+      BACKUP_UID: 1000
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/www/backup/prettygreenplants/db:/opt/mysql/backup
