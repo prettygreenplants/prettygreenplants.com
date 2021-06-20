@@ -39,7 +39,6 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./backup/db:/opt/mysql/backup
     command: crond -f -d 8
-    restart: always
 
   redis:
     image: redis:alpine

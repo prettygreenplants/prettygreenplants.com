@@ -28,7 +28,7 @@ services:
       MYSQL_DATABASE: 'prettygreenplants'
 
   db_backup:
-    build: ./docker/db-backup
+    image: prettygreenplants/scheduler:latest
     environment:
       MYSQL_CONTAINER_NAME: prettygreenplants_db
       MYSQL_DATABASE: 'prettygreenplants'
