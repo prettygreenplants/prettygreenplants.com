@@ -15,8 +15,8 @@ command -v git >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- GIT is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command -v php >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- PHP is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
-command php --version | grep "PHP 7.1." >/dev/null 2>&1 ||
-	{ echo -e ${RED}"- PHP version 7.1 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
+command php --version | grep "PHP 7.2." >/dev/null 2>&1 ||
+	{ echo -e ${RED}"- PHP version 7.2 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command php -m | grep "mbstring" >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- PHP extension mbstring is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command php -m | grep "dom" >/dev/null 2>&1 ||

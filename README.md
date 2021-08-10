@@ -18,9 +18,9 @@ Verify with `git --version` and if not yet installed, run:
 php
 ---
 
-Verify with `php -v` and if not yet installed or not version 7.1, run:
+Verify with `php -v` and if not yet installed or not version 7.2, run:
 
-	sudo apt-get install php7.1-cli
+	sudo apt-get install php7.2-cli
 
 php extensions
 --------------
@@ -36,7 +36,7 @@ The following extension is recommended to speed thing up but not required:
 
 Verify with `php -m` and see if any of them are not in the list, re-install all with:
 
-	sudo apt-get install php7.1-mbstring php7.1-xml php7.1-zip
+	sudo apt-get install php7.2-mbstring php7.2-xml php7.2-zip
 
 composer
 --------

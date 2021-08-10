@@ -3,9 +3,9 @@
 
 common_packages:
   - git
-  - php7.1-cli
-  - php7.1-mbstring
-  - php7.1-xml
-  - php7.1-zip
+  - php7.2-cli
+  - php7.2-mbstring
+  - php7.2-xml
+  - php7.2-zip
   - certbot
   - unzip
