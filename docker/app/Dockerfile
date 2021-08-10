@@ -21,14 +21,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
     sendmail \
     sudo \
-    php7.0-cli \
-    php7.0-curl \
-    php7.0-fpm \
-    php7.0-gd \
-    php7.0-ldap \
-    php7.0-mbstring \
-    php7.0-mysql \
-    php7.0-xml \
+    php7.1-cli \
+    php7.1-curl \
+    php7.1-fpm \
+    php7.1-gd \
+    php7.1-ldap \
+    php7.1-mbstring \
+    php7.1-mysql \
+    php7.1-xml \
     php-imagick \
     php-redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
@@ -47,12 +47,12 @@ ENV FLOW_CONTEXT Development
 RUN adduser --system --shell /bin/bash --no-create-home --uid ${WWW_USER_ID} --group --disabled-password --disabled-login ${WWW_USER}
 
 # Copy configuration files for php
-COPY www.conf     /etc/php/7.0/fpm/pool.d/
-COPY php-fpm.conf /etc/php/7.0/fpm/
-COPY php.ini      /etc/php/7.0/fpm/
-COPY php-cli.ini  /etc/php/7.0/cli/php.ini
+COPY www.conf     /etc/php/7.1/fpm/pool.d/
+COPY php-fpm.conf /etc/php/7.1/fpm/
+COPY php.ini      /etc/php/7.1/fpm/
+COPY php-cli.ini  /etc/php/7.1/cli/php.ini
 
-RUN sed -i -e "s~###DEFAULT_WWW_USER###~${WWW_USER}~g" /etc/php/7.0/fpm/pool.d/www.conf
+RUN sed -i -e "s~###DEFAULT_WWW_USER###~${WWW_USER}~g" /etc/php/7.1/fpm/pool.d/www.conf
 
 # Set entrypoint to fix volume mount permission
 COPY entrypoint.sh /entrypoint.sh
@@ -62,4 +62,4 @@ WORKDIR /var/www/prettygreenplants
 
 # Expose port and by default start php-fpm
 EXPOSE 9000
-CMD ["php-fpm7.0"]
+CMD ["php-fpm7.1"]

@@ -13,8 +13,8 @@ if [ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]; then
 	groupmod -n ${WWW_USER} ${DEFAULT_WWW_USER}
 
 	echo "Update \"www.conf\" to use \"${WWW_USER}\" user and group!"
-	sed -i -e "s~user = ${DEFAULT_WWW_USER}~user = ${WWW_USER}~g" /etc/php/7.0/fpm/pool.d/www.conf
-	sed -i -e "s~group = ${DEFAULT_WWW_USER}~group = ${WWW_USER}~g" /etc/php/7.0/fpm/pool.d/www.conf
+	sed -i -e "s~user = ${DEFAULT_WWW_USER}~user = ${WWW_USER}~g" /etc/php/7.1/fpm/pool.d/www.conf
+	sed -i -e "s~group = ${DEFAULT_WWW_USER}~group = ${WWW_USER}~g" /etc/php/7.1/fpm/pool.d/www.conf
 fi
 
 # Update uid of system user if defined differently
