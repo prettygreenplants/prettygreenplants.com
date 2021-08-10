@@ -1,7 +1,7 @@
 ---
 
 galaxy_info:
-  author: Visay Keo
+  author: Pretty Green Plants
   description: Ansible role to setup common packages.
   company: Pretty Green Plants
   license: license (GPLv2, CC-BY, etc)

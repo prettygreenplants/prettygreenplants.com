@@ -143,7 +143,8 @@ sudo apt-get upgrade
 ```
 
 3. Update `ansible/ssh.cfg` file to apply new IP address
-4. Install necessary packages on the cloud, get the latest code, install
+4. Point DNS record to the new IP address
+5. Install necessary packages on the cloud, get the latest code, install
 dependencies and start up containers
 
 ```bash

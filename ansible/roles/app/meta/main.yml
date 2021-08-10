@@ -1,7 +1,7 @@
 ---
 
 galaxy_info:
-  author: Visay Keo
+  author: Pretty Green Plants
   description: App role for installing project to aws cloud with docker.
   company: Pretty Green Plants
   license: GPLv3
