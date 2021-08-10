@@ -134,7 +134,8 @@ Deployment To Live
 AWS
 ---
 
-1. Create an ec2 instances on AWS, associate elastic IP and configure security group to allow SSH access to the server
+1. Create an ec2 instances on AWS, associate elastic IP and configure security
+group to allow SSH, HTTP and HTTPS to the server
 2. Update the system with:
 
 ```bash
@@ -144,7 +145,15 @@ sudo apt-get upgrade
 
 3. Update `ansible/ssh.cfg` file to apply new IP address
 4. Point DNS record to the new IP address
-5. Install necessary packages on the cloud, get the latest code, install
+5. Manually push docker images to docker.io
+
+```bash
+docker login -u visay --password-stdin docker.io
+docker tag prettygreenplants_app prettygreenplants/app:latest
+docker push prettygreenplants/app:latest
+```
+
+6. Install necessary packages on the cloud, get the latest code, install
 dependencies and start up containers
 
 ```bash

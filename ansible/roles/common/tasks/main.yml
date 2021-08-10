@@ -50,9 +50,7 @@
     state: file
 
 - name: Update composer to latest version
-  composer:
-    command: self-update
-    working_dir: /usr/local/bin
+  shell: composer self-update
 
 - name: Fix permission for composer cache directory
   file:
