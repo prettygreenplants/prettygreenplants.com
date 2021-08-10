@@ -25,6 +25,7 @@
     "require-dev": {
         "neos/site-kickstarter": "~3.1.0",
         "neos/setup": "~4.0",
+        "typo3fluid/fluid": "2.1.3",
 
         "neos/buildessentials": "~4.1.0",
         "mikey179/vfsstream": "~1.6",
