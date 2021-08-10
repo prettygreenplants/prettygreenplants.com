@@ -134,7 +134,7 @@ Deployment To Live
 AWS
 ---
 
-1. Create an ec2 instances on AWS, associate elastic IP and configure security group
+1. Create an ec2 instances on AWS, associate elastic IP and configure security group to allow SSH access to the server
 2. Update the system with:
 
 ```bash
@@ -142,7 +142,8 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-3. Install necessary packages on the cloud, get the latest code, install
+3. Update `ansible/ssh.cfg` file to apply new IP address
+4. Install necessary packages on the cloud, get the latest code, install
 dependencies and start up containers
 
 ```bash
