@@ -143,9 +143,11 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-3. Update `ansible/ssh.cfg` file to apply new IP address
-4. Point DNS record to the new IP address
-5. Manually push docker images to docker.io
+3. Generate and update AWS access key ID and secret key in `ansible/group_vars/live/vault.yml`
+4. Update `ansible/ssh.cfg` file to apply new IP address
+5. Point DNS record to the new IP address
+6. Create empty bucket `pgp-website-backup` in AWS S3 for storing backup
+7. Manually push docker images to docker.io
 
 ```bash
 docker login -u visay --password-stdin docker.io
@@ -153,7 +155,7 @@ docker tag prettygreenplants_app prettygreenplants/app:latest
 docker push prettygreenplants/app:latest
 ```
 
-6. Install necessary packages on the cloud, get the latest code, install
+8. Install necessary packages on the cloud, get the latest code, install
 dependencies and start up containers
 
 ```bash
