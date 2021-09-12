@@ -15,7 +15,9 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<a class="navbar-brand topnav" href="{neos:uri.node(node: '~')}">{fusion:render(path: 'siteTitle')}</a>
+				<a class="navbar-brand topnav" href="{neos:uri.node(node: '~')}">
+					<img alt="{fusion:render(path: 'siteTitle')}" src="{f:uri.resource(path: 'img/logo.png', package: 'Sokly.PrettyGreenPlants')}">
+				</a>
 			</div>
 
 			<!-- Collect the nav links, forms, and other content for toggling -->
