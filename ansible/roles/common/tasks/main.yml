@@ -39,7 +39,7 @@
     dest: /tmp/installer
 
 - name: Install composer
-  shell: cat /tmp/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  shell: cat /tmp/installer | php -- --install-dir=/usr/local/bin --filename=composer --1
   args:
     creates: /usr/local/bin/composer
 
@@ -50,7 +50,7 @@
     state: file
 
 - name: Update composer to latest version
-  shell: composer self-update
+  shell: composer self-update --1
 
 - name: Fix permission for composer cache directory
   file:
