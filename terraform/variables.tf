@@ -4,13 +4,13 @@ variable "instance_name" {
   default     = "PrettyGreenPlants_Host_Server"
 }
 
-variable "access_key" {
+variable "AWS_ACCESS_KEY_ID" {
   description = "Access Key ID"
   type        = string
   default     = ""
 }
 
-variable "secret_key" {
+variable "AWS_SECRET_ACCESS_KEY" {
   description = "Secret Access Key"
   type        = string
   default     = ""
