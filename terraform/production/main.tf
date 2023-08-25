@@ -11,7 +11,7 @@ provider "aws" {
 
 # Constants
 resource "aws_iam_account_alias" "alias" {
-  account_alias = "pgp2022"
+  account_alias = "pgp2023"
 }
 
 resource "aws_key_pair" "keypair" {
@@ -19,37 +19,61 @@ resource "aws_key_pair" "keypair" {
   public_key = var.public_key
 }
 
-resource "aws_security_group" "sg" {
-  egress = [
-    {
-      cidr_blocks      = [ "0.0.0.0/0", ]
-      description      = ""
-      from_port        = 0
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      protocol         = "-1"
-      security_groups  = []
-      self             = false
-      to_port          = 0
-    }
-  ]
-  ingress = [
-    {
-      cidr_blocks      = [ "0.0.0.0/0", ]
-      description      = ""
-      from_port        = 22
-      ipv6_cidr_blocks = []
-      prefix_list_ids  = []
-      protocol         = "tcp"
-      security_groups  = []
-      self             = false
-      to_port          = 22
-    }
-  ]
+resource "aws_security_group" "sg-inbound" {
+  name        = "inbound"
+  description = "Allow inbound traffic"
 
   tags = {
     Name = "sg-inbound"
   }
+}
+
+resource "aws_security_group_rule" "allow-outbound-traffic" {
+  type              = "egress"
+  security_group_id = aws_security_group.sg-inbound.id
+  description       = "Allow outbound traffic"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = [ "0.0.0.0/0", ]
+  ipv6_cidr_blocks  = []
+  prefix_list_ids   = []
+}
+
+resource "aws_security_group_rule" "allow-inbound-ssh" {
+  type              = "ingress"
+  security_group_id = aws_security_group.sg-inbound.id
+  description      = "Allow SSH in from anywhere"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks       = [ "0.0.0.0/0", ]
+  ipv6_cidr_blocks  = []
+  prefix_list_ids   = []
+}
+
+resource "aws_security_group_rule" "allow-inbound-http" {
+  type              = "ingress"
+  security_group_id = aws_security_group.sg-inbound.id
+  description      = "Allow HTTP in from anywhere"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = [ "0.0.0.0/0", ]
+  ipv6_cidr_blocks  = []
+  prefix_list_ids   = []
+}
+
+resource "aws_security_group_rule" "allow-inbound-https" {
+  type              = "ingress"
+  security_group_id = aws_security_group.sg-inbound.id
+  description      = "Allow HTTPS in from anywhere"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks       = [ "0.0.0.0/0", ]
+  ipv6_cidr_blocks  = []
+  prefix_list_ids   = []
 }
 
 resource "aws_instance" "hosting-server" {
@@ -57,7 +81,7 @@ resource "aws_instance" "hosting-server" {
   instance_type          = "t2.micro"
   key_name               = "keypair-prettygreenplants"
   vpc_security_group_ids = [
-    aws_security_group.sg.id
+    aws_security_group.sg-inbound.id
   ]
 
   root_block_device {
@@ -92,7 +116,7 @@ resource "aws_eip_association" "elastic-ip-association" {
 }
 
 resource "aws_s3_bucket" "bucket-backup" {
-  bucket = "pgp2022-website-backup"
+  bucket = "pgp2023-website-backup"
 
   tags = {
     Name        = "backup"
