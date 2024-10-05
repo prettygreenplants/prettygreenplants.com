@@ -14,7 +14,6 @@ Neos:
         user: '{{ mysql_db_user }}'
         password: '{{ mysql_db_password }}'
         dbname: '{{ mysql_db_name }}'
-{% if aws_cloud and 'live' in group_names %}
 
   GoogleAnalytics:
     authentication:
@@ -26,4 +25,3 @@ Neos:
       prettygreenplants:
         trackingId: '{{ google_analytic_tracking_id }}'
         profileId: '{{ google_analytic_profile_id }}'
-{% endif %}

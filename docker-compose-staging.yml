@@ -34,8 +34,8 @@ services:
       MYSQL_DATABASE: 'prettygreenplants'
       MYSQL_ROOT_PASSWORD: 'root'
       # TODO: This is manually hard-coded to align with server for now
-      BACKUP_GID: 1000
-      BACKUP_UID: 1000
+      BACKUP_GID: 1261
+      BACKUP_UID: 1261
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /var/www/backup/prettygreenplants/db:/opt/mysql/backup

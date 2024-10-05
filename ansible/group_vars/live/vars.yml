@@ -4,6 +4,7 @@ domain_name: 'prettygreenplants.com'
 use_ssl: true
 
 app_root: '/var/www/{{ project_name }}'
+backup_path: '/var/www/backup/{{ project_name }}'
 letsencrypt_dir: '/etc/letsencrypt'
 host_user: 'ubuntu'
 host_group: 'ubuntu'

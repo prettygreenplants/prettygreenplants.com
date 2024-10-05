@@ -131,6 +131,22 @@ Verify:
 Deployment To Live
 ==================
 
+Staging
+-------
+
+1. Manually push docker images to docker.io
+
+```bash
+docker login -u visay --password-stdin docker.io
+docker tag prettygreenplants_app prettygreenplants/app:latest
+docker push prettygreenplants/app:latest
+```
+2. Get the latest code, install dependencies, pull images and start up containers
+
+```bash
+scripts/deploy.sh staging
+```
+
 AWS
 ---
 
@@ -159,7 +175,7 @@ docker push prettygreenplants/app:latest
 dependencies and start up containers
 
 ```bash
-scripts/deploy.sh
+scripts/deploy.sh live
 ```
 
 Infrastructure

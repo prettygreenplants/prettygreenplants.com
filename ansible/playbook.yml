@@ -1,7 +1,16 @@
 ---
 
-- hosts: all
+- hosts: staging
+  roles:
+    - role: app
+      tags: deploy
+    - role: backup
+      tags: deploy
+    - role: syncontent
+      delegate_to: localhost
+      tags: syncontent
 
+- hosts: live
   roles:
     - role: common
       become: True

@@ -15,21 +15,26 @@
       path: '{{ base_dir }}/{{ item }}'
       state: directory
     with_items:
-      - 'neos/Data/Persistent/'
-      - 'backup/'
+      - 'neos/Data/'
+      - 'backup/files'
+      - 'backup/db'
 
-  - name: Sync flow persistent data and db dump from remote to local
+  - name: Sync backup files and db dump from remote to local
     shell: rsync --delay-updates -F --compress --delete-after --archive --rsh 'ssh -S none -o StrictHostKeyChecking=no -o ControlMaster=auto -o ControlPersist=60s -F {{ base_dir }}/ansible/ssh.cfg -q' --out-format='<<CHANGED>>%i %n%L' '{{ inventory_hostname }}:{{ item.remote }}' '{{ item.local }}'
     with_items:
-      - { remote: '/var/www/{{ project_name }}/neos/Data/Persistent/', local: '{{ base_dir }}/neos/Data/Persistent/' }
-      - { remote: '/var/www/backup/{{ project_name }}/', local: '{{ base_dir }}/backup/' }
+      - { remote: '{{ backup_path }}/files/{{ from_date }}.tar.bz2', local: '{{ base_dir }}/backup/files/{{ from_date }}.tar.bz2' }
+      - { remote: '{{ backup_path }}/db/{{ from_date }}.sql.gz', local: '{{ base_dir }}/backup/db/{{ from_date }}.sql.gz' }
+
+  - name: Extract files from {{ from_date }} to restore to Data directory
+    unarchive:
+      src: '{{ base_dir }}/backup/files/{{ from_date }}.tar.bz2'
+      dest: '{{ base_dir }}/neos/Data/'
+      remote_src: true
 
   - name: Configure database connection
     template:
       src: Settings.yaml.j2
       dest: '{{ base_dir }}/neos/Configuration/Development/Settings.yaml'
-    vars:
-      - aws_cloud: False
 
   - name: Restore database from {{ from_date }}
     shell: 'docker-compose -f {{ base_dir }}/docker-compose.yml run --rm -e FROM_DATE={{ from_date }} db_backup /opt/mysql/restore-database'
