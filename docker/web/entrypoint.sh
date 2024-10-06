@@ -7,10 +7,6 @@ DEFAULT_WWW_USER="prettygreenplants"
 DEFAULT_WWW_USER_ID="1000"
 DEFAULT_FLOW_CONTEXT="Development"
 DEFAULT_NGINX_HOST="local.prettygreenplants.com"
-SELF_SINGED_SSL_CERTIFICATE="/etc/ssl/certs/prettygreenplants-self-signed.cert"
-SELF_SINGED_SSL_KEY="/etc/ssl/private/prettygreenplants-self-signed.key"
-LETSENCRYPT_SSL_CERTIFICATE="/etc/letsencrypt/live/prettygreenplants.com/fullchain.pem"
-LETSENCRYPT_SSL_KEY="/etc/letsencrypt/live/prettygreenplants.com/privkey.pem"
 
 # Update system user if defined differently
 if [[ -n "${WWW_USER}" ]] && [[ "${WWW_USER}" != "${DEFAULT_WWW_USER}" ]]; then
@@ -40,10 +36,17 @@ if [[ -n "${FLOW_CONTEXT}" ]] && [[ "${FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT
 fi
 
 # Update ssl certificate and key if defined differently
-if [ "${USE_SELF_SIGNED_CERTIFICATE}" != True ]; then
-	echo "Overwrite self-signed ssl certificates to letsencrypt!"
-	sed -i -e "s~${SELF_SINGED_SSL_CERTIFICATE}~${LETSENCRYPT_SSL_CERTIFICATE}~g" /etc/nginx/conf.d/prettygreenplants.conf
-	sed -i -e "s~${SELF_SINGED_SSL_KEY}~${LETSENCRYPT_SSL_KEY}~g" /etc/nginx/conf.d/prettygreenplants.conf
+if [ "${ENABLE_HTTPS}" != False ]; then
+	echo "Configure vhost for self-signed ssl certificates!"
+	sed -i -e "s~listen 80~listen 443 ssl~g" /etc/nginx/conf.d/prettygreenplants.conf
+  sed -i -e "s~return 301 http~return 301 https~g" /etc/nginx/conf.d/prettygreenplants.conf
+	sed -i -e "s~\#ssl_certificate~ssl_certificate~g" /etc/nginx/conf.d/prettygreenplants.conf
+fi
+
+# Disable server info if not Development context
+if [ "${FLOW_CONTEXT}" != "${DEFAULT_FLOW_CONTEXT}" ]; then
+	echo "Hide server info for \"${FLOW_CONTEXT}\" context!"
+	sed -i -e "s~server_tokens on~server_tokens off~g" /etc/nginx/nginx.conf
 fi
 
 # Run normal command

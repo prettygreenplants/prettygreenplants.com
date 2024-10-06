@@ -4,7 +4,7 @@ FROM nginx:alpine
 MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
 
 ENV NGINX_HOST local.prettygreenplants.com
-ENV USE_SELF_SIGNED_CERTIFICATE true
+ENV ENABLE_HTTPS true
 
 # Install usermod command for alpine - should be included by default from alpine
 RUN echo http://dl-2.alpinelinux.org/alpine/edge/community/ >> /etc/apk/repositories

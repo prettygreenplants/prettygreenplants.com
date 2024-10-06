@@ -8,7 +8,7 @@
 ### DB SECTION ###
 ##################
 
-BACKUP_DB_PATH="/var/www/backup/{{ project_name }}/db"
+BACKUP_DB_PATH="{{ backup_path }}/db"
 
 # Count backup directories in the last 7 days
 # This is to determine whether daily db backup is still working
@@ -24,7 +24,7 @@ fi
 ### FILE SECTION ###
 ####################
 
-BACKUP_FILE_PATH="/var/www/backup/{{ project_name }}/files"
+BACKUP_FILE_PATH="{{ backup_path }}/files"
 
 # Count backup files in the last 7 days
 # This is to determine whether daily file backup is still working

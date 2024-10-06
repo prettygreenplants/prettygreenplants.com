@@ -33,8 +33,6 @@
   template:
     dest: '{{ app_root }}/neos/Configuration/{{ project_context }}/Settings.yaml'
     src: Settings.yaml.j2
-  vars:
-    - aws_cloud: True
 
 - name: Make sure files and directories permissions are correct
   file:
@@ -52,16 +50,16 @@
   with_items: '{{ temp_files }}'
 
 - name: Pull latest docker images defined in docker compose
-  shell: 'docker-compose -f docker-compose-prod.yml pull'
+  shell: 'docker-compose -f docker-compose-{{ ansible_limit }}.yml pull'
   args:
     chdir: '{{ app_root }}'
 
 - name: Start docker containers with docker compose
-  shell: 'docker-compose -f docker-compose-prod.yml up -d'
+  shell: 'docker-compose -f docker-compose-{{ ansible_limit }}.yml up -d'
   args:
     chdir: '{{ app_root }}'
 
 - name: Execute cleanup script
-  shell: 'docker-compose -f docker-compose-prod.yml run --rm app /cleanup.sh'
+  shell: 'docker-compose -f docker-compose-{{ ansible_limit }}.yml run --rm app /cleanup.sh'
   args:
     chdir: '{{ app_root }}'

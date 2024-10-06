@@ -1,22 +1,33 @@
 ---
 
-domain_name: ''
+domain_name: 'internal.prettygreenplants.com'
+use_ssl: false
 
-app_root: ''
-host_user: ''
-host_group: ''
+app_root: '/opt/docker-services/{{ project_name }}'
+backup_path: '/opt/backup/{{ project_name }}'
+host_user: 'essentials'
+host_group: 'essentials'
 
-www_user: ''
-www_user_id: ''
-www_group_id: ''
+www_user: 'prettygreenplants'
+www_user_id: '1261'
+www_group_id: '1261'
 
-project_context: 'Development'
-composer_dev_flag: 'no'
-release_version: 'master'
+project_context: 'Production'
+composer_dev_flag: 'yes'
+release_version: 'staging'
 
 temp_files:
   - 'Configuration/PackageStates.php'
   - 'Data/Logs/Exceptions'
-  - 'Data/Logs/System.log'
+  - 'Data/Logs/I18n_Development.log'
+  - 'Data/Logs/Security_Development.log'
+  - 'Data/Logs/System_Development.log'
   - 'Data/Temporary'
   - 'Web/_Resources'
+
+google_analytic_app_name: '{{ google_analytic_app_name_vault }}'
+google_analytic_client_id: '{{ google_analytic_client_id_vault }}'
+google_analytic_client_secret: '{{ google_analytic_client_secret_vault }}'
+google_analytic_api_key: '{{ google_analytic_api_key_vault }}'
+google_analytic_tracking_id: '{{ google_analytic_tracking_id_vault }}'
+google_analytic_profile_id: '{{ google_analytic_profile_id_vault }}'

@@ -4,13 +4,14 @@
 # Empty var needs to be defined in stage var
 project_name: 'prettygreenplants'
 domain_name: ''
-use_ssl: false
+use_ssl: true
 
 # Use https protocol for cloning
 # git protocol is not allowed in aws firewall
 git_repo: 'https://github.com/prettygreenplants/prettygreenplants.com.git'
 
 app_root: ''
+backup_path: ''
 host_user: ''
 host_group: ''
 
