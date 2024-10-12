@@ -1,19 +1,19 @@
 Neos_Fusion_Content:
-  backend: Neos\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Cache\Backend\RedisBackend
   backendOptions:
     hostname: 'redis'
     port: '6379'
     database: 0
 
 Flow_Mvc_Routing_Resolve:
-  backend: Neos\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Cache\Backend\RedisBackend
   backendOptions:
     hostname: 'redis'
     port: '6379'
     database: 0
 
 Flow_Mvc_Routing_Route:
-  backend: Neos\Flow\Cache\Backend\RedisBackend
+  backend: Neos\Cache\Backend\RedisBackend
   backendOptions:
     hostname: 'redis'
     port: '6379'

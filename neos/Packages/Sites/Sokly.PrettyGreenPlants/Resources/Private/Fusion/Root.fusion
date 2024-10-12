@@ -1,7 +1,7 @@
 /**
  * Root Fusion template for the Pretty Green Plants site
  */
-page = Page {
+prototype(Neos.NodeTypes:Page) < prototype(Neos.Neos:Page) {
 	head {
 		metaData = Neos.Fusion:Template {
 			templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/Page/Default.html'
@@ -26,7 +26,7 @@ page = Page {
 		toggleBeta = ${Configuration.setting('Sokly.PrettyGreenPlants.toggleBeta')}
 
 		parts {
-			mainMenu = Menu {
+			mainMenu = Neos.Neos:Menu {
 				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/MainMenu.html'
 				siteTitle = ${q(node.context.currentSite).property('name')}
 				current.attributes.class = 'active'
@@ -44,7 +44,7 @@ page = Page {
 				instagramLink = ${Configuration.setting('Sokly.PrettyGreenPlants.socialMedia.instagram')}
 			}
 
-			messenger = Menu {
+			messenger = Neos.Neos:Menu {
 				@if.notInBackend = ${!node.context.inBackend}
 				templatePath = 'resource://Sokly.PrettyGreenPlants/Private/Templates/FusionObjects/Messenger.html'
 			}
@@ -56,3 +56,7 @@ page = Page {
 		}
 	}
 }
+
+page = Neos.NodeTypes:Page
+
+default < page
