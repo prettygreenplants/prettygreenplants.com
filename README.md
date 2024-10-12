@@ -112,9 +112,9 @@ Start docker containers:
 
 	docker-compose up -d
 
-Restore content from live to local:
+Restore content from staging to local:
 
-	FROM_DATE=2021-06-19 scripts/syncontent.sh
+	FROM_DATE=2021-06-19 scripts/syncontent.sh staging
 
 _Note_: If `FROM_DATE` is not set, then it takes today's date for the backup filename.
 
