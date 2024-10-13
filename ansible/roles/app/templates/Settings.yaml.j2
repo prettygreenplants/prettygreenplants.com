@@ -8,6 +8,21 @@ Sokly:
 
 Neos:
   Flow:
+    http:
+      trustedProxies:
+{% if trusted_proxies == "*" %}
+        proxies: '*'
+{% else %}
+        proxies:
+{% for proxy in trusted_proxies %}
+          - '{{ proxy }}'
+{% endfor %}
+        headers:
+          clientIp: 'X-Forwarded-For'
+          host: 'X-Forwarded-Host'
+          port: 'X-Forwarded-Port'
+          proto: 'X-Forwarded-Proto'
+{% endif %}
     persistence:
       backendOptions:
         host: '{{ mysql_db_host }}'
