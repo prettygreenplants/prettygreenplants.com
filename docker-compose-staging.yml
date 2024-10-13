@@ -38,7 +38,7 @@ services:
       BACKUP_UID: 1261
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/www/backup/prettygreenplants/db:/opt/mysql/backup
+      - /opt/backup/prettygreenplants/db:/opt/mysql/backup
     command: crond -f -d 8
     restart: always
 

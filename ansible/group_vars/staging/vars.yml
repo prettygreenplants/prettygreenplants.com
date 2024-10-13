@@ -15,8 +15,7 @@ www_group_id: '1261'
 project_context: 'Production'
 composer_dev_flag: 'yes'
 release_version: 'master'
-trusted_proxies:
-  - '10.10.10.0/24'
+trusted_proxies: '{{ trusted_proxies_vault }}'
 
 temp_files:
   - 'Configuration/PackageStates.php'
