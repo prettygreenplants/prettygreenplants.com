@@ -30,6 +30,7 @@ Neos:
         password: '{{ mysql_db_password }}'
         dbname: '{{ mysql_db_name }}'
 
+{% if project_context == "Production" %}
   GoogleAnalytics:
     authentication:
       applicationName: '{{ google_analytic_app_name }}'
@@ -40,3 +41,4 @@ Neos:
       prettygreenplants:
         trackingId: '{{ google_analytic_tracking_id }}'
         profileId: '{{ google_analytic_profile_id }}'
+{% endif %}

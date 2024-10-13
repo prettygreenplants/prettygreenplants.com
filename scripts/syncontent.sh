@@ -28,6 +28,7 @@ if [ ${ERROR} == "0" ]; then
 
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
 		LOCAL_BASE_PATH=`pwd`
-		ansible-playbook ansible/playbook.yml --limit ${STAGE} --tags syncontent --extra-vars "base_dir=${LOCAL_BASE_PATH} from_date=${FROM_DATE} trusted_proxies='*'"
+		source ${LOCAL_BASE_PATH}/.env
+		ansible-playbook ansible/playbook.yml --limit ${STAGE} --tags syncontent --extra-vars "base_dir=${LOCAL_BASE_PATH} from_date=${FROM_DATE} trusted_proxies='*' project_context=${FLOW_CONTEXT}"
 	fi
 fi
