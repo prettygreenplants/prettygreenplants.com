@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e6850de41648f733ff8e58a187ca017",
+    "content-hash": "21128a300dd9cc7bc281c5bbbbd3ac21",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3399,7 +3399,7 @@
         },
         {
             "name": "neos/cache",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/cache.git",
@@ -3513,16 +3513,16 @@
         },
         {
             "name": "neos/content-repository",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/content-repository.git",
-                "reference": "af8f80f46744f4ed772676c6c7fa140109b68236"
+                "reference": "b85f6c8261146fe1a6b532e10ff6c2069bc81515"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/content-repository/zipball/af8f80f46744f4ed772676c6c7fa140109b68236",
-                "reference": "af8f80f46744f4ed772676c6c7fa140109b68236",
+                "url": "https://api.github.com/repos/neos/content-repository/zipball/b85f6c8261146fe1a6b532e10ff6c2069bc81515",
+                "reference": "b85f6c8261146fe1a6b532e10ff6c2069bc81515",
                 "shasum": ""
             },
             "require": {
@@ -3638,7 +3638,7 @@
             "description": "Content repository based on Flow, specifically made for Neos.",
             "support": {
                 "issues": "https://github.com/neos/content-repository/issues",
-                "source": "https://github.com/neos/content-repository/tree/5.0.17"
+                "source": "https://github.com/neos/content-repository/tree/5.1.13"
             },
             "funding": [
                 {
@@ -3646,20 +3646,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-05-02T09:58:50+00:00"
+            "time": "2021-05-02T09:59:48+00:00"
         },
         {
             "name": "neos/diff",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/diff.git",
-                "reference": "e4e053a2c704b1340248fbb11a8e9c39e85b2fd1"
+                "reference": "2e5997679a844e3bc6dc4d46961305afe58d2361"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/diff/zipball/e4e053a2c704b1340248fbb11a8e9c39e85b2fd1",
-                "reference": "e4e053a2c704b1340248fbb11a8e9c39e85b2fd1",
+                "url": "https://api.github.com/repos/neos/diff/zipball/2e5997679a844e3bc6dc4d46961305afe58d2361",
+                "reference": "2e5997679a844e3bc6dc4d46961305afe58d2361",
                 "shasum": ""
             },
             "require": {
@@ -3677,7 +3677,7 @@
             ],
             "description": "This is a comprehensive library for generating differences between two strings or arrays",
             "support": {
-                "source": "https://github.com/neos/diff/tree/5.0.17"
+                "source": "https://github.com/neos/diff/tree/5.2.6"
             },
             "funding": [
                 {
@@ -3685,25 +3685,25 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-09-08T11:53:35+00:00"
+            "time": "2020-09-08T11:54:56+00:00"
         },
         {
             "name": "neos/eel",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/eel.git",
-                "reference": "3ee2026f8159122887c61274a0cec26ece0e2b07"
+                "reference": "56a1b424dc3275c9126f359aeb05a41584d3891c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/eel/zipball/3ee2026f8159122887c61274a0cec26ece0e2b07",
-                "reference": "3ee2026f8159122887c61274a0cec26ece0e2b07",
+                "url": "https://api.github.com/repos/neos/eel/zipball/56a1b424dc3275c9126f359aeb05a41584d3891c",
+                "reference": "56a1b424dc3275c9126f359aeb05a41584d3891c",
                 "shasum": ""
             },
             "require": {
                 "neos/cache": "*",
-                "neos/flow": "~6.0.0",
+                "neos/flow": "~6.1.0",
                 "neos/utility-objecthandling": "*",
                 "neos/utility-unicode": "*",
                 "php": "^7.2"
@@ -3728,7 +3728,7 @@
             ],
             "description": "The Embedded Expression Language (Eel) is a building block for creating Domain Specific Languages",
             "support": {
-                "source": "https://github.com/neos/eel/tree/6.0.25"
+                "source": "https://github.com/neos/eel/tree/6.1.19"
             },
             "funding": [
                 {
@@ -3736,11 +3736,11 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-06T17:07:01+00:00"
+            "time": "2021-03-06T17:08:32+00:00"
         },
         {
             "name": "neos/error-messages",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/error-messages.git",
@@ -3783,16 +3783,16 @@
         },
         {
             "name": "neos/flow",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/flow.git",
-                "reference": "3bc0528f0622a6841c6f9f9101e85d7953557f47"
+                "reference": "ab0c2bcb103e6e8aa36d989efa3e3ccad714401c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/flow/zipball/3bc0528f0622a6841c6f9f9101e85d7953557f47",
-                "reference": "3bc0528f0622a6841c6f9f9101e85d7953557f47",
+                "url": "https://api.github.com/repos/neos/flow/zipball/ab0c2bcb103e6e8aa36d989efa3e3ccad714401c",
+                "reference": "ab0c2bcb103e6e8aa36d989efa3e3ccad714401c",
                 "shasum": ""
             },
             "require": {
@@ -3806,21 +3806,21 @@
                 "ext-spl": "*",
                 "ext-xml": "*",
                 "ext-zlib": "*",
-                "neos/cache": "~6.0.0",
+                "neos/cache": "~6.1.0",
                 "neos/composer-plugin": "^2.0",
-                "neos/eel": "~6.0.0",
-                "neos/error-messages": "~6.0.0",
-                "neos/flow-log": "~6.0.0",
-                "neos/fluid-adaptor": "~6.0.0",
-                "neos/http-factories": "~6.0.0",
-                "neos/utility-arrays": "~6.0.0",
-                "neos/utility-files": "~6.0.0",
-                "neos/utility-mediatypes": "~6.0.0",
-                "neos/utility-objecthandling": "~6.0.0",
-                "neos/utility-opcodecache": "~6.0.0",
-                "neos/utility-pdo": "~6.0.0",
-                "neos/utility-schema": "~6.0.0",
-                "neos/utility-unicode": "~6.0.0",
+                "neos/eel": "~6.1.0",
+                "neos/error-messages": "~6.1.0",
+                "neos/flow-log": "~6.1.0",
+                "neos/fluid-adaptor": "~6.1.0",
+                "neos/http-factories": "~6.1.0",
+                "neos/utility-arrays": "~6.1.0",
+                "neos/utility-files": "~6.1.0",
+                "neos/utility-mediatypes": "~6.1.0",
+                "neos/utility-objecthandling": "~6.1.0",
+                "neos/utility-opcodecache": "~6.1.0",
+                "neos/utility-pdo": "~6.1.0",
+                "neos/utility-schema": "~6.1.0",
+                "neos/utility-unicode": "~6.1.0",
                 "php": "^7.2",
                 "psr/container": "^1.0",
                 "psr/http-factory": "^1.0",
@@ -3869,7 +3869,7 @@
             "description": "Flow Application Framework",
             "homepage": "http://flow.neos.io",
             "support": {
-                "source": "https://github.com/neos/flow/tree/6.0.25"
+                "source": "https://github.com/neos/flow/tree/6.1.19"
             },
             "funding": [
                 {
@@ -3877,11 +3877,11 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-08-25T07:55:57+00:00"
+            "time": "2021-08-25T07:58:11+00:00"
         },
         {
             "name": "neos/flow-log",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/flow-log.git",
@@ -3934,21 +3934,21 @@
         },
         {
             "name": "neos/fluid-adaptor",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/fluidadaptor.git",
-                "reference": "3806ecefc519a4ac2fceafd4fd161398560b43f6"
+                "reference": "dfca953334420ff6b0610f6ba13856dd8b74bb95"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/fluidadaptor/zipball/3806ecefc519a4ac2fceafd4fd161398560b43f6",
-                "reference": "3806ecefc519a4ac2fceafd4fd161398560b43f6",
+                "url": "https://api.github.com/repos/neos/fluidadaptor/zipball/dfca953334420ff6b0610f6ba13856dd8b74bb95",
+                "reference": "dfca953334420ff6b0610f6ba13856dd8b74bb95",
                 "shasum": ""
             },
             "require": {
                 "neos/cache": "*",
-                "neos/flow": "~6.0.0",
+                "neos/flow": "~6.1.0",
                 "neos/utility-files": "*",
                 "neos/utility-objecthandling": "*",
                 "php": "^7.2",
@@ -3967,7 +3967,7 @@
             ],
             "description": "Fluid Templating Framework Adaptor",
             "support": {
-                "source": "https://github.com/neos/fluidadaptor/tree/6.0.25"
+                "source": "https://github.com/neos/fluidadaptor/tree/6.1.19"
             },
             "funding": [
                 {
@@ -3975,7 +3975,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-08-24T15:28:02+00:00"
+            "time": "2021-08-24T15:33:34+00:00"
         },
         {
             "name": "neos/form",
@@ -4117,16 +4117,16 @@
         },
         {
             "name": "neos/fusion",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/fusion.git",
-                "reference": "b0ada5e0554fc29c156dba36dcd0023bccce10e7"
+                "reference": "d50fed4e4a8894e6cf7001f3e19a19fc69763a16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/fusion/zipball/b0ada5e0554fc29c156dba36dcd0023bccce10e7",
-                "reference": "b0ada5e0554fc29c156dba36dcd0023bccce10e7",
+                "url": "https://api.github.com/repos/neos/fusion/zipball/d50fed4e4a8894e6cf7001f3e19a19fc69763a16",
+                "reference": "d50fed4e4a8894e6cf7001f3e19a19fc69763a16",
                 "shasum": ""
             },
             "require": {
@@ -4236,7 +4236,7 @@
             ],
             "description": "Fusion is a hierarchical, prototype based processing language",
             "support": {
-                "source": "https://github.com/neos/fusion/tree/5.0.17"
+                "source": "https://github.com/neos/fusion/tree/5.1.13"
             },
             "funding": [
                 {
@@ -4244,7 +4244,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-23T09:51:10+00:00"
+            "time": "2021-03-10T23:13:46+00:00"
         },
         {
             "name": "neos/fusion-afx",
@@ -4290,6 +4290,54 @@
                 "source": "https://github.com/neos/fusion-afx/tree/master"
             },
             "time": "2020-01-29T07:41:29+00:00"
+        },
+        {
+            "name": "neos/fusion-form",
+            "version": "v1.0.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/fusion-form.git",
+                "reference": "b9030f6f6c02711a890958c139f3c819f53de823"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/fusion-form/zipball/b9030f6f6c02711a890958c139f3c819f53de823",
+                "reference": "b9030f6f6c02711a890958c139f3c819f53de823",
+                "shasum": ""
+            },
+            "require": {
+                "neos/fusion": "^4.3 || ^5.0 || ^7.0 || dev-master",
+                "neos/fusion-afx": "^1.2 || ^7.0 || dev-master",
+                "neos/utility-arrays": "*",
+                "neos/utility-objecthandling": "*",
+                "php": ">7.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^0.12.78",
+                "phpunit/phpunit": "^7.1 || ^8.0 || ^9.0"
+            },
+            "type": "neos-package",
+            "autoload": {
+                "psr-4": {
+                    "Neos\\Fusion\\Form\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Fusion Form",
+            "support": {
+                "issues": "https://github.com/neos/fusion-form/issues",
+                "source": "https://github.com/neos/fusion-form/tree/v1.0.9"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-09-02T09:32:14+00:00"
         },
         {
             "name": "neos/googleanalytics",
@@ -4402,7 +4450,7 @@
         },
         {
             "name": "neos/http-factories",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/http-factories.git",
@@ -4593,16 +4641,16 @@
         },
         {
             "name": "neos/media",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/media.git",
-                "reference": "19d59ec2e2b4a2b7cff3fcde7552a91e7e872f6f"
+                "reference": "83c5beca4e99b2e2f43fc767be97e63638b55dc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/media/zipball/19d59ec2e2b4a2b7cff3fcde7552a91e7e872f6f",
-                "reference": "19d59ec2e2b4a2b7cff3fcde7552a91e7e872f6f",
+                "url": "https://api.github.com/repos/neos/media/zipball/83c5beca4e99b2e2f43fc767be97e63638b55dc2",
+                "reference": "83c5beca4e99b2e2f43fc767be97e63638b55dc2",
                 "shasum": ""
             },
             "require": {
@@ -4714,7 +4762,7 @@
             ],
             "description": "The Media package",
             "support": {
-                "source": "https://github.com/neos/media/tree/5.0.17"
+                "source": "https://github.com/neos/media/tree/5.1.13"
             },
             "funding": [
                 {
@@ -4722,20 +4770,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-05-02T09:58:50+00:00"
+            "time": "2021-05-02T09:59:48+00:00"
         },
         {
             "name": "neos/media-browser",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/media-browser.git",
-                "reference": "6d7bf9c06e4593eb13c0455a644a42cfe13bd6bf"
+                "reference": "24a173a2cb4961b210ef78f874f3c8349f78903b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/media-browser/zipball/6d7bf9c06e4593eb13c0455a644a42cfe13bd6bf",
-                "reference": "6d7bf9c06e4593eb13c0455a644a42cfe13bd6bf",
+                "url": "https://api.github.com/repos/neos/media-browser/zipball/24a173a2cb4961b210ef78f874f3c8349f78903b",
+                "reference": "24a173a2cb4961b210ef78f874f3c8349f78903b",
                 "shasum": ""
             },
             "require": {
@@ -4844,7 +4892,7 @@
             ],
             "description": "This module allows managing of media assets including pictures, videos, audio and documents.",
             "support": {
-                "source": "https://github.com/neos/media-browser/tree/5.0.17"
+                "source": "https://github.com/neos/media-browser/tree/5.1.13"
             },
             "funding": [
                 {
@@ -4852,31 +4900,33 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-19T20:11:13+00:00"
+            "time": "2021-04-19T20:11:45+00:00"
         },
         {
             "name": "neos/neos",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos.git",
-                "reference": "db17aa16aa3716d01caabbede80f7b8ee3697de4"
+                "reference": "5090b6c877dd42ef345802504e6bd36ec31a1485"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos/zipball/db17aa16aa3716d01caabbede80f7b8ee3697de4",
-                "reference": "db17aa16aa3716d01caabbede80f7b8ee3697de4",
+                "url": "https://api.github.com/repos/neos/neos/zipball/5090b6c877dd42ef345802504e6bd36ec31a1485",
+                "reference": "5090b6c877dd42ef345802504e6bd36ec31a1485",
                 "shasum": ""
             },
             "require": {
                 "behat/transliterator": "~1.0",
-                "neos/content-repository": "~5.0.0",
-                "neos/diff": "~5.0.0",
-                "neos/flow": "~6.0.0",
-                "neos/fluid-adaptor": "~6.0.0",
-                "neos/fusion": "~5.0.0",
-                "neos/media": "~5.0.0",
-                "neos/media-browser": "~5.0.0",
+                "neos/content-repository": "~5.1.0",
+                "neos/diff": "~5.1.0",
+                "neos/flow": "~6.1.0",
+                "neos/fluid-adaptor": "~6.1.0",
+                "neos/fusion": "~5.1.0",
+                "neos/fusion-afx": "^1.4",
+                "neos/fusion-form": "^1.0",
+                "neos/media": "~5.1.0",
+                "neos/media-browser": "~5.1.0",
                 "neos/party": "*",
                 "neos/twitter-bootstrap": "*"
             },
@@ -4989,7 +5039,7 @@
             ],
             "description": "An open source Content Application Platform based on Flow. A set of core Content Management features is resting within a larger context that allows you to build a perfectly customized experience for your users.",
             "support": {
-                "source": "https://github.com/neos/neos/tree/5.0.17"
+                "source": "https://github.com/neos/neos/tree/5.1.13"
             },
             "funding": [
                 {
@@ -4997,24 +5047,24 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-05-02T14:42:26+00:00"
+            "time": "2021-05-02T14:50:56+00:00"
         },
         {
             "name": "neos/neos-ui",
-            "version": "5.1.5",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui.git",
-                "reference": "ae5f41bbe41c261f62cc097a37f68869de1e3f3f"
+                "reference": "ff1a80f1c6c241036de86f3ce3c6c99417b41b4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui/zipball/ae5f41bbe41c261f62cc097a37f68869de1e3f3f",
-                "reference": "ae5f41bbe41c261f62cc097a37f68869de1e3f3f",
+                "url": "https://api.github.com/repos/neos/neos-ui/zipball/ff1a80f1c6c241036de86f3ce3c6c99417b41b4d",
+                "reference": "ff1a80f1c6c241036de86f3ce3c6c99417b41b4d",
                 "shasum": ""
             },
             "require": {
-                "neos/neos": "^5.0.0 || dev-master",
+                "neos/neos": "^5.1.0 || dev-master",
                 "neos/neos-ui-compiled": "self.version"
             },
             "type": "neos-package",
@@ -5108,7 +5158,7 @@
             "description": "Neos CMS UI written in React",
             "support": {
                 "issues": "https://github.com/neos/neos-ui/issues",
-                "source": "https://github.com/neos/neos-ui/tree/5.0"
+                "source": "https://github.com/neos/neos-ui/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5116,20 +5166,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-04-10T12:49:39+00:00"
+            "time": "2021-03-11T14:26:19+00:00"
         },
         {
             "name": "neos/neos-ui-compiled",
-            "version": "5.1.5",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-ui-compiled.git",
-                "reference": "741026e7cbb264608ba1aab84bacbc96a93b029b"
+                "reference": "d7738af06676c96bad0587aaad4fe4d97f470b2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/741026e7cbb264608ba1aab84bacbc96a93b029b",
-                "reference": "741026e7cbb264608ba1aab84bacbc96a93b029b",
+                "url": "https://api.github.com/repos/neos/neos-ui-compiled/zipball/d7738af06676c96bad0587aaad4fe4d97f470b2e",
+                "reference": "d7738af06676c96bad0587aaad4fe4d97f470b2e",
                 "shasum": ""
             },
             "require": {
@@ -5149,22 +5199,28 @@
             "notification-url": "https://packagist.org/downloads/",
             "support": {
                 "issues": "https://github.com/neos/neos-ui-compiled/issues",
-                "source": "https://github.com/neos/neos-ui-compiled/tree/5.0"
+                "source": "https://github.com/neos/neos-ui-compiled/tree/5.1.13"
             },
-            "time": "2020-04-10T12:56:16+00:00"
+            "funding": [
+                {
+                    "url": "https://neosfunding.sandstorm.de/en",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-03-11T14:41:40+00:00"
         },
         {
             "name": "neos/nodetypes",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-nodetypes.git",
-                "reference": "2b4ba0a02b74dca347d7a27a82c6ef3f47a5ea73"
+                "reference": "7a50a311ee3f0e004e4c73816ff15ad4c2cc9d43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-nodetypes/zipball/2b4ba0a02b74dca347d7a27a82c6ef3f47a5ea73",
-                "reference": "2b4ba0a02b74dca347d7a27a82c6ef3f47a5ea73",
+                "url": "https://api.github.com/repos/neos/neos-nodetypes/zipball/7a50a311ee3f0e004e4c73816ff15ad4c2cc9d43",
+                "reference": "7a50a311ee3f0e004e4c73816ff15ad4c2cc9d43",
                 "shasum": ""
             },
             "require": {
@@ -5281,7 +5337,7 @@
             ],
             "description": "Node type configuration for Neos",
             "support": {
-                "source": "https://github.com/neos/neos-nodetypes/tree/5.0.17"
+                "source": "https://github.com/neos/neos-nodetypes/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5289,20 +5345,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/nodetypes-assetlist",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-assetlist.git",
-                "reference": "a78118a8163e26108898eaa3576077fd3a622eb3"
+                "reference": "c596e4a46cd268216c08328e44df0e9f0fe48891"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-assetlist/zipball/a78118a8163e26108898eaa3576077fd3a622eb3",
-                "reference": "a78118a8163e26108898eaa3576077fd3a622eb3",
+                "url": "https://api.github.com/repos/neos/nodetypes-assetlist/zipball/c596e4a46cd268216c08328e44df0e9f0fe48891",
+                "reference": "c596e4a46cd268216c08328e44df0e9f0fe48891",
                 "shasum": ""
             },
             "require": {
@@ -5406,7 +5462,7 @@
             ],
             "description": "A simple asset list node type.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-assetlist/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-assetlist/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5414,20 +5470,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/nodetypes-basemixins",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-basemixins.git",
-                "reference": "1143c4be011b86af64db585a888880dba4b5c650"
+                "reference": "8290e13b75ff54259157e347dbad82efe9ecf499"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-basemixins/zipball/1143c4be011b86af64db585a888880dba4b5c650",
-                "reference": "1143c4be011b86af64db585a888880dba4b5c650",
+                "url": "https://api.github.com/repos/neos/nodetypes-basemixins/zipball/8290e13b75ff54259157e347dbad82efe9ecf499",
+                "reference": "8290e13b75ff54259157e347dbad82efe9ecf499",
                 "shasum": ""
             },
             "require": {
@@ -5530,7 +5586,7 @@
             ],
             "description": "Base mixins which are useful across projects.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-basemixins/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-basemixins/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5538,20 +5594,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/nodetypes-columnlayouts",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-columnlayouts.git",
-                "reference": "852a3b007fac28098a7f661e6a587244fc45c9ce"
+                "reference": "2e7de6dfc50d30e91afc0100f6b1a3cbad8149c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-columnlayouts/zipball/852a3b007fac28098a7f661e6a587244fc45c9ce",
-                "reference": "852a3b007fac28098a7f661e6a587244fc45c9ce",
+                "url": "https://api.github.com/repos/neos/nodetypes-columnlayouts/zipball/2e7de6dfc50d30e91afc0100f6b1a3cbad8149c6",
+                "reference": "2e7de6dfc50d30e91afc0100f6b1a3cbad8149c6",
                 "shasum": ""
             },
             "require": {
@@ -5655,7 +5711,7 @@
             ],
             "description": "Various simple column layouts node type.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-columnlayouts/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-columnlayouts/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5663,20 +5719,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-04-30T13:51:01+00:00"
+            "time": "2020-04-30T13:52:29+00:00"
         },
         {
             "name": "neos/nodetypes-contentreferences",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-contentreferences.git",
-                "reference": "8c1b6d004d2a8abf43961df2f0a63667e11b8a20"
+                "reference": "becb649d115a9ce86391598c6e0f5ab94006cfeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-contentreferences/zipball/8c1b6d004d2a8abf43961df2f0a63667e11b8a20",
-                "reference": "8c1b6d004d2a8abf43961df2f0a63667e11b8a20",
+                "url": "https://api.github.com/repos/neos/nodetypes-contentreferences/zipball/becb649d115a9ce86391598c6e0f5ab94006cfeb",
+                "reference": "becb649d115a9ce86391598c6e0f5ab94006cfeb",
                 "shasum": ""
             },
             "require": {
@@ -5780,7 +5836,7 @@
             ],
             "description": "A simple content reference node type.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-contentreferences/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-contentreferences/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5788,20 +5844,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/nodetypes-form",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-form.git",
-                "reference": "cda2c904b5636084fb9efa66eb3da1456897ab31"
+                "reference": "a04a054f9f3a2ccdac737cac0511a29200ad4497"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-form/zipball/cda2c904b5636084fb9efa66eb3da1456897ab31",
-                "reference": "cda2c904b5636084fb9efa66eb3da1456897ab31",
+                "url": "https://api.github.com/repos/neos/nodetypes-form/zipball/a04a054f9f3a2ccdac737cac0511a29200ad4497",
+                "reference": "a04a054f9f3a2ccdac737cac0511a29200ad4497",
                 "shasum": ""
             },
             "require": {
@@ -5906,7 +5962,7 @@
             ],
             "description": "A simple form node type.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-form/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-form/tree/5.1.13"
             },
             "funding": [
                 {
@@ -5914,20 +5970,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/nodetypes-html",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-html.git",
-                "reference": "d85faff2c3098a870ad08be7bf1c580b81944504"
+                "reference": "f4fcdba28bdac67cc0c4ecd2a8e9ae0134e07265"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-html/zipball/d85faff2c3098a870ad08be7bf1c580b81944504",
-                "reference": "d85faff2c3098a870ad08be7bf1c580b81944504",
+                "url": "https://api.github.com/repos/neos/nodetypes-html/zipball/f4fcdba28bdac67cc0c4ecd2a8e9ae0134e07265",
+                "reference": "f4fcdba28bdac67cc0c4ecd2a8e9ae0134e07265",
                 "shasum": ""
             },
             "require": {
@@ -6031,7 +6087,7 @@
             ],
             "description": "A simple html node type.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-html/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-html/tree/5.1.13"
             },
             "funding": [
                 {
@@ -6039,20 +6095,20 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/nodetypes-navigation",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/nodetypes-navigation.git",
-                "reference": "6c3e16a4c4341a59ad085adb399a230ad9c53f0b"
+                "reference": "672a94addb96e437f5126216bfdbf523ee86c654"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/nodetypes-navigation/zipball/6c3e16a4c4341a59ad085adb399a230ad9c53f0b",
-                "reference": "6c3e16a4c4341a59ad085adb399a230ad9c53f0b",
+                "url": "https://api.github.com/repos/neos/nodetypes-navigation/zipball/672a94addb96e437f5126216bfdbf523ee86c654",
+                "reference": "672a94addb96e437f5126216bfdbf523ee86c654",
                 "shasum": ""
             },
             "require": {
@@ -6156,7 +6212,7 @@
             ],
             "description": "A navigation node type.",
             "support": {
-                "source": "https://github.com/neos/nodetypes-navigation/tree/5.0.17"
+                "source": "https://github.com/neos/nodetypes-navigation/tree/5.1.13"
             },
             "funding": [
                 {
@@ -6164,7 +6220,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-02-22T16:00:30+00:00"
+            "time": "2021-02-22T16:02:23+00:00"
         },
         {
             "name": "neos/party",
@@ -6527,6 +6583,141 @@
             "time": "2023-08-29T09:29:34+00:00"
         },
         {
+            "name": "neos/redirecthandler-ui",
+            "version": "2.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/redirecthandler-ui.git",
+                "reference": "9ca66d4854b9d9341dffdb24f82185d0000238f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/redirecthandler-ui/zipball/9ca66d4854b9d9341dffdb24f82185d0000238f3",
+                "reference": "9ca66d4854b9d9341dffdb24f82185d0000238f3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "neos/neos": "~4.3 || ~5.0 || ~7.0 || ~8.0 || dev-master",
+                "neos/redirecthandler": "^3.0.1 || ^4.0.2 || ~5.0 || dev-master"
+            },
+            "replace": {
+                "webexcess/redirecthandler-backend": "*"
+            },
+            "type": "neos-package",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                },
+                "installer-name": "Neos.RedirectHandler.Ui",
+                "neos": {
+                    "package-key": "Neos.RedirectHandler.Ui"
+                },
+                "applied-flow-migrations": [
+                    "TYPO3.FLOW3-201201261636",
+                    "TYPO3.Fluid-201205031303",
+                    "TYPO3.FLOW3-201205292145",
+                    "TYPO3.FLOW3-201206271128",
+                    "TYPO3.FLOW3-201209201112",
+                    "TYPO3.Flow-201209251426",
+                    "TYPO3.Flow-201211151101",
+                    "TYPO3.Flow-201212051340",
+                    "TYPO3.TypoScript-130516234520",
+                    "TYPO3.TypoScript-130516235550",
+                    "TYPO3.TYPO3CR-130523180140",
+                    "TYPO3.Neos.NodeTypes-201309111655",
+                    "TYPO3.Flow-201310031523",
+                    "TYPO3.Flow-201405111147",
+                    "TYPO3.Neos-201407061038",
+                    "TYPO3.Neos-201409071922",
+                    "TYPO3.TYPO3CR-140911160326",
+                    "TYPO3.Neos-201410010000",
+                    "TYPO3.TYPO3CR-141101082142",
+                    "TYPO3.Neos-20141113115300",
+                    "TYPO3.Fluid-20141113120800",
+                    "TYPO3.Flow-20141113121400",
+                    "TYPO3.Fluid-20141121091700",
+                    "TYPO3.Neos-20141218134700",
+                    "TYPO3.Fluid-20150214130800",
+                    "TYPO3.Neos-20150303231600",
+                    "TYPO3.TYPO3CR-20150510103823",
+                    "TYPO3.Flow-20151113161300",
+                    "TYPO3.Form-20160601101500",
+                    "TYPO3.Flow-20161115140400",
+                    "TYPO3.Flow-20161115140430",
+                    "Neos.Flow-20161124204700",
+                    "Neos.Flow-20161124204701",
+                    "Neos.Twitter.Bootstrap-20161124204912",
+                    "Neos.Form-20161124205254",
+                    "Neos.Flow-20161124224015",
+                    "Neos.Party-20161124225257",
+                    "Neos.Eel-20161124230101",
+                    "Neos.Kickstart-20161124230102",
+                    "Neos.Setup-20161124230842",
+                    "Neos.Imagine-20161124231742",
+                    "Neos.Media-20161124233100",
+                    "Neos.NodeTypes-20161125002300",
+                    "Neos.SiteKickstarter-20161125002311",
+                    "Neos.Neos-20161125002322",
+                    "Neos.ContentRepository-20161125012000",
+                    "Neos.Fusion-20161125013710",
+                    "Neos.Setup-20161125014759",
+                    "Neos.SiteKickstarter-20161125095901",
+                    "Neos.Fusion-20161125104701",
+                    "Neos.NodeTypes-20161125104800",
+                    "Neos.Neos-20161125104802",
+                    "Neos.Kickstarter-20161125110814",
+                    "Neos.Neos-20161125122412",
+                    "Neos.Flow-20161125124112",
+                    "TYPO3.FluidAdaptor-20161130112935",
+                    "Neos.Fusion-20161201202543",
+                    "Neos.Neos-20161201222211",
+                    "Neos.Fusion-20161202215034",
+                    "Neos.Fusion-20161219092345",
+                    "Neos.ContentRepository-20161219093512",
+                    "Neos.Media-20161219094126",
+                    "Neos.Neos-20161219094403",
+                    "Neos.Neos-20161219122512",
+                    "Neos.Fusion-20161219130100",
+                    "Neos.Neos-20161220163741",
+                    "Neos.Neos-20170115114620",
+                    "Neos.Fusion-20170120013047",
+                    "Neos.Flow-20170125103800",
+                    "Neos.Seo-20170127154600",
+                    "Neos.Flow-20170127183102",
+                    "Neos.Fusion-20180211175500",
+                    "Neos.Fusion-20180211184832",
+                    "Neos.Flow-20180415105700",
+                    "Neos.Neos-20180907103800",
+                    "Neos.Neos.Ui-20190319094900",
+                    "Neos.Flow-20190425144900",
+                    "Neos.Flow-20190515215000",
+                    "Neos.NodeTypes-20190917101945"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Neos\\RedirectHandler\\Ui\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "This package provides a backend module to manage Neos.RedirectHandler redirects",
+            "support": {
+                "issues": "https://github.com/neos/redirecthandler-ui/issues",
+                "source": "https://github.com/neos/redirecthandler-ui/tree/2.4.6"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-04-05T16:18:51+00:00"
+        },
+        {
             "name": "neos/seo",
             "version": "3.3.5",
             "source": {
@@ -6740,7 +6931,7 @@
         },
         {
             "name": "neos/utility-arrays",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-arrays.git",
@@ -6790,7 +6981,7 @@
         },
         {
             "name": "neos/utility-files",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-files.git",
@@ -6840,7 +7031,7 @@
         },
         {
             "name": "neos/utility-mediatypes",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-mediatypes.git",
@@ -6889,7 +7080,7 @@
         },
         {
             "name": "neos/utility-objecthandling",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-objecthandling.git",
@@ -6939,7 +7130,7 @@
         },
         {
             "name": "neos/utility-opcodecache",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-opcodecache.git",
@@ -6984,7 +7175,7 @@
         },
         {
             "name": "neos/utility-pdo",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-pdo.git",
@@ -7029,7 +7220,7 @@
         },
         {
             "name": "neos/utility-schema",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-schema.git",
@@ -7079,7 +7270,7 @@
         },
         {
             "name": "neos/utility-unicode",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/utility-unicode.git",
@@ -9670,16 +9861,16 @@
         },
         {
             "name": "neos/buildessentials",
-            "version": "6.0.x-dev",
+            "version": "6.1.x-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/BuildEssentials.git",
-                "reference": "0113a433466b805fdcf9106708e1f3db1397129b"
+                "reference": "e93b2f4f4be507346fc980b1bf452769fb807dd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/BuildEssentials/zipball/0113a433466b805fdcf9106708e1f3db1397129b",
-                "reference": "0113a433466b805fdcf9106708e1f3db1397129b",
+                "url": "https://api.github.com/repos/neos/BuildEssentials/zipball/e93b2f4f4be507346fc980b1bf452769fb807dd0",
+                "reference": "e93b2f4f4be507346fc980b1bf452769fb807dd0",
                 "shasum": ""
             },
             "require": {
@@ -9699,7 +9890,7 @@
             "description": "Neos Flow Build Toolchain Essentials",
             "support": {
                 "issues": "https://github.com/neos/BuildEssentials/issues",
-                "source": "https://github.com/neos/BuildEssentials/tree/6.0"
+                "source": "https://github.com/neos/BuildEssentials/tree/6.1"
             },
             "funding": [
                 {
@@ -9707,24 +9898,24 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-17T18:12:23+00:00"
+            "time": "2021-04-17T18:13:46+00:00"
         },
         {
             "name": "neos/kickstarter",
-            "version": "6.0.25",
+            "version": "6.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/kickstart.git",
-                "reference": "a1760bbc5ff3266ae42fb9e0c22ae65c1b5e4f4d"
+                "reference": "5b5a74b89b5b2dd01963c2ed1290621f553b3546"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/kickstart/zipball/a1760bbc5ff3266ae42fb9e0c22ae65c1b5e4f4d",
-                "reference": "a1760bbc5ff3266ae42fb9e0c22ae65c1b5e4f4d",
+                "url": "https://api.github.com/repos/neos/kickstart/zipball/5b5a74b89b5b2dd01963c2ed1290621f553b3546",
+                "reference": "5b5a74b89b5b2dd01963c2ed1290621f553b3546",
                 "shasum": ""
             },
             "require": {
-                "neos/flow": "~6.0.0",
+                "neos/flow": "~6.1.0",
                 "neos/fluid-adaptor": "*",
                 "neos/utility-arrays": "*",
                 "php": "^7.2"
@@ -9749,7 +9940,7 @@
             ],
             "description": "A simple generator for controller and views.",
             "support": {
-                "source": "https://github.com/neos/kickstart/tree/6.0.25"
+                "source": "https://github.com/neos/kickstart/tree/6.1.19"
             },
             "funding": [
                 {
@@ -9757,7 +9948,135 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-01-04T14:24:16+00:00"
+            "time": "2021-01-04T14:25:31+00:00"
+        },
+        {
+            "name": "neos/neos-setup",
+            "version": "1.1.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neos/neos-setup.git",
+                "reference": "3848c476ba480878291cd7ddc58fbccd93a7c37a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neos/neos-setup/zipball/3848c476ba480878291cd7ddc58fbccd93a7c37a",
+                "reference": "3848c476ba480878291cd7ddc58fbccd93a7c37a",
+                "shasum": ""
+            },
+            "require": {
+                "neos/neos": "^5.0 || ^7.0 || ^8.0 || dev-master",
+                "neos/setup": "^4.0 || ^5.0 || dev-master"
+            },
+            "type": "neos-package",
+            "extra": {
+                "applied-flow-migrations": [
+                    "TYPO3.FLOW3-201201261636",
+                    "TYPO3.Fluid-201205031303",
+                    "TYPO3.FLOW3-201205292145",
+                    "TYPO3.FLOW3-201206271128",
+                    "TYPO3.FLOW3-201209201112",
+                    "TYPO3.Flow-201209251426",
+                    "TYPO3.Flow-201211151101",
+                    "TYPO3.Flow-201212051340",
+                    "TYPO3.TypoScript-130516234520",
+                    "TYPO3.TypoScript-130516235550",
+                    "TYPO3.TYPO3CR-130523180140",
+                    "TYPO3.Neos.NodeTypes-201309111655",
+                    "TYPO3.Flow-201310031523",
+                    "TYPO3.Flow-201405111147",
+                    "TYPO3.Neos-201407061038",
+                    "TYPO3.Neos-201409071922",
+                    "TYPO3.TYPO3CR-140911160326",
+                    "TYPO3.Neos-201410010000",
+                    "TYPO3.TYPO3CR-141101082142",
+                    "TYPO3.Neos-20141113115300",
+                    "TYPO3.Fluid-20141113120800",
+                    "TYPO3.Flow-20141113121400",
+                    "TYPO3.Fluid-20141121091700",
+                    "TYPO3.Neos-20141218134700",
+                    "TYPO3.Fluid-20150214130800",
+                    "TYPO3.Neos-20150303231600",
+                    "TYPO3.TYPO3CR-20150510103823",
+                    "TYPO3.Flow-20151113161300",
+                    "TYPO3.Form-20160601101500",
+                    "TYPO3.Flow-20161115140400",
+                    "TYPO3.Flow-20161115140430",
+                    "Neos.Flow-20161124204700",
+                    "Neos.Flow-20161124204701",
+                    "Neos.Twitter.Bootstrap-20161124204912",
+                    "Neos.Form-20161124205254",
+                    "Neos.Flow-20161124224015",
+                    "Neos.Party-20161124225257",
+                    "Neos.Eel-20161124230101",
+                    "Neos.Kickstart-20161124230102",
+                    "Neos.Setup-20161124230842",
+                    "Neos.Imagine-20161124231742",
+                    "Neos.Media-20161124233100",
+                    "Neos.NodeTypes-20161125002300",
+                    "Neos.SiteKickstarter-20161125002311",
+                    "Neos.Neos-20161125002322",
+                    "Neos.ContentRepository-20161125012000",
+                    "Neos.Fusion-20161125013710",
+                    "Neos.Setup-20161125014759",
+                    "Neos.SiteKickstarter-20161125095901",
+                    "Neos.Fusion-20161125104701",
+                    "Neos.NodeTypes-20161125104800",
+                    "Neos.Neos-20161125104802",
+                    "Neos.Kickstarter-20161125110814",
+                    "Neos.Neos-20161125122412",
+                    "Neos.Flow-20161125124112",
+                    "TYPO3.FluidAdaptor-20161130112935",
+                    "Neos.Fusion-20161201202543",
+                    "Neos.Neos-20161201222211",
+                    "Neos.Fusion-20161202215034",
+                    "Neos.Fusion-20161219092345",
+                    "Neos.ContentRepository-20161219093512",
+                    "Neos.Media-20161219094126",
+                    "Neos.Neos-20161219094403",
+                    "Neos.Neos-20161219122512",
+                    "Neos.Fusion-20161219130100",
+                    "Neos.Neos-20161220163741",
+                    "Neos.Neos-20170115114620",
+                    "Neos.Fusion-20170120013047",
+                    "Neos.Flow-20170125103800",
+                    "Neos.Seo-20170127154600",
+                    "Neos.Flow-20170127183102",
+                    "Neos.Fusion-20180211175500",
+                    "Neos.Fusion-20180211184832",
+                    "Neos.Flow-20180415105700",
+                    "Neos.Neos-20180907103800",
+                    "Neos.Neos.Ui-20190319094900",
+                    "Neos.Flow-20190425144900",
+                    "Neos.Flow-20190515215000",
+                    "Neos.NodeTypes-20190917101945",
+                    "Neos.NodeTypes-20200120114136",
+                    "Neos.Flow-20200813181400",
+                    "Neos.Flow-20201003165200",
+                    "Neos.Flow-20201109224100"
+                ]
+            },
+            "autoload": {
+                "psr-4": {
+                    "Neos\\Neos\\Setup\\": "Classes"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "description": "Custom neos/setup steps and configuration for Neos CMS",
+            "support": {
+                "issues": "https://github.com/neos/neos-setup/issues",
+                "source": "https://github.com/neos/neos-setup/tree/1.1.7"
+            },
+            "funding": [
+                {
+                    "url": "https://shop.neos.io/neosfunding/",
+                    "type": "custom"
+                }
+            ],
+            "time": "2022-05-05T11:05:32+00:00"
         },
         {
             "name": "neos/setup",
@@ -9851,23 +10170,23 @@
         },
         {
             "name": "neos/site-kickstarter",
-            "version": "5.0.17",
+            "version": "5.1.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/neos/neos-kickstarter.git",
-                "reference": "9fcc5b35b14d963eb93c08268d77726464fa6579"
+                "reference": "533fedab62bafe5138e8f7cf2f8bfa57dbf4c778"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/neos/neos-kickstarter/zipball/9fcc5b35b14d963eb93c08268d77726464fa6579",
-                "reference": "9fcc5b35b14d963eb93c08268d77726464fa6579",
+                "url": "https://api.github.com/repos/neos/neos-kickstarter/zipball/533fedab62bafe5138e8f7cf2f8bfa57dbf4c778",
+                "reference": "533fedab62bafe5138e8f7cf2f8bfa57dbf4c778",
                 "shasum": ""
             },
             "require": {
                 "neos/content-repository": "self.version",
                 "neos/flow": "*",
                 "neos/fluid-adaptor": "*",
-                "neos/kickstarter": "~6.0.0",
+                "neos/kickstarter": "~6.1.0",
                 "neos/utility-files": "*"
             },
             "replace": {
@@ -9951,7 +10270,7 @@
             ],
             "description": "A simple generator for Neos assets, like sites and plugins.",
             "support": {
-                "source": "https://github.com/neos/neos-kickstarter/tree/5.0.17"
+                "source": "https://github.com/neos/neos-kickstarter/tree/5.1.13"
             },
             "funding": [
                 {
@@ -9959,7 +10278,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2019-09-08T10:15:04+00:00"
+            "time": "2019-12-04T15:59:48+00:00"
         },
         {
             "name": "phar-io/manifest",
