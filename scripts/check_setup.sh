@@ -25,8 +25,8 @@ command php -m | grep "zip" >/dev/null 2>&1 ||
 	{ echo -e ${YELLOW}"- PHP extension zip is recommended. Please check REAME.md file."${NC} >&2; WARNING="1"; }
 command -v composer >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- COMPOSER is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
-command composer --version | grep "Composer version 1.10." >/dev/null 2>&1 ||
-	{ echo -e ${RED}"- COMPOSER version 1.10 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
+command composer --version 2>&1 | head -n 1 | grep "Composer version 2.8." >/dev/null 2>&1 ||
+	{ echo -e ${RED}"- COMPOSER version 2.8 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command -v docker >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- DOCKER is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 command -v docker-compose >/dev/null 2>&1 ||

@@ -7,29 +7,33 @@
     },
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
     },
     "require": {
-        "neos/neos": "~4.2.0",
-        "neos/nodetypes": "~4.2.0",
+        "neos/neos": "~4.3.0",
+        "neos/nodetypes": "~4.3.0",
 
-        "neos/seo": "~2.0",
+        "neos/seo": "~3.0",
+        "neos/fusion-afx": "~1.2",
         "flowpack/neos-frontendlogin": "~3.0",
-        "neos/redirecthandler-neosadapter": "~2.0",
-        "neos/redirecthandler-databasestorage": "~2.0",
+        "neos/redirecthandler-neosadapter": "~3.0",
+        "neos/redirecthandler-databasestorage": "~3.0",
 
         "networkteam/neos-mailobfuscator": "~2.1.0",
         "neos/googleanalytics": "~2.0.0",
         "flownative/neos-compressor": "~2.0",
 
-        "neos/neos-ui": "^1.4"
+        "neos/neos-ui": "~4.0"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~4.2.0",
+        "neos/site-kickstarter": "~4.3.0",
         "neos/setup": "~4.0",
         "typo3fluid/fluid": "2.5.10",
 
-        "neos/buildessentials": "5.2.x-dev",
+        "neos/buildessentials": "5.3.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~7.0.0",
         "symfony/css-selector": "~2.0",
