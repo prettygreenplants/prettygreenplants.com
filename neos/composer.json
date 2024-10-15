@@ -13,31 +13,30 @@
         }
     },
     "require": {
-        "neos/neos": "~4.3.0",
-        "neos/nodetypes": "~4.3.0",
+        "neos/neos": "~5.0.0",
+        "neos/nodetypes": "~5.0.0",
 
-        "neos/seo": "~3.0",
-        "neos/fusion-afx": "~1.2",
-        "flowpack/neos-frontendlogin": "~3.0",
-        "neos/redirecthandler-neosadapter": "~3.0",
-        "neos/redirecthandler-databasestorage": "~3.0",
+        "neos/seo": "~3.2",
+        "neos/fusion-afx": "~1.3",
+        "flowpack/neos-frontendlogin": "~4.0",
+        "neos/redirecthandler-neosadapter": "~4.0",
+        "neos/redirecthandler-databasestorage": "~4.0",
 
-        "networkteam/neos-mailobfuscator": "~2.1.0",
-        "neos/googleanalytics": "~2.0.0",
-        "flownative/neos-compressor": "~2.0",
+        "networkteam/neos-mailobfuscator": "~3.3.0",
+        "neos/googleanalytics": "~3.1.0",
+        "flownative/neos-compressor": "~2.2",
 
-        "neos/neos-ui": "~4.0"
+        "neos/neos-ui": "~5.0"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~4.3.0",
-        "neos/setup": "~4.0",
-        "typo3fluid/fluid": "2.5.10",
+        "neos/site-kickstarter": "~5.0.0",
+        "neos/setup": "~4.1",
 
-        "neos/buildessentials": "5.3.x-dev",
+        "neos/buildessentials": "6.0.x-dev",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~7.0.0",
+        "phpunit/phpunit": "~8.1.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "~5.0"
+        "neos/behat": "@dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
