@@ -10,8 +10,8 @@
         "bin-dir": "bin"
     },
     "require": {
-        "neos/neos": "~4.1.0",
-        "neos/nodetypes": "~4.1.0",
+        "neos/neos": "~4.2.0",
+        "neos/nodetypes": "~4.2.0",
 
         "neos/seo": "~2.0",
         "flowpack/neos-frontendlogin": "~3.0",
@@ -25,11 +25,11 @@
         "neos/neos-ui": "^1.4"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~4.1.0",
+        "neos/site-kickstarter": "~4.2.0",
         "neos/setup": "~4.0",
         "typo3fluid/fluid": "2.5.10",
 
-        "neos/buildessentials": "5.1.x-dev",
+        "neos/buildessentials": "5.2.x-dev",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~7.0.0",
         "symfony/css-selector": "~2.0",
