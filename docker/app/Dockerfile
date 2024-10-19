@@ -1,16 +1,17 @@
 # Pull base image
-FROM ubuntu:18.04
+FROM ubuntu:24.04
 
-MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
+LABEL com.prettygreenplants.vendor="Pretty Green Plants" \
+      com.prettygreenplants.email="info@prettygreenplants.com"
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Upgrade the base system
+RUN apt-get update && apt-get upgrade -y -q --no-install-recommends && apt-get install tzdata
 
 # Set timezone
 ENV TZ=Asia/Phnom_Penh
 RUN ln -nfs /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
-# Upgrade the base system
-RUN apt-get update && apt-get upgrade -y -q --no-install-recommends
 
 # Install packages as per recommendation (https://docs.docker.com/articles/dockerfile_best-practices/)
 # And clean up APT
@@ -21,16 +22,16 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     locales \
     sendmail \
     sudo \
-    php7.2-cli \
-    php7.2-curl \
-    php7.2-fpm \
-    php7.2-gd \
-    php7.2-ldap \
-    php7.2-mbstring \
-    php7.2-mysql \
-    php7.2-xml \
-    php-imagick \
-    php-redis \
+    php8.3-cli \
+    php8.3-curl \
+    php8.3-fpm \
+    php8.3-gd \
+    php8.3-ldap \
+    php8.3-mbstring \
+    php8.3-mysql \
+    php8.3-xml \
+    php8.3-imagick \
+    php8.3-redis \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Set the locales
@@ -39,20 +40,18 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-ENV WWW_USER prettygreenplants
 ENV WWW_USER_ID 1000
 ENV FLOW_CONTEXT Development
 
-# Create webserver user and group
-RUN adduser --system --shell /bin/bash --no-create-home --uid ${WWW_USER_ID} --group --disabled-password --disabled-login ${WWW_USER}
+# Rename ubuntu user to prettygreenplants
+RUN usermod -d /home/prettygreenplants -l prettygreenplants -c "Pretty Green Plants" ubuntu
+RUN groupmod -n prettygreenplants ubuntu
 
 # Copy configuration files for php
-COPY www.conf     /etc/php/7.2/fpm/pool.d/
-COPY php-fpm.conf /etc/php/7.2/fpm/
-COPY php.ini      /etc/php/7.2/fpm/
-COPY php-cli.ini  /etc/php/7.2/cli/php.ini
-
-RUN sed -i -e "s~###DEFAULT_WWW_USER###~${WWW_USER}~g" /etc/php/7.2/fpm/pool.d/www.conf
+COPY www.conf     /etc/php/8.3/fpm/pool.d/
+COPY php-fpm.conf /etc/php/8.3/fpm/
+COPY php.ini      /etc/php/8.3/fpm/
+COPY php-cli.ini  /etc/php/8.3/cli/php.ini
 
 # Set entrypoint to fix volume mount permission
 COPY entrypoint.sh /entrypoint.sh
@@ -62,4 +61,4 @@ WORKDIR /var/www/prettygreenplants
 
 # Expose port and by default start php-fpm
 EXPOSE 9000
-CMD ["php-fpm7.2"]
+CMD ["php-fpm8.3"]

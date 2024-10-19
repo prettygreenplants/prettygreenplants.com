@@ -1,7 +1,8 @@
 # Pull base image
 FROM nginx:alpine
 
-MAINTAINER Pretty Green Plants <info@prettygreenplants.com>
+LABEL com.prettygreenplants.vendor="Pretty Green Plants" \
+      com.prettygreenplants.email="info@prettygreenplants.com"
 
 ENV NGINX_HOST local.prettygreenplants.com
 ENV ENABLE_HTTPS true

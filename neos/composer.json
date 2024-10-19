@@ -9,34 +9,45 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin",
         "allow-plugins": {
-            "neos/composer-plugin": true
+            "neos/composer-plugin": true,
+            "composer/package-versions-deprecated": true
         }
     },
     "require": {
-        "neos/neos": "~5.3.0",
-        "neos/neos-ui": "~5.3.0",
-        "neos/nodetypes": "~5.3.0",
+        "neos/neos": "~7.0.0",
+        "neos/nodetypes": "~7.0.0",
+        "neos/neos-ui": "~7.0.0",
+        "neos/fusion-afx": "*",
 
         "neos/seo": "~3.2",
         "flowpack/neos-frontendlogin": "~4.0",
-        "neos/redirecthandler-neosadapter": "~4.0",
-        "neos/redirecthandler-databasestorage": "~4.0",
-        "neos/redirecthandler-ui": "~2.0",
+        "neos/redirecthandler-neosadapter": "~4.3",
+        "neos/redirecthandler-databasestorage": "~5.0",
+        "neos/redirecthandler-ui": "~2.4",
 
         "networkteam/neos-mailobfuscator": "~3.3.0",
-        "neos/googleanalytics": "~3.1.0",
+        "neos/googleanalytics": "~3.4.0",
         "flownative/neos-compressor": "~2.2"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~5.3.0",
-        "neos/setup": "~4.1",
-        "neos/neos-setup": "^1.0",
+        "neos/site-kickstarter": "~7.0.0",
+        "neos/setup": "~5.0",
+        "neos/neos-setup": "^1.1",
 
-        "neos/buildessentials": "6.3.x-dev",
+        "neos/buildessentials": "~7.0.0",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~8.1.0",
+        "phpunit/phpunit": "~9.6.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "@dev"
+        "neos/behat": "^6.1"
+    },
+    "repositories": {
+        "distributionPackages": {
+            "type": "path",
+            "url": "./DistributionPackages/*"
+        }
+    },
+    "replace": {
+        "typo3/neos-base-distribution": "self.version"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

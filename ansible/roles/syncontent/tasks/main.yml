@@ -37,7 +37,7 @@
       dest: '{{ base_dir }}/neos/Configuration/Development/Settings.yaml'
 
   - name: Restore database from {{ from_date }}
-    shell: 'docker-compose -f {{ base_dir }}/docker-compose.yml run --rm -e FROM_DATE={{ from_date }} db_backup /opt/mysql/restore-database'
+    shell: 'docker compose -f {{ base_dir }}/docker-compose.yml run --rm -e FROM_DATE={{ from_date }} db_backup /opt/mysql/restore-database'
 
   - name: Maintainance and cleanup
-    shell: 'docker-compose run --rm app /cleanup.sh'
+    shell: 'docker compose run --rm app /cleanup.sh'

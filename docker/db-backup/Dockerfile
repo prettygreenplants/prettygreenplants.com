@@ -1,5 +1,8 @@
 FROM alpine:latest
 
+LABEL com.prettygreenplants.vendor="Pretty Green Plants" \
+      com.prettygreenplants.email="info@prettygreenplants.com"
+
 RUN apk update && \
     apk upgrade && \
     apk add --no-cache mariadb-client
