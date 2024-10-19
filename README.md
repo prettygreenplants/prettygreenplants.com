@@ -18,37 +18,28 @@ Verify with `git --version` and if not yet installed, run:
 php
 ---
 
-Verify with `php -v` and if not yet installed or not version 7.2, run:
+Verify with `php -v` and if not yet installed or not version 8.3, run:
 
-	sudo apt-get install php7.2-cli
+	sudo apt-get install php8.3-cli
 
 php extensions
 --------------
 
 Make sure these extensions are installed:
 
-- mbstring
-- dom
-
-The following extension is recommended to speed thing up but not required:
-
+- curl
+- xml
 - zip
 
 Verify with `php -m` and see if any of them are not in the list, re-install all with:
 
-	sudo apt-get install php7.2-mbstring php7.2-xml php7.2-zip
+	sudo apt-get install php8.3-curl php8.3-xml php8.3-zip
 
 composer
 --------
 
-Verify with `composer -V` and if not yet installed, run:
-
-	php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-	php -r "if (hash_file('sha384', 'composer-setup.php') === 'dac665fdc30fdd8ec78b38b9800061b4150413ff2e3b6f88543c636f7cd84f6db9189d43a81e5503cda447da73c7e5b6') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-	sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer --2
-	php -r "unlink('composer-setup.php');"
-
-Refer to <https://getcomposer.org/download/>
+You don't need to install composer on your local machine as we will docker image to
+help with this task.
 
 docker
 ------
@@ -59,23 +50,24 @@ Verify with `docker -v` and if not yet installed, follow
 Additionally, add current Linux user to docker group and restart the machine so
 docker can be run as normal user.
 
-docker-compose
+docker compose
 --------------
 
-Verify with `docker-compose -v` and if not yet installed, run:
+Verify with `docker compose version` and if not yet installed, run:
 
-	sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+	sudo apt-get install docker-compose-plugin
 
-Refer to <https://docs.docker.com/compose/install/>
+Refer to <https://docs.docker.com/compose/install/linux/>
 
 Ansible
 -------
 
-Verify with `ansible --version` and if it is not version 2.8 or is not yet installed, run:
+Verify with `ansible --version` and if it is not version 2.10 or is not yet installed, run:
 
-	sudo add-apt-repository ppa:ansible/ansible -y
-	sudo apt-get update
-	sudo apt-get -y --force-yes install ansible
+	sudo add-apt-repository --yes --update ppa:ansible/ansible-2.10
+	sudo apt install ansible
+
+Note that from ansible 2.17 up, python version on managed nodes must be 3.0 up too.
 
 Installation
 ============
@@ -95,28 +87,32 @@ message `- Everything looks good!`:
 
 Install project dependencies:
 
-	composer install --prefer-dist --working-dir=neos
+	docker run --rm --interactive --tty --volume ~/dev/prettygreenplants/neos:/app \
+	--user $UID:$UID composer:2.8 install --prefer-dist
 
-Create docker environment file
+Create docker environment file and adjust to match your local setup
 
 	cp env.dev .env
 
 Build up docker containers and pull latest version for local development:
 
-	docker-compose pull
-	docker-compose build
+	docker compose pull
+	docker compose build
 
 Check your Linux user account with `echo $UID` and update `.env` file to match.
 
 Start docker containers:
 
-	docker-compose up -d
+	docker compose up -d
 
 Restore content from staging to local:
 
-	FROM_DATE=2021-06-19 scripts/syncontent.sh staging
+	FROM_DATE=2024-10-19 scripts/syncontent.sh staging
 
 _Note_: If `FROM_DATE` is not set, then it takes today's date for the backup filename.
+Make sure your local environment has `bzip2` installed for the archive extraction:
+
+	sudo apt-get install bzip2
 
 Update local DNS by editing `/etc/hosts` as root with `sudo vi /etc/hosts` and
 add the following line:
@@ -138,7 +134,7 @@ Staging
 
 ```bash
 docker login -u visay --password-stdin docker.io
-docker tag prettygreenplants_app prettygreenplants/app:latest
+docker tag prettygreenplants-app prettygreenplants/app:latest
 docker push prettygreenplants/app:latest
 ```
 2. Get the latest code, install dependencies, pull images and start up containers

@@ -20,7 +20,7 @@ www_user_id: ''
 www_group_id: ''
 
 project_context: ''
-composer_dev_flag: ''
+composer_flag: ''
 release_version: ''
 trusted_proxies: '*'
 
