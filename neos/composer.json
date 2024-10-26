@@ -15,8 +15,8 @@
         }
     },
     "require": {
-        "neos/neos": "~8.1.0",
-        "neos/neos-ui": "~8.1.0",
+        "neos/neos": "~8.2.0",
+        "neos/neos-ui": "~8.2.0",
 
         "neos/redirecthandler-neosadapter": "~4.3",
         "neos/redirecthandler-databasestorage": "~5.0",
@@ -26,13 +26,13 @@
         "sokly/prettygreenplants": "@dev"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~8.1.0",
+        "neos/site-kickstarter": "~8.2.0",
         "neos/neos-setup": "^3.0",
 
-        "neos/buildessentials": "~8.1.0",
+        "neos/buildessentials": "~8.2.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "neos/behat": "~8.1.0"
+        "neos/behat": "~8.2.0"
     },
     "repositories": [
         {
