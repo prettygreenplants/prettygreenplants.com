@@ -15,10 +15,11 @@
         }
     },
     "require": {
-        "neos/neos": "~7.1.0",
-        "neos/neos-ui": "~7.1.0",
-        "neos/nodetypes": "~7.1.0",
-        "neos/fusion-afx": "~7.1.0",
+        "neos/neos": "~7.2.0",
+        "neos/neos-ui": "~7.2.0",
+        "neos/nodetypes": "~7.2.0",
+        "neos/fusion-afx": "~7.2.0",
+        "typo3fluid/fluid": "~2.7.0",
 
         "neos/seo": "~3.2",
         "flowpack/neos-frontendlogin": "~4.0",
@@ -31,24 +32,15 @@
         "flownative/neos-compressor": "~2.2"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~7.1.0",
-        "neos/setup": "~5.0",
+        "neos/site-kickstarter": "~7.2.0",
+        "neos/setup": "^5.0",
         "neos/neos-setup": "^1.1",
 
-        "neos/buildessentials": "~7.1.0",
-        "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~9.6.0",
+        "neos/buildessentials": "~7.2.0",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^9.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "^7.1"
-    },
-    "repositories": {
-        "distributionPackages": {
-            "type": "path",
-            "url": "./DistributionPackages/*"
-        }
-    },
-    "replace": {
-        "typo3/neos-base-distribution": "self.version"
+        "neos/behat": "~7.2.0"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
