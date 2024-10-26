@@ -19,10 +19,20 @@
     version: '{{ release_version }}'
 
 - name: Install project dependencies
-  composer:
-    no_dev: '{{ composer_dev_flag }}'
-    prefer_dist: yes
-    working_dir: '{{ app_root }}/neos'
+  docker_container:
+    auto_remove: yes
+    command: 'composer install {{ composer_flag }}'
+    container_default_behavior: no_defaults
+    detach: no
+    force_kill: yes
+    image: composer:2.8
+    keep_volumes: no
+    name: composer
+    user: '{{ www_user_id }}:{{ www_group_id }}'
+    volumes:
+      - '{{ app_root }}/neos:/app'
+  vars:
+    ansible_python_interpreter: /usr/bin/python3
 
 - name: Setup docker environment file
   template:

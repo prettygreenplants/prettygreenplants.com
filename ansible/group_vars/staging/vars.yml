@@ -13,7 +13,7 @@ www_user_id: '1261'
 www_group_id: '1261'
 
 project_context: 'Production'
-composer_dev_flag: 'yes'
+composer_flag: '--no-dev --prefer-dist'
 release_version: 'master'
 trusted_proxies: '{{ trusted_proxies_vault }}'
 

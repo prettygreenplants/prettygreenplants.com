@@ -9,8 +9,8 @@ STAGE="$1"
 
 command -v ansible >/dev/null 2>&1 ||
 	{ echo -e ${RED}"- ANSIBLE is not installed. Please check REAME.md file."${NC} >&2; ERROR="1"; }
-command ansible --version | grep "2.8." >/dev/null 2>&1 ||
-	{ echo -e ${RED}"- ANSIBLE version 2.8 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
+command ansible --version | grep "2.10." >/dev/null 2>&1 ||
+	{ echo -e ${RED}"- ANSIBLE version 2.10 is required. Please check REAME.md file."${NC} >&2; ERROR="1"; }
 
 # If stage is not set anywhere, throw error
 if [ -z "${STAGE}" ]; then
@@ -22,6 +22,6 @@ if [ ${ERROR} == "0" ]; then
 	read -p "Are you sure to deploy to ${STAGE} (y/n)? " -r
 	echo
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
-		ansible-playbook ansible/playbook.yml --limit ${STAGE} --tags deploy
+		ansible-playbook ansible/playbook.yml --limit ${STAGE} --tags deploy -vvv
 	fi
 fi
