@@ -5,10 +5,13 @@
     "require": {
         "neos/neos": "*",
         "neos/nodetypes": "*",
-        "neos/fusion-afx": "*"
-    },
-    "suggest": {
-        "neos/seo": "*"
+        "neos/fusion-afx": "*",
+
+        "neos/seo": "~3.2",
+        "flowpack/neos-frontendlogin": "^4.0",
+        "networkteam/neos-mailobfuscator": "~3.3.0",
+        "neos/googleanalytics": "~3.4.0",
+        "flownative/neos-compressor": "~2.2"
     },
     "autoload": {
         "psr-4": {
@@ -102,7 +105,10 @@
             "Neos.Flow-20201003165200",
             "Neos.Flow-20201109224100",
             "Neos.Flow-20201205172733",
-            "Neos.Flow-20201207104500"
+            "Neos.Flow-20201207104500",
+            "Neos.Neos-20220318111600",
+            "Neos.Flow-20220318174300",
+            "Neos.Fusion-20220326120900"
         ]
     }
 }

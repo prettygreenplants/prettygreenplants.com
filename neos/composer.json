@@ -15,32 +15,35 @@
         }
     },
     "require": {
-        "neos/neos": "~7.3.0",
-        "neos/neos-ui": "~7.3.0",
-        "neos/nodetypes": "~7.3.0",
-        "neos/fusion-afx": "~7.3.0",
+        "neos/neos": "~8.0.0",
+        "neos/neos-ui": "~8.0.0",
 
-        "neos/seo": "~3.2",
-        "flowpack/neos-frontendlogin": "~4.0",
         "neos/redirecthandler-neosadapter": "~4.3",
         "neos/redirecthandler-databasestorage": "~5.0",
         "neos/redirecthandler-ui": "~2.4",
 
-        "networkteam/neos-mailobfuscator": "~3.3.0",
-        "neos/googleanalytics": "~3.4.0",
-        "flownative/neos-compressor": "~2.2"
+        "prettygreenplants/shop": "@dev",
+        "sokly/prettygreenplants": "@dev"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~7.3.0",
-        "neos/setup": "^5.0",
-        "neos/neos-setup": "^1.1",
+        "neos/site-kickstarter": "~8.0.0",
+        "neos/neos-setup": "^3.0",
 
-        "neos/buildessentials": "~7.3.0",
+        "neos/buildessentials": "~8.0.0",
         "mikey179/vfsstream": "^1.6",
         "phpunit/phpunit": "^9.0",
-        "symfony/css-selector": "~2.0",
-        "neos/behat": "~7.3.0"
+        "neos/behat": "~8.0.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "Packages/Application/PrettyGreenPlants.Shop"
+        },
+        {
+            "type": "path",
+            "url": "Packages/Sites/Sokly.PrettyGreenPlants"
+        }
+      ],
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"
     },
