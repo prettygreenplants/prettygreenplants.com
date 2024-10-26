@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
 sudo -Eu prettygreenplants -H ./flow flow:cache:flush --force
-sudo -Eu prettygreenplants -H ./flow flow:core:compile
-sudo -Eu prettygreenplants -H ./flow flow:doctrine:compileproxies
 sudo -Eu prettygreenplants -H ./flow flow:session:destroyAll
 sudo -Eu prettygreenplants -H ./flow database:setcharset
 sudo -Eu prettygreenplants -H ./flow doctrine:migrate
