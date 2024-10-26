@@ -4,7 +4,8 @@
     "type": "neos-site",
     "require": {
         "neos/neos": "*",
-        "neos/nodetypes": "*"
+        "neos/nodetypes": "*",
+        "neos/fusion-afx": "*"
     },
     "suggest": {
         "neos/seo": "*"

@@ -1,6 +1,7 @@
 {
     "name": "prettygreenplants/prettygreenplants.com",
     "description": "Neos Base Distribution for Pretty Green Plants website.",
+    "version": "2.0.0",
     "license": "GPL-3.0+",
     "support": {
         "email": "info@prettygreenplants.com"
@@ -14,10 +15,10 @@
         }
     },
     "require": {
-        "neos/neos": "~7.0.0",
-        "neos/nodetypes": "~7.0.0",
-        "neos/neos-ui": "~7.0.0",
-        "neos/fusion-afx": "*",
+        "neos/neos": "~7.1.0",
+        "neos/neos-ui": "~7.1.0",
+        "neos/nodetypes": "~7.1.0",
+        "neos/fusion-afx": "~7.1.0",
 
         "neos/seo": "~3.2",
         "flowpack/neos-frontendlogin": "~4.0",
@@ -30,15 +31,15 @@
         "flownative/neos-compressor": "~2.2"
     },
     "require-dev": {
-        "neos/site-kickstarter": "~7.0.0",
+        "neos/site-kickstarter": "~7.1.0",
         "neos/setup": "~5.0",
         "neos/neos-setup": "^1.1",
 
-        "neos/buildessentials": "~7.0.0",
+        "neos/buildessentials": "~7.1.0",
         "mikey179/vfsstream": "~1.6",
         "phpunit/phpunit": "~9.6.0",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "^6.1"
+        "neos/behat": "^7.1"
     },
     "repositories": {
         "distributionPackages": {

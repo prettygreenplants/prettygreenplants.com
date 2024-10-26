@@ -22,6 +22,6 @@ if [ ${ERROR} == "0" ]; then
 	read -p "Are you sure to deploy to ${STAGE} (y/n)? " -r
 	echo
 	if [[ ${REPLY} =~ ^[Yy]$ ]]; then
-		ansible-playbook ansible/playbook.yml --limit ${STAGE} --tags deploy -vvv
+		ansible-playbook ansible/playbook.yml --limit ${STAGE} --tags deploy
 	fi
 fi
