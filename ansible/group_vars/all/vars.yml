@@ -22,7 +22,8 @@ www_group_id: ''
 project_context: ''
 composer_flag: ''
 release_version: ''
-trusted_proxies: '*'
+trusted_proxies: 
+  - '*'
 
 temp_files: []
 
